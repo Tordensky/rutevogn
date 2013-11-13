@@ -1,7 +1,45 @@
 RuteVogn.DestinationView = RuteVogn.BaseView.extend({
-    templateName: "main-view",
+    templateName: "arrival-template",
 
-    initialize: function() {
-        console.log("init departure view");
+    events: {
+        "click #back-button" : "goToStartPage",
+        "click #destination-buss-stop-button" : "onBusStopClick"
+    },
+
+    initialize: function(options) {
+        this.el = options.el;
+    },
+
+    showPage: function(departureId, busStopsCollection){
+        this.departureId = departureId;
+        this.busStopsCollection = busStopsCollection;
+
+        this.renderPossibleDestinations();
+    },
+
+    renderPossibleDestinations: function() {
+        var that = this;
+        var departureStop = this.busStopsCollection.find(function(busStop) {
+            var id = busStop.get("_id");
+            return (id == that.departureId);
+        });
+
+        var pageInfo = {
+            title: "velg din destinasjon",
+            from: departureStop.get("name"),
+            backButtonTitle: "TILBAKE"};
+
+        stops = {stops: departureStop.get("destinations")};
+        // TODO SHOW THE REAL STOPS POSSIBLE FROM THIS DESTINATION
+        this.render(pageInfo, stops);
+    },
+
+    onBusStopClick: function(event) {
+        var destinationId = $(event.currentTarget).data('id');
+        RuteVogn.router.navigate('trip/'+this.departureId+'/'+destinationId, true);
+    },
+
+    goToStartPage: function(event) {
+        RuteVogn.router.navigate('', true);
     }
 });

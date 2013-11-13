@@ -12,7 +12,6 @@ RuteVogn.BaseView = Backbone.View.extend({
         _.each(arguments, function(arg){
             _.extend(allDicts, arg);
         });
-        console.log("all dicts", allDicts);
 
         var that = this;
         this.getTemplate(this.templateName, function(html){

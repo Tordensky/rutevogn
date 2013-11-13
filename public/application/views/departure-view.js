@@ -1,7 +1,7 @@
 var RuteVogn = RuteVogn || {};
 
 RuteVogn.DepartureView = RuteVogn.BaseView.extend({
-    templateName: "stops-template",
+    templateName: "departure-template",
 
     events: {
         "click #buss-stop-button" : "onBusStopClick"
@@ -9,16 +9,18 @@ RuteVogn.DepartureView = RuteVogn.BaseView.extend({
 
     initialize: function(options) {
         this.el = options.el;
-        console.log(this.el);
 
-        this.bussStopsCollection = new RuteVogn.BussStopCollection();
+        this.busStopsCollection = new RuteVogn.BussStopCollection();
 
-        this.getBusStops();
+    },
+
+    showPage: function() {
+        this.getBusStops()
     },
 
     getBusStops: function() {
         var that = this;
-        this.bussStopsCollection.fetch({
+        this.busStopsCollection.fetch({
             success: function(){
                 that.onBusStopsResult();
             }
@@ -26,9 +28,9 @@ RuteVogn.DepartureView = RuteVogn.BaseView.extend({
     },
 
     onBusStopsResult: function () {
-        var stops = {stops: this.bussStopsCollection.toJSON()};
-        console.log(stops);
-        this.render(stops);
+        var stops = {stops: this.busStopsCollection.toJSON()};
+        var screenInfo = {title:"Jeg reiser fra", favoriteButtonTitle:"Mine favoriter"};
+        this.render(stops, screenInfo);
     },
 
     onBusStopClick: function(event) {

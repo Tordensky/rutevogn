@@ -4,38 +4,51 @@ RuteVogn.Router = Backbone.Router.extend({
     routes: {
         '': "home",
         'destination/:id': "destination",
-        'trip': "trip"
+        'trip/:fromId/:toId': "trip"
 
     },
 
     departureView: null,
+    destinationView: null,
+    resultView: null,
     bussStopInfo: null,
 
     home: function() {
-        this.departureView = new RuteVogn.DepartureView({
-            el: $("#app")
-        });
+        if (this.departureView == null) {
+            this.departureView = new RuteVogn.DepartureView({
+                el: $("#app")
+            });
+        }
+        this.departureView.showPage();
     },
 
     destination: function(id) {
         if (this.departureView == null) {
             this.navigate('', true);
+            return;
         }
-        console.log("destination", id);
 
         var el = $("#app");
         el.empty();
 
-        var that = this;
-        new RuteVogn.DestinationView({
-            el: el,
-            departureId: id,
-            busStopData: that.departureView.bussStopsCollection
-        });
+        if (this.destinationView == null) {
+            this.destinationView = new RuteVogn.DestinationView({
+                el: el
+            });
+        }
+        this.destinationView.showPage(id, this.departureView.busStopsCollection);
     },
 
     trip: function(fromId, toId) {
-        // TODO fix this shit
-    }
+        var el = $("#app");
+        el.empty();
 
+        if (this.resultView == null) {
+            this.resultView = new RuteVogn.ResultView({
+                el: el
+            });
+        }
+
+        this.resultView.showView(fromId, toId);
+    }
 });
