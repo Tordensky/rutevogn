@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+    <script type="text/javascript" src="http://backbonejs.org/backbone-min.js"></script>
+
+    <!-- BACKBONE APPLICATION FILES TODO not correct path-->
+    <script type="text/javascript" src="/application/Router/router.js"></script>
+    <script type="text/javascript" src="/application/Views/base-view.js"></script>
+    <script type="text/javascript" src="/application/Views/main-view.js"></script>
+    <script type="text/javascript" src="/application/Models/buss-stop-model.js"></script>
+    <script type="text/javascript" src="/application/application.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
+
+    <script type="text/javascript">
+        $(function(){
+            var app = RuteVogn.Application;
+            app.run();
+        });
+    </script>
+
+    <title>BACKBONE BASIC SETUP</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>
