@@ -2,9 +2,12 @@ var Stop = require('../model/stop-model.js');
 
 
 exports.getStops = function(req, res){
-	Stop.find(function(err, stops){
-		if(err)	res.send(400);
+	Stop.find().populate('destinations')
+        .exec(function (err, destinations) {
+          if (err) winston.log('error', err);
 
-		res.jsonp(stops);
-	});
+          console.log('The visitors is %j', destinations);
+          // prints "The creator is Aaron"
+          res.jsonp(destinations);
+    });
 }
