@@ -1,6 +1,6 @@
 var Basic = Basic || {};
 
-Basic.MainView = Backbone.View.extend({
+Basic.DepartureView = Backbone.View.extend({
     initalize: function() {
         console.log("init main view");
     },

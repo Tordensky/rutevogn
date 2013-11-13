@@ -28,7 +28,7 @@ busStops = [
 	{
 		'name' : 'Storelva',
 		'city' : 'Tromsø'
-	},	
+	}
 ];
 
 _.each(busStops, function(stop){

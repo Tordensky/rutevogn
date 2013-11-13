@@ -9,8 +9,10 @@
     <!-- BACKBONE APPLICATION FILES TODO not correct path-->
     <script type="text/javascript" src="/application/Router/router.js"></script>
     <script type="text/javascript" src="/application/Views/base-view.js"></script>
-    <script type="text/javascript" src="/application/Views/main-view.js"></script>
+    <script type="text/javascript" src="/application/Views/departure-view.js"></script>
+    <script type="text/javascript" src="/application/Views/destination-view.js"></script>
     <script type="text/javascript" src="/application/Models/buss-stop-model.js"></script>
+    <script type="text/javascript" src="/application/Models/buss-stop-collection.js"></script>
     <script type="text/javascript" src="/application/application.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
@@ -22,9 +24,21 @@
         });
     </script>
 
-    <title>BACKBONE BASIC SETUP</title>
+    <title>rutevogn.no</title>
 </head>
 <body>
-    <div id="app"></div>
+
+<div id="header" class="app-header-container">
+    <h1>rutevogn.no</h1>
+</div>
+<div id="app" class="app">
+
+</div>
+<div id="footer" class="app-footer-container">
+    info@rutevogn.no
+</div>
+
+
+
 </body>
 </html>

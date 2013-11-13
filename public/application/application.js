@@ -1,13 +1,9 @@
 var RuteVogn = RuteVogn || {};
 
+RuteVogn.router = new RuteVogn.Router();
+
 RuteVogn.Application = {
     run: function () {
-        var router = new RuteVogn.Router();
-
-        var mainView = new RuteVogn.MainView({
-            el: $("#app")
-        });
-
-        mainView.render();
+        Backbone.history.start();
     }
 };
