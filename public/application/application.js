@@ -1,12 +1,13 @@
-var Basic = Basic || {};
+var RuteVogn = RuteVogn || {};
 
-Basic.Application = {
+RuteVogn.Application = {
     run: function () {
-        var basicRouter = new Basic.Router();
+        var router = new RuteVogn.Router();
 
-        var basicView = new Basic.MainView({
+        var mainView = new RuteVogn.MainView({
             el: $("#app")
         });
-        basicView.render();
+
+        mainView.render();
     }
 };
