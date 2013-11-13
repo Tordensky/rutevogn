@@ -29,8 +29,7 @@ RuteVogn.DestinationView = RuteVogn.BaseView.extend({
             from: departureStop.get("name"),
             backButtonTitle: "TILBAKE"};
 
-        stops = {stops: departureStop.get("destinations")};
-        // TODO SHOW THE REAL STOPS POSSIBLE FROM THIS DESTINATION
+        var stops = {stops: departureStop.get("destinations")};
         this.render(pageInfo, stops);
     },
 
