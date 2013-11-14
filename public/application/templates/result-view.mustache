@@ -1,1 +1,14 @@
+<div>BUSSEN GÅR OM {{NextdepartureTime}}</div>
+
+<div class="travel-info-container">
+    {{#routes}}
+        <div class="travel-info-entry">
+            <div>{{route}}</div>
+            <div>{{departureTime}}</div>
+            <div>{{arrivalTime}}</div>
+            <div>{{travelTime}}</div>
+        </div>
+    {{/routes}}
+</div>
+
 <div><button id="new-search-button" class="page-button">Nytt søk</button></div>

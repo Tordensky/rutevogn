@@ -28,8 +28,6 @@ realNames['Universitet'] = "UiTø/ISV (Tromsø)";
 
 
 stopsDict = {};
-fromStop = "Utsikten";
-toStop = "Sentrum";
 
 var firstRootUrl = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/svar?referrer=www.tromskortet.no&lang=no&dep1=&";
 var endRootUrl = "&direction=1&search=S%C3%B8k&GetTR0=1&GetTR1=1&GetTR2=1&GetTR3=1&GetTR4=1&GetTR6=1&through=&throughpause=&changepenalty=1&changepause=0&linjer=&destinations=";
@@ -69,13 +67,13 @@ function getHtml(from, to){
 			var json = JSON.parse(tmp.tmMapOptions).TripData;
 
 			console.log("Done getting json");
-			saveDepature(json);
+			saveDepature(json, from, to);
 		}
 	});	
 }
 
-function saveDepature(json){
-	console.log("Saving depatures: ")
+function saveDepature(json, from, to){
+	console.log("Saving depatures: ", from, to)
 	console.log(json.start, json.stop, json.i[0].l);
 
 	var start = createDateObject(json.start);
@@ -86,8 +84,8 @@ function saveDepature(json){
 		route = json.i[1].l;	// May be a walk the first element
 
 	var dep = new Depature({
-		'fromId' : stopsDict[fromStop].id,
-		'toId' : stopsDict[toStop].id,
+		'fromId' : stopsDict[from].id,
+		'toId' : stopsDict[to].id,
 		'date' : start,
 		'arrival' : stop,
 		'route' : parseInt(route)
