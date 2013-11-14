@@ -94,15 +94,17 @@ function createDateObject(string){
 function createUrl(from, to, date){
 	var from = config.realNames[from];
 	var to = config.realNames[to];
-	
-	var dateStr = date.getDate() + "." + date.getMonth() + 1 + "." + date.getFullYear();
-	var timeStr = date.getHours() + ":" + date.getMinutes();
 
-	var urlStr = config.firstRootUrl + 
+	var dateStr = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
+
+    var timeStr = date.getHours() + ":" + date.getMinutes();
+    console.log("date date date date", date, dateStr);
+
+	var urlStr = config.firstRootUrl +
 				"from=" + from +
-				"&to=" + to + 
-				"&Time=" + timeStr + 
-				"&Date=" + dateStr + 
+				"&to=" + to +
+				"&Time=" + timeStr +
+				"&Date=" + dateStr +
 				config.endRootUrl;
 
 	console.log(urlStr);
