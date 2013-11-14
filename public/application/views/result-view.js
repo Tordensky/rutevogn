@@ -25,9 +25,9 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
             },
             success: function(){
                 console.log("HURRA");
+                this.render();
             }
         });
-        this.render();
     },
 
     goToStartPage: function(event) {

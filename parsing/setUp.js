@@ -58,7 +58,6 @@ _.each(busStops, function(stop){
 	});
 });
 
-
 function insertDestinations(){
 	_.each(Object.keys(dictBusStops), function(dest){
 		_.each(dictBusStops[dest], function(tmp){
