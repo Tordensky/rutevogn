@@ -34,20 +34,20 @@ function createUrl(from, to){
 	var date = Date.now();
 
 	// Not tested
-	dateStr = date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
-	timeStr = date.getHours() + ":" + date.getMinutes();
-	var urlStr = firstRootUrl + 
-				"from=" + from +
-				" (Tromsø)" +
-				"to=" + to + 
-				" (Tromsø)" +
-				"Time=" + timeStr + 
-				"&Date=" + dateStr + 
-				endRootUrl;
+	// dateStr = date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
+	// timeStr = date.getHours() + ":" + date.getMinutes();
+	// var urlStr = firstRootUrl + 
+	// 			"from=" + from +
+	// 			" (Tromsø)" +
+	// 			"to=" + to + 
+	// 			" (Tromsø)" +
+	// 			"Time=" + timeStr + 
+	// 			"&Date=" + dateStr + 
+	// 			endRootUrl;
 
-	console.log(URL.format(urlStr));
+	// console.log(URL.format(urlStr));
 
-	return "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/svar?referrer=www.tromskortet.no&lang=no&dep1=&from=Utsikten+%28Troms%C3%B8%29&to=Wito+%28Troms%C3%B8%29&Time=22%3A32&Date=12.11.2013&direction=1&search=S%C3%B8k&GetTR0=1&GetTR1=1&GetTR2=1&GetTR3=1&GetTR4=1&GetTR6=1&through=&throughpause=&changepenalty=1&changepause=0&linjer=&destinations=";
+	return "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/svar?referrer=www.tromskortet.no&lang=no&dep1=&from=Utsikten+%28Troms%C3%B8%29&to=Wito+%28Troms%C3%B8%29&Time=22%3A32&Date=14.11.2013&direction=1&search=S%C3%B8k&GetTR0=1&GetTR1=1&GetTR2=1&GetTR3=1&GetTR4=1&GetTR6=1&through=&throughpause=&changepenalty=1&changepause=0&linjer=&destinations=";
 }
 
 function getHtml(){
@@ -70,8 +70,8 @@ function saveDepature(json){
 	console.log("Saving depatures: ")
 	console.log(json.start, json.stop, json.i[0].l);
 
-	var start = new Date(json.start);
-	var stop = new Date(json.stop);
+	var start = createDateObject(json.start);
+	var stop = createDateObject(json.stop);
 
 	var dep = new Depature({
 		'fromId' : stopsDict[fromStop].id,
@@ -84,4 +84,10 @@ function saveDepature(json){
 	dep.save(function(err){
 		if(err)	console.log("Error saving depature: " + err);
 	});
+}
+
+function createDateObject(string){
+	var bits = string.split(/\D/);
+	var date = new Date(bits[2], bits[1] - 1, bits[0], bits[3], bits[4], bits[5]);
+	return date;
 }
