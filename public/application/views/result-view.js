@@ -9,10 +9,24 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
 
     initialize: function(options) {
         this.el = options.el;
+        this.travelInfoCollection = new RuteVogn.TravelInfoCollection()
     },
 
     showView: function(fromId, toId) {
         // TODO get data and render to screen
+
+        var date = new Date().toJSON();
+        console.log("Travel info", fromId, toId, date);
+        this.travelInfoCollection.fetch({
+            data: {
+                from: fromId,
+                to: toId,
+                date: date
+            },
+            success: function(){
+                console.log("HURRA");
+            }
+        });
         this.render();
     },
 
