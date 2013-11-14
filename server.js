@@ -12,8 +12,15 @@ var app = express();
 
 app.use(express.static(__dirname + '/public'));
 
+// Your own super cool function
+var logger = function(req, res, next) {
+    console.log("GOT REQUEST !", req.params, req.query);
+    next(); // Passing the request to the next handler in the stack.
+}
+
 app.configure(function(){
-  app.use(express.bodyParser());
+	app.use(logger); // Here you add your logger to the stack.
+	app.use(express.bodyParser());
 });
 
 app.get('/depature?', depature.getDepatures);
