@@ -2,7 +2,8 @@ var express = require('express'),
 	depature = require('./routes/depatures'),
 	stop = require('./routes/stops'),
 	async = require('async');
-	// winston = require('winston');
+//,
+//	winston = require('winston');
 
 mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/rutevogn');
@@ -16,10 +17,11 @@ app.configure(function(){
 });
 
 app.get('/depature?', depature.getDepatures);
-app.get('/stops', stop.getStops);
+app.get('/stops', stop.getBusStops);
 
 app.listen(8080);
 
 console.log('Listening on port 8080...');
 
 // winston.add(winston.transports.File, { filename: 'error.log' });
+

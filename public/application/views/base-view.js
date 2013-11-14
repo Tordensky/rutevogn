@@ -8,10 +8,14 @@ RuteVogn.BaseView = Backbone.View.extend({
     },
 
     render: function(){
-        console.log("render main view");
+        var allDicts = {};
+        _.each(arguments, function(arg){
+            _.extend(allDicts, arg);
+        });
+
         var that = this;
         this.getTemplate(this.templateName, function(html){
-            var temp = Mustache.render(html, {});
+            var temp = Mustache.render(html, allDicts);
             that.$el.html(temp);
         });
     }

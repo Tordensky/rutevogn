@@ -3,7 +3,8 @@ var mongoose = require('mongoose'),
 
 var StopSchema = new Schema({
     name : { type: String, required: true},
-    city : { type: String, required: true}
+    city : { type: String, required: true},
+    destinations : [{type: Schema.Types.ObjectId, ref: 'Stop'}]
 });
 
 module.exports = mongoose.model('Stop', StopSchema);

@@ -36,7 +36,7 @@ busStops = [
 		'name' : 'Storelva',
 		'city' : 'Tromsø',
 		'destinations' : []
-	},
+	}
 ];
 
 dictBusStops['Utsikten'] = ['Sentrum', 'Universitet', 'Tromsdalen'];

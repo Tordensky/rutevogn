@@ -1,5 +1,5 @@
 var RuteVogn = RuteVogn || {};
 
-RuteVogn.exampleModel = Backbone.Model.extend({
-   url: "/example"
+RuteVogn.BussStopModel = Backbone.Model.extend({
+   url: "/stops"
 });
