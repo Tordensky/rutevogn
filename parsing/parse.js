@@ -8,30 +8,14 @@ var request = require('superagent');
 var URL = require('url');
 var _ = require('underscore');
 var async = require('async');
+var config = require('./config.js');	// local config file
 
 
-dictBusStops = {};
-dictBusStops['Utsikten'] = ['Sentrum', 'Universitet', 'Tromsdalen'];
-dictBusStops['Sentrum'] = ['Utsikten', 'Universitet', 'Tromsdalen'];
-dictBusStops['Tromsdalen'] = ['Utsikten', 'Universitet', 'Sentrum'];
-dictBusStops['Storelva'] = ['Universitet', 'Sentrum'];
-dictBusStops['Universitet'] = ['Utsikten', 'Sentrum', 'Storelva'];
-
-everyBusStopToParse = Object.keys(dictBusStops);
-
-realNames = {};
-realNames['Utsikten'] = "Utsikten (Tromsø)";
-realNames['Sentrum'] = "Wito (Tromsø)";
-realNames['Tromsdalen'] = "Tromsdalen Bruvegen (Tromsø)";
-realNames['Storelva'] = "Storelv snuplass (Tromsø)";
-realNames['Universitet'] = "UiTø/ISV (Tromsø)";
+// Local variables
+var stopsDict = {};
 
 
-stopsDict = {};
-
-var firstRootUrl = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/svar?referrer=www.tromskortet.no&lang=no&dep1=&";
-var endRootUrl = "&direction=1&search=S%C3%B8k&GetTR0=1&GetTR1=1&GetTR2=1&GetTR3=1&GetTR4=1&GetTR6=1&through=&throughpause=&changepenalty=1&changepause=0&linjer=&destinations=";
-
+// Get ids and name for every stop, save it to stopsDict
 Stop.find(function(err, stops){
 	_.each(stops, function(stop){
 		console.log(stop);
@@ -41,12 +25,13 @@ Stop.find(function(err, stops){
 		};
 	});
 	crawlerStart();
-})
+});
 
 
+// Start function to start it all
 function crawlerStart(){
-	_.each(everyBusStopToParse, function(fromStop){
-		_.each(dictBusStops[fromStop], function(toStops){
+	_.each(config.everyBusStopToParse, function(fromStop){
+		_.each(config.dictBusStops[fromStop], function(toStops){
 			getHtml(fromStop, toStops);
 		});
 	});
@@ -55,7 +40,11 @@ function crawlerStart(){
 
 function getHtml(from, to){
 	console.log(from, to);
-	var date = new Date();
+	var date = new Date();	
+	// var iterDate = date;
+	// var startDate = date;
+
+	// while(startDate - )
 
 	var urlStr = createUrl(from, to, date);
 	request.get(urlStr).end(function(res){
@@ -103,20 +92,20 @@ function createDateObject(string){
 }
 
 function createUrl(from, to, date){
-	from = realNames[from];
-	to = realNames[to];
+	var from = config.realNames[from];
+	var to = config.realNames[to];
 	
-	dateStr = date.getDate() + "." + date.getMonth() + 1 + "." + date.getFullYear();
-	timeStr = date.getHours() + ":" + date.getMinutes();
-	var urlStr = firstRootUrl + 
+	var dateStr = date.getDate() + "." + date.getMonth() + 1 + "." + date.getFullYear();
+	var timeStr = date.getHours() + ":" + date.getMinutes();
+
+	var urlStr = config.firstRootUrl + 
 				"from=" + from +
 				"&to=" + to + 
 				"&Time=" + timeStr + 
 				"&Date=" + dateStr + 
-				endRootUrl;
+				config.endRootUrl;
 
 	console.log(urlStr);
 	return urlStr;
-	// return "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/svar?referrer=www.tromskortet.no&lang=no&dep1=&from=Utsikten+%28Troms%C3%B8%29&to=Wito+%28Troms%C3%B8%29&Time=22%3A32&Date=14.11.2013&direction=1&search=S%C3%B8k&GetTR0=1&GetTR1=1&GetTR2=1&GetTR3=1&GetTR4=1&GetTR6=1&through=&throughpause=&changepenalty=1&changepause=0&linjer=&destinations=";
 }
 

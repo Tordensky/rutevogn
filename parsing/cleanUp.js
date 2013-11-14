@@ -8,6 +8,6 @@ Depature.remove({}, function(err) {
    console.log('collection removed') 
 });
 
-// Stop.remove({}, function(err){
-// 	console.log('collection removed');
-// });
+Stop.remove({}, function(err){
+	console.log('collection removed');
+});

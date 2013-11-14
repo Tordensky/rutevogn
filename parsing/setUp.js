@@ -4,54 +4,16 @@ var _ = require('underscore');
 var Stop = require('../model/stop-model.js');
 var async = require('async');
 var Schema = mongoose.Schema;
+var config = require('./config.js');	// local config file
 
-dictBusStops = {};
-busStops = [
-	{
-		'name' : 'Utsikten',
-		'city' : 'Tromsø',
-		'destinations' : []
-	},
-	{
-		'name' : 'Sentrum',
-		'city' : 'Tromsø',
-		'destinations' : []
-	},
-	{
-		'name' : 'Universitet',
-		'city' : 'Tromsø',
-		'destinations' : []
-	},
-	{
-		'name' : 'Hamna',
-		'city' : 'Tromsø',
-		'destinations' : []
-	},
-	{
-		'name' : 'Tromsdalen',
-		'city' : 'Tromsø',
-		'destinations' : []
-	},
-	{
-		'name' : 'Storelva',
-		'city' : 'Tromsø',
-		'destinations' : []
-	}
-];
-
-dictBusStops['Utsikten'] = ['Sentrum', 'Universitet', 'Tromsdalen'];
-dictBusStops['Sentrum'] = ['Utsikten', 'Universitet', 'Tromsdalen'];
-dictBusStops['Tromsdalen'] = ['Utsikten', 'Universitet', 'Sentrum'];
-dictBusStops['Storelva'] = ['Universitet', 'Sentrum'];
-dictBusStops['Universitet'] = ['Utsikten', 'Universitet', 'Sentrum'];
 
 var counter = 1;
 // Insert bus stops to DB
-_.each(busStops, function(stop){
+_.each(config.busStops, function(stop){
 	new Stop(stop).save(function(err, stop){
 		if(err)	console.log('err creating stop ' + err);
 
-		if(counter >= busStops.length)
+		if(counter >= config.busStops.length)
 			insertDestinations();
 
 		counter++;
@@ -59,8 +21,8 @@ _.each(busStops, function(stop){
 });
 
 function insertDestinations(){
-	_.each(Object.keys(dictBusStops), function(dest){
-		_.each(dictBusStops[dest], function(tmp){
+	_.each(Object.keys(config.dictBusStops), function(dest){
+		_.each(config.dictBusStops[dest], function(tmp){
 			Stop.findOne({name: tmp}, function(err, stop){
 				tmpFunc(stop, dest);
 			});
