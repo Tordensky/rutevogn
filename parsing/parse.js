@@ -32,21 +32,16 @@ Stop.find(function(err, stops){
 function crawlerStart(){
 	_.each(config.everyBusStopToParse, function(fromStop){
 		_.each(config.dictBusStops[fromStop], function(toStops){
-			getHtml(fromStop, toStops);
+			getHtml(fromStop, toStops, config.officalStartDate);
 		});
 	});
 };
 
 
-function getHtml(from, to){
+function getHtml(from, to, startDate){
 	console.log(from, to);
-	var date = new Date();	
-	// var iterDate = date;
-	// var startDate = date;
 
-	// while(startDate - )
-
-	var urlStr = createUrl(from, to, date);
+	var urlStr = createUrl(from, to, startDate);
 	request.get(urlStr).end(function(res){
 		$ = cheerio.load(res.text);
 
@@ -55,15 +50,15 @@ function getHtml(from, to){
 			var tmp = $('#tm-result' + i.toString() + '-mapdiv').data()
 			var json = JSON.parse(tmp.tmMapOptions).TripData;
 
-			console.log("Done getting json");
+			// console.log("Done getting json");
 			saveDepature(json, from, to);
 		}
-	});	
+	});
 }
 
 function saveDepature(json, from, to){
-	console.log("Saving depatures: ", from, to)
-	console.log(json.start, json.stop, json.i[0].l);
+	// console.log("Saving depatures: ", from, to)
+	// console.log(json.start, json.stop, json.i[0].l);
 
 	var start = createDateObject(json.start);
 	var stop = createDateObject(json.stop);
@@ -74,7 +69,9 @@ function saveDepature(json, from, to){
 
 	var dep = new Depature({
 		'fromId' : stopsDict[from].id,
+		'from' : from,
 		'toId' : stopsDict[to].id,
+		'to' : to,
 		'date' : start,
 		'arrival' : stop,
 		'route' : parseInt(route)
@@ -83,11 +80,20 @@ function saveDepature(json, from, to){
 	dep.save(function(err){
 		if(err)	console.log("Error saving depature: " + err);
 	});
+	var lastDate = createDateObject(json.i[json.i.length - 1].a);
+	console.log(json.i);
+	//console.log(lastDate, config.officalEndDate);
+
+	if(lastDate.getTime() < config.officalEndDate.getTime()){
+		console.log("Goes new round");
+		getHtml(from, to, lastDate);
+	}
 }
 
 function createDateObject(string){
 	var bits = string.split(/\D/);
-	var date = new Date(bits[2], bits[1] - 1, bits[0], bits[3], bits[4], bits[5]);
+	console.log("CreateDateObject: ", string);
+	var date = new Date(bits[2], (bits[1] - 1), bits[0], bits[3], bits[4], bits[5]);
 	return date;
 }
 
@@ -105,7 +111,6 @@ function createUrl(from, to, date){
 				"&Date=" + dateStr + 
 				config.endRootUrl;
 
-	console.log(urlStr);
 	return urlStr;
 }
 
