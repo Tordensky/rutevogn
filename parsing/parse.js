@@ -6,14 +6,15 @@ var Stop = require('../model/stop-model.js');
 var cheerio = require('cheerio');
 var request = require('superagent');
 var URL = require('url');
+var sleep = require('sleep');
 var _ = require('underscore');
 var async = require('async');
+var crypto = require('crypto');
 var config = require('./config.js');	// local config file
-
 
 // Local variables
 var stopsDict = {};
-
+var alldestinations = {};
 
 // Get ids and name for every stop, save it to stopsDict
 Stop.find(function(err, stops){
@@ -39,9 +40,10 @@ function crawlerStart(){
 
 
 function getHtml(from, to, startDate){
-	console.log(from, to);
+	console.log(from, to, startDate);
 
 	var urlStr = createUrl(from, to, startDate);
+
 	request.get(urlStr).end(function(res){
 		$ = cheerio.load(res.text);
 
@@ -57,13 +59,11 @@ function getHtml(from, to, startDate){
 }
 
 function saveDepature(json, from, to){
-	// console.log("Saving depatures: ", from, to)
-	// console.log(json.start, json.stop, json.i[0].l);
-
+	console.log("Save depature: ", from, to);
 	var start = createDateObject(json.start);
 	var stop = createDateObject(json.stop);
 	var route = json.i[0].l;
-
+	var preHash = json.start + json.stop + from + to;
 	if(route == '')
 		route = json.i[1].l;	// May be a walk the first element
 
@@ -74,25 +74,26 @@ function saveDepature(json, from, to){
 		'to' : to,
 		'date' : start,
 		'arrival' : stop,
-		'route' : parseInt(route)
+		'route' : parseInt(route),
+		'hash': crypto.createHash('md5').update(preHash).digest('hex')
 	});
 
 	dep.save(function(err){
 		if(err)	console.log("Error saving depature: " + err);
 	});
 	var lastDate = createDateObject(json.i[json.i.length - 1].a);
-	console.log(json.i);
-	//console.log(lastDate, config.officalEndDate);
+	// console.log(lastDate, config.officalEndDate);
 
 	if(lastDate.getTime() < config.officalEndDate.getTime()){
-		console.log("Goes new round");
+		console.log("goes recursive: ", json.i[json.i.length - 1].a);
+		sleep.sleep(1);
 		getHtml(from, to, lastDate);
 	}
 }
 
 function createDateObject(string){
 	var bits = string.split(/\D/);
-	console.log("CreateDateObject: ", string);
+	//console.log("CreateDateObject: ", string);
 	var date = new Date(bits[2], (bits[1] - 1), bits[0], bits[3], bits[4], bits[5]);
 	return date;
 }
@@ -100,17 +101,18 @@ function createDateObject(string){
 function createUrl(from, to, date){
 	var from = config.realNames[from];
 	var to = config.realNames[to];
-	
-	var dateStr = date.getDate() + "." + date.getMonth() + 1 + "." + date.getFullYear();
-	var timeStr = date.getHours() + ":" + date.getMinutes();
 
-	var urlStr = config.firstRootUrl + 
+	var dateStr = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
+    var timeStr = date.getHours() + ":" + date.getMinutes();
+
+	var urlStr = config.firstRootUrl +
 				"from=" + from +
-				"&to=" + to + 
-				"&Time=" + timeStr + 
-				"&Date=" + dateStr + 
+				"&to=" + to +
+				"&Time=" + timeStr +
+				"&Date=" + dateStr +
 				config.endRootUrl;
 
+	console.log(urlStr);
 	return urlStr;
 }
 

@@ -8,7 +8,8 @@ var DepatureSchema = new Schema({
     to: {type: String, required: true},
     date : { type: Date, required: true},
     arrival : { type: Date, required: true},
-    route : { type: Number, required: true}
+    route : { type: Number, required: true},
+    hash : { type: String, index: {unique: true, dropDups: true}}
 });
 
 module.exports = mongoose.model('Depature', DepatureSchema);

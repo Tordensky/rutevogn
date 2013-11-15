@@ -17,6 +17,13 @@ RuteVogn.BaseView = Backbone.View.extend({
         this.getTemplate(this.templateName, function(html){
             var temp = Mustache.render(html, allDicts);
             that.$el.html(temp);
+            that.onRenderComplete();
         });
+
+    },
+
+    // callback when render is completed
+    onRenderComplete: function() {
+        // implement in super class if something needs to be done when render is completed
     }
 });
