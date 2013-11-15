@@ -1,16 +1,16 @@
-<div id="departure-in">BUSSEN GÅR OM {{nextDepartureTime}}</div>
+<div id="departure-in" class="travel-info-counter">BUSSEN GÅR OM {{nextDepartureTime}}</div>
 
 <div class="travel-info-container">
-    <table>
+    <table class="travel-info-table">
     {{#routes}}
         <tr class="travel-info-entry">
             <td>{{route}}</td>
             <td>{{departureTime}}</td>
-            <td>{{arrivalTime}}</td>
+            <!-- IF YOU WANT TO SHOW DEPARTURE TIME <td>{{arrivalTime}}</td>-->
             <td>{{travelTime}}</td>
         </tr>
     {{/routes}}
     </table>
 </div>
 
-<div><button id="new-search-button" class="page-button">Nytt søk</button></div>
+<button id="new-search-button" class="page-button">Nytt søk</button>

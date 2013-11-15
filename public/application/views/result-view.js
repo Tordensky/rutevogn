@@ -46,7 +46,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
             var depTime = new Date(route.get("date"));
             var arrTime = new Date(route.get("arrival"));
             var routeNum = route.get("route");
-            var travelTime = that.createRemainingTimeStringFromMs(arrTime.getTime() - depTime.getTime());
+            var travelTime = that.createRemainingTimeStringFromMs(depTime.getTime() - currentTimeInMs, false);
 
             if (depTime.getTime() >= currentTimeInMs){
                 data.push({
@@ -60,7 +60,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
         });
         if (data.length > 0) {
             this.nextDepTime = data[0].depTimeInMs;
-            var depTime = this.createRemainingTimeStringFromMs(data[0].depTimeInMs - currentTimeInMs);
+            var depTime = this.createRemainingTimeStringFromMs(data[0].depTimeInMs - currentTimeInMs, true);
             this.render({routes: data, nextDepartureTime: depTime});
         } else {
             this.nextDepTime = null;
@@ -87,7 +87,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
 
     updateCountDown: function(targetDiv) {
         var currentTimeInMs = new Date().getTime();
-        var timeRemaining = this.createRemainingTimeStringFromMs(this.nextDepTime - currentTimeInMs);
+        var timeRemaining = this.createRemainingTimeStringFromMs(this.nextDepTime - currentTimeInMs, true);
         if ((this.nextDepTime - currentTimeInMs) < 0) {
             this.showView(this.fromId, this.toId);
         }
@@ -109,7 +109,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
         return hh+":"+mm.toString();
     },
 
-    createRemainingTimeStringFromMs: function(ms) {
+    createRemainingTimeStringFromMs: function(ms, showSeconds) {
         var seconds = Math.floor(ms / 1000);
 
         var hours = Math.floor(seconds / 3600);
@@ -128,7 +128,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
             else if (minutes) {
                 timeString +=  minutes + "min ";
             }
-            if (seconds) {
+            if (seconds && showSeconds) {
                 timeString += seconds + "sek";
             }
         }

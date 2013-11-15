@@ -9,7 +9,6 @@ exports.getDepatures = function(req, res){
 	var start = new Date(date);
 	var end = new Date(2014, 7, 14);	// random
 
-
 	// May rewrite this to use populate
 	Depature.find({'fromId' : fromId, 'toId' : toId, 'date' : {"$gte" : start, "$lt" : end}}, function(err, depatures){
 		console.log(err);
