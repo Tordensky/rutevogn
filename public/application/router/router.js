@@ -29,6 +29,7 @@ RuteVogn.Router = Backbone.Router.extend({
         }
 
         var el = $("#app");
+
         el.empty();
 
         if (this.destinationView == null) {

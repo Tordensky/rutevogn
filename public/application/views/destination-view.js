@@ -25,7 +25,7 @@ RuteVogn.DestinationView = RuteVogn.BaseView.extend({
         });
 
         var pageInfo = {
-            title: "velg din destinasjon",
+            title: "og skal til",
             from: departureStop.get("name"),
             backButtonTitle: "Tilbake"};
 

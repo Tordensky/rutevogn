@@ -5,7 +5,7 @@
 }
 
 body {
-    font-size: 12px;
+    font-size: 10px;
     width: 100%;
     height: 100%;
 }
@@ -14,7 +14,7 @@ body {
     position: absolute;
 
     padding-top: 100px;
-    padding-bottom: 210px;
+    padding-bottom: 250px;
     width: 98%;
     margin: 1%;;
 }
@@ -32,6 +32,8 @@ body {
     color: white;
 
     font-size: 3em;
+
+    z-index: 100;
 }
 
 .app-footer-container {
@@ -49,15 +51,27 @@ body {
     color: white;
 }
 
+.buss-stops-container {
+    background-color: red;
+}
+
+
 .buss-stop-button {
-    width: 50%;
+    width: 49%;
     height: 200px;
 
     padding: 1%;
 
-    font-size: 4em;
+    font-size: 5em;
+    font-weight: bold;
 
     float: left;
+
+    background-color: #38b1ff;
+    color:#ffffff;
+
+    border: 0;
+    margin: 0.5%
 }
 
 .page-title {
@@ -68,28 +82,34 @@ body {
     font-weight: bold;
 }
 
-.page-button {
+.page-button-container {
+    background-color: white;
     position: fixed;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+
+    padding: 1%;
+    z-index: 100;
+}
+
+.page-button {
     width: 98%;
     height: 150px;
 
     font-size: 6em;
-    bottom: 60px;
-}
 
-.page-button {
     background-color:#000000;
     color:#ffffff;
 
     font-weight:bold;
     font-style:normal;
 
-
     text-align:center;
 
-    margin-bottom: 1%;
+    margin-bottom: 0;
     padding: 0;
-    border: 1px white;
+    border: 0;
 }
 .page-button:active {
     background-color: #2a2a2a;
@@ -134,7 +154,7 @@ Travel info table
 
 .travel-info-table tr:first-child td {
     vertical-align: top;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(56, 177, 255);
     font-weight: bold;
     font-size: 1.5em;
     color: #ffffff;

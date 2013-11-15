@@ -123,7 +123,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
             timeString = "Nå"
         } else {
             if (hours) {
-                timeString += hours.toString() +"timer " + minutes + "min ";
+                timeString += hours.toString() +"t " + minutes + "min ";
             }
             else if (minutes) {
                 timeString +=  minutes + "min ";
