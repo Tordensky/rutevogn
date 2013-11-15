@@ -58,9 +58,14 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
                 });
             }
         });
-        this.nextDepTime = data[0].depTimeInMs;
-        var depTime = this.createRemainingTimeStringFromMs(data[0].depTimeInMs - currentTimeInMs);
-        this.render({routes: data, nextDepartureTime: depTime});
+        if (data.length > 0) {
+            this.nextDepTime = data[0].depTimeInMs;
+            var depTime = this.createRemainingTimeStringFromMs(data[0].depTimeInMs - currentTimeInMs);
+            this.render({routes: data, nextDepartureTime: depTime});
+        } else {
+            this.nextDepTime = null;
+            this.render({nextDepartureTime: "Ingen avganger"})
+        }
 
     },
 
@@ -69,13 +74,15 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
             window.clearInterval(this.countDownTimer);
         }
 
-        var $depDiv = this.$el.find("#departure-in");
-        this.updateCountDown($depDiv);
+        if (this.nextDepTime != null) {
+            var $depDiv = this.$el.find("#departure-in");
+            this.updateCountDown($depDiv);
 
-        var that = this;
-        this.countDownTimer = setInterval(function(){
-            that.updateCountDown($depDiv);
-        }, 1000);
+            var that = this;
+            this.countDownTimer = setInterval(function(){
+                that.updateCountDown($depDiv);
+            }, 1000);
+        }
     },
 
     updateCountDown: function(targetDiv) {
@@ -83,7 +90,6 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
         var timeRemaining = this.createRemainingTimeStringFromMs(this.nextDepTime - currentTimeInMs);
         if ((this.nextDepTime - currentTimeInMs) < 0) {
             this.showView(this.fromId, this.toId);
-            console.log("HURRA");
         }
 
         targetDiv.html(timeRemaining);
