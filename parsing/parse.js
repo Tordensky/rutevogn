@@ -99,8 +99,8 @@ function createDateObject(string){
 }
 
 function createUrl(from, to, date){
-	var from = config.realNames[from];
-	var to = config.realNames[to];
+	var from = config.realNames[from].name;
+	var to = config.realNames[to].name;
 
 	var dateStr = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
     var timeStr = date.getHours() + ":" + date.getMinutes();

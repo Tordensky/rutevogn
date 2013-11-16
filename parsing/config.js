@@ -8,7 +8,17 @@ var officalEndDate = new Date(officalStartDate.getTime() + 43200000);
 dictBusStops = {};
 busStops = [
 	{
-		'name' : 'Utsikten',
+		'name' : 'Universitet',
+		'city' : 'Tromsø',
+		'destinations' : []
+	},
+	{
+		'name' : 'Giæverbukta',
+		'city' : 'Tromsø',
+		'destinations' : []
+	},
+	{
+		'name' : 'Stakkevollan',
 		'city' : 'Tromsø',
 		'destinations' : []
 	},
@@ -18,7 +28,7 @@ busStops = [
 		'destinations' : []
 	},
 	{
-		'name' : 'Universitet',
+		'name' : 'Universitetssykehuset',
 		'city' : 'Tromsø',
 		'destinations' : []
 	},
@@ -31,24 +41,39 @@ busStops = [
 		'name' : 'Storelva',
 		'city' : 'Tromsø',
 		'destinations' : []
+	},
+	{
+		'name' : 'Kroken',
+		'city' : 'Tromsø',
+		'destinations' : []
+	},
+	{
+		'name' : 'Storslett',
+		'city' : 'Tromsø',
+		'destinations' : []
 	}
 ];
 
 dictBusStops = {};
-dictBusStops['Utsikten'] = ['Sentrum', 'Universitet', 'Tromsdalen'];
-dictBusStops['Sentrum'] = ['Utsikten', 'Universitet', 'Tromsdalen'];
-dictBusStops['Tromsdalen'] = ['Utsikten', 'Universitet', 'Sentrum'];
-dictBusStops['Storelva'] = ['Universitet', 'Sentrum'];
-dictBusStops['Universitet'] = ['Utsikten', 'Sentrum', 'Storelva'];
+dictBusStops['Universitet'] = ['Stakkevollan', 'Sentrum', 'Storelva', 'Storslett', 'Giæverbukta', 'Kroken'];
+// dictBusStops['Stakkevollan'] = ['Sentrum', 'Universitet', 'Tromsdalen'];
+// dictBusStops['Sentrum'] = ['Stakkevollan', 'Universitet', 'Tromsdalen'];
+// dictBusStops['Tromsdalen'] = ['Stakkevollan', 'Universitet', 'Sentrum'];
+// dictBusStops['Storelva'] = ['Universitet', 'Sentrum'];
 
 everyBusStopToParse = Object.keys(dictBusStops);
 
+// TODO correct this IDs and real names
 realNames = {};
-realNames['Utsikten'] = "Utsikten (Tromsø)";
+realNames['Stakkevollan'] = {'name' : "Utsikten (Tromsø)", 'id' : '19021323'};
 realNames['Sentrum'] = "Wito (Tromsø)";
 realNames['Tromsdalen'] = "Tromsdalen Bruvegen (Tromsø)";
 realNames['Storelva'] = "Storelv snuplass (Tromsø)";
-realNames['Universitet'] = "UiTø/ISV (Tromsø)";
+realNames['Universitet'] = {'name' : "UiTø/ISV (Tromsø)", 'id' : '19021323'};
+realNames['Universitetssykehuset'] = {'name' : 'Universitetssykehuset (Tromsø)', 'id' : '19021324'};
+realNames['Giæverbukta'] = {'name' : 'Giæverbukta (Tromsø)', 'id' : '19021324'};
+realNames['Kroken'] = {'name' : 'Kroken (Tromsø)', 'id' : '512515'};
+realNames['Storslett'] = {'name' : 'Storslett (Tromsø)', 'id' : '512515'};
 
 exports.realNames = realNames;
 exports.dictBusStops = dictBusStops;
@@ -58,3 +83,4 @@ exports.endRootUrl = endRootUrl;
 exports.firstRootUrl = firstRootUrl;
 exports.officalEndDate = officalEndDate;
 exports.officalStartDate = officalStartDate;
+
