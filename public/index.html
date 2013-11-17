@@ -21,9 +21,18 @@
     <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
 
     <script type="text/javascript">
-        $(function(){
-            var app = RuteVogn.Application;
-            app.run();
+        $(document).ready(function() {
+            var windowHeight = $(window).height();
+            var headerHeight = $("#header").outerHeight();
+            var footerHeight = $("#footer").outerHeight();
+            console.log(footerHeight);
+            var appHeight = windowHeight - (headerHeight + footerHeight);
+            $("#app").css("min-height", appHeight);
+
+            $(function(){
+                var app = RuteVogn.Application;
+                app.run();
+            });
         });
     </script>
 
@@ -49,9 +58,9 @@
         <!--APP CONTENT WILL BE RENDERED HERE-->
     </div>
     <div id="footer" class="app-footer-container">
-        <div class="app-footer-text">
-            info@rutevogn.no
-        </div>
+        <!--<div class="app-footer-text">-->
+            info@rutevogn.no - Data fra tromskortet.no
+        <!--</div>-->
     </div>
 </body>
 </html>
