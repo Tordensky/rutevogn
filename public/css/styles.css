@@ -5,64 +5,64 @@
 }
 
 body {
-    font-size: 10px;
+    font-size: 12px;
     width: 100%;
-    height: 100%;
+    clear: both;
+
+    background-color: #dedede;
 }
 
 .app {
-    position: absolute;
-
-    padding-top: 100px;
-    padding-bottom: 250px;
     width: 98%;
-    margin: 1%;;
+    padding: 1%;
+    min-height: 1000px;
+    background-color: white;
 }
 
 .app-header-container {
-    position: fixed;
-    top: 0;
-
     width: 100%;
-    height: 100px;
+    padding: 0.5em;
 
-    background-color: #000000;
+    background-color: #252525;
 
     text-align: center;
     color: white;
 
-    font-size: 3em;
+    font-size: 1em;
 
     z-index: 100;
 }
 
 .app-footer-container {
-    position: fixed;
-    bottom: 0;
-
     width: 100%;
-    height: 60px;
-    padding: 40px, 0, 40px, 0;
 
-    background-color: #000000;
-
-    font-size: 4em;
+    background-color: #767676;
     text-align: center;
     color: white;
+    clear: both;
+}
+
+.app-footer-text {
+    vertical-align: middle;
+    font-size: 1em;
+    padding: 0.5em;
+    text-align: center;
+
 }
 
 .buss-stops-container {
-    background-color: red;
+    display: inline-block;
+    min-height: 1000px;
+    width: 100%
 }
 
-
 .buss-stop-button {
-    width: 49%;
-    height: 200px;
+    width: 24%;
+    height: 100px;
 
     padding: 1%;
 
-    font-size: 5em;
+    font-size: 2em;
     font-weight: bold;
 
     float: left;
@@ -74,32 +74,33 @@ body {
     margin: 0.5%
 }
 
+.buss-stop-button:hover {
+    background-color: #79c8ff;
+}
+
+.buss-stop-button:active {
+    background-color: #bdeeff;
+}
+
 .page-title {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 6em;
+    margin-bottom: 0.5em;
+    font-size: 3em;
     text-align: center;
     font-weight: bold;
 }
 
 .page-button-container {
     background-color: white;
-    position: fixed;
-    bottom: 60px;
-    left: 0;
     width: 100%;
-
-    padding: 1%;
-    z-index: 100;
 }
 
 .page-button {
-    width: 98%;
+    width: 100%;
     height: 150px;
 
-    font-size: 6em;
+    font-size: 2em;
 
-    background-color:#000000;
+    background-color: #252525;
     color:#ffffff;
 
     font-weight:bold;
@@ -111,30 +112,28 @@ body {
     padding: 0;
     border: 0;
 }
+
 .page-button:active {
     background-color: #2a2a2a;
 }
-
 
 /*
 Travel info styling
 */
 .travel-info-counter {
     width: 100%;
-    font-size: 10em;
+    padding-bottom: 0.5em;
+    font-size: 4em;
     text-align: center;
     font-weight: bold;
-
-    padding-top: 20px;
-    padding-bottom: 20px;
 }
-
 
 .travel-info-container {
     width: 100%;
 
-    font-size: 5em;
     font-weight: bold;
+
+    min-height: 800px;
 }
 
 /*
@@ -166,4 +165,88 @@ Travel info table
 .travel-info-table tr:nth-child(odd) {
     background-color: #e4e4e4;
 
+}
+
+.small-buss-button-container {
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.small-buss-button {
+    display: inline-block;
+    background-color: #38b1ff;
+
+    color: #ffffff;
+
+    padding: 0.5em;
+    margin: 0 5%;
+
+    min-width: 25%;
+
+    height: 100%;
+    border: 0;
+
+    font-size: 1em;
+    font-weight: bold;
+}
+
+
+
+/*
+   ###########################################
+   #         RESPONSIVE PART OF CSS          #
+   ###########################################
+*/
+
+
+@media only screen and (max-width: 1400px){
+    /* 3 button wide*/
+    .buss-stop-button {
+        width: 32.3333333333%;
+        height: 120px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 1000px){
+    /* 2 button wide*/
+    .buss-stop-button {
+        width: 49%;
+        height: 200px;
+    }
+
+    body {
+        font-size: 22px;
+    }
+}
+
+@media only screen and (max-width: 700px){
+    /* 1 button wide*/
+    .buss-stop-button {
+        width: 99%;
+        height: 120px;
+    }
+
+    body {
+        font-size: 22px;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    /* 1 button wide*/
+    .buss-stop-button {
+        width: 99%;
+        height: 60px;
+    }
+
+    body {
+        font-size: 10px;
+    }
 }
