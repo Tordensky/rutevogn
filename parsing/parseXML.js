@@ -37,19 +37,24 @@ function crawlerStart(){
 };
 
 function getXML(name){
-	var realname = config.realNames[name]
-	var url = urlGetId + realname + "+%28Tromsø%29+%5Bholdeplass%5D";
-	console.log(url);
-	request(url, function (error, response, body){
-		var parseString = require('xml2js').parseString;
-		var xml = body;
-		parseString(xml, function (err, result) {
-            //console.log("Data %s", JSON.stringify(result, undefined, 2));
-            var id = result.stages.i[0]['$'].v;
-            console.log(id);
-            getHtml(name, config.officalStartDate, id);
+	var realnames = config.realNames[name];
+	_.each(realnames, function(realname){
+		var url = urlGetId + realname + "+%28Tromsø%29+%5Bholdeplass%5D";
+		console.log(url);
+		request(url, function (error, response, body){
+			var parseString = require('xml2js').parseString;
+			var xml = body;
+			parseString(xml, function (err, result) {
+	            console.log("Data %s", JSON.stringify(result, undefined, 2));
+	            if(result.stages.i != undefined){
+		            var id = result.stages.i[0]['$'].v;
+		            console.log(id);
+		            getHtml(name, config.officalStartDate, id);
+	            }
+			});
 		});
-	});
+	})
+
 }
 
 function getHtml(from, startDate, id){

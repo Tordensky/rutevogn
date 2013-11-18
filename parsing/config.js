@@ -159,11 +159,11 @@ dictBusStops['Sentrum'] = [
 	{'name' : 'Giæverbukta', 'routes' : ['42', '40', '34', '24', '26', '28']},
 	{'name' : 'Tomasjord', 'routes' : ['20', '24']},
 	{'name' : 'Universitet', 'routes' : ['20', '34', '']},
-	{'name' : 'Tromsdalen', 'routes' : ['26', '20', '28', '24']}
-	{'name' : 'Mortensnes', 'routes' : ['24', '34']}
+	{'name' : 'Tromsdalen', 'routes' : ['26', '20', '28', '24']},
+	{'name' : 'Mortensnes', 'routes' : ['24', '34']},
 	{'name' : 'UNN', 'routes' : ['34', '22', '20']},
 	{'name' : 'Solligården', 'routes' : ['28']},
-	{'name' : 'Eidkjosen', 'routes' : ['42', '425', '420']}
+	{'name' : 'Eidkjosen', 'routes' : ['42', '425', '420']},
 	{'name' : 'Workinnmarka', 'routes' : ['40']},
 	{'name' : 'Kroken Sør', 'routes' : ['24']},
 	{'name' : 'Reinen', 'routes' : ['28']},
@@ -256,11 +256,11 @@ dictBusStops['Giæverbukta'] = [
 	{'name' : 'Sentrum', 'routes' : ['42']},
 	{'name' : 'Tomasjord', 'routes' : ['24']},
 	{'name' : 'Universitet', 'routes' : ['34']},
-	{'name' : 'Tromsdalen', 'routes' : ['24']}
-	{'name' : 'Mortensnes', 'routes' : ['24', '34']}
-	{'name' : 'UNN', 'routes' : ['34', '22']}
-	{'name' : 'Solligården', 'routes' : ['28']}
-	{'name' : 'Eidkjosen', 'routes' : ['42', '425', '420']}
+	{'name' : 'Tromsdalen', 'routes' : ['24']},
+	{'name' : 'Mortensnes', 'routes' : ['24', '34']},
+	{'name' : 'UNN', 'routes' : ['34', '22']},
+	{'name' : 'Solligården', 'routes' : ['28']},
+	{'name' : 'Eidkjosen', 'routes' : ['42', '425', '420']},
 	{'name' : 'Workinnmarka', 'routes' : ['40']},
 	{'name' : 'Kroken Sør', 'routes' : ['24']},
 	{'name' : 'Reinen', 'routes' : ['28']},
@@ -300,7 +300,6 @@ dictBusStops['Tromsø Lufthavn'] = [
 	{'name' : 'Sentrum', 'routes' : ['40', '42']},
 	{'name' : 'Myreng', 'routes' : ['40']},
 	{'name' : 'Stakkevollan', 'routes' : ['42']},
-
 ];
 
 // TODO fix routes
@@ -375,7 +374,6 @@ dictBusStops['Gammelgård'] = [
 	{'name' : 'Reinen', 'routes' : ['28']}
 ];
 
-// TODO FIX ROUTES
 dictBusStops['Myreng'] = [
 	{'name' : 'Giæverbukta', 'routes' : ['26', '40']},
 	{'name' : 'Sentrum', 'routes' : ['26', '40']},
@@ -383,14 +381,12 @@ dictBusStops['Myreng'] = [
 	{'name' : 'Elverhøy', 'routes' : ['26']},
 	{'name' : 'Åsgård', 'routes' : ['26']}
 ]
-// Todo FIX ROUTE
 dictBusStops['Eidkjosen'] = [
 	{'name' : 'Giæverbukta', 'routes' : ['42']},
 	{'name' : 'Sentrum', 'routes' : ['42']},
 	{'name' : 'Storelva', 'routes' : ['42']},
 ];
 
-// TODO FIX ROUTES
 dictBusStops['UNN'] = [
 	{'name' : 'Sentrum', 'routes' : ['20', '32']},
 	{'name' : 'Giæverbukta', 'routes' : ['22']},
@@ -422,15 +418,34 @@ everyBusStopToParse = Object.keys(dictBusStops);
 
 // TODO correct this IDs and real names
 realNames = {};
-realNames['Stakkevollan'] = "Utsikten";
-realNames['Sentrum'] = 'Wito';
-realNames['Tromsdalen'] = "Tromsdalen Bruvegen";
-realNames['Storelva'] = "Storelv snuplass";
-realNames['Universitet'] = "UiTø/ISV";
-realNames['UNN'] = "Universitetssykehuset";
-realNames['Giæverbukta'] = 'Giæverbukta';
-realNames['Kroken'] = 'Kroken';
-realNames['Tromsø Lufthavn'] = "Tromsø Lufthavn";
+realNames['Stakkevollan'] = ["Utsikten"];
+realNames['Sentrum'] = ['Wito'];
+realNames['Tromsdalen'] = ["Tromsdalen Bruvegen", "Tromsdalen kirke"];
+realNames['Storelva'] = ["Storelv snuplass"];
+realNames['Universitet'] = ["UiTø/ISV"];
+realNames['UNN'] = ["Universitetssykehuset"];
+realNames['Giæverbukta'] = ['Giæverbukta'];
+realNames['Kroken'] = ['Krokensenteret'];
+realNames['Tromsø Lufthavn'] = ["Tromsø Lufthavn"];
+realNames['Hamna'] = "fff";
+realNames['Slettaelva'] = ["Slettaelva skole"];
+realNames['Workinnmarka'] = ["Workinnmarka skole"];
+realNames['Åsgård'] = ["UNN,Åsgård", "Åsgård"];
+realNames['Tromsø Museum'] = ["Tromsø Museum"];
+realNames['Telegrafbukta'] = ["Telegrafbukta"];
+realNames['Kroken Sør'] = ["Kroken sykehjem"];
+realNames['Mortensnes'] = ["Mortensnes skole"];
+realNames['Fagereng'] = ["Alaskasvingen"];
+realNames['Lunheim'] = ["Mordi"];
+realNames['Tomasjord'] = ["Mordi"];
+realNames['Reinen'] = ["Reinen"];
+realNames['Gammelgård'] = ["Gammelgård"];
+realNames['Myreng'] = ["Trykkbassenget"];
+realNames['Eidkjosen'] = ["Eidkjosen"];
+realNames['UNN'] = ["Universitetssykehuset"];
+realNames['Elverhøy'] = ["Elverhøy"];
+realNames['Solligården'] = ["Solligården"];
+
 
 //{"Fr. Langes gate F1 (Tromsø)" : '19021017'};
 
