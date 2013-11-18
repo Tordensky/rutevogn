@@ -1,11 +1,20 @@
-<div class="page-title">{{title}}</div>
-<div id="departure-in" class="travel-info-counter">{{nextDepartureTime}}</div>
-<div class="small-buss-button-container">
-    <button class="small-buss-button">sentrum</button>
-    -
-    <button class="small-buss-button">UNN</button>
+<div class="page-title">
+    {{title}}
 </div>
 
+<!-- COUNTER-->
+<div id="departure-in" class="travel-info-counter">
+    {{nextDepartureTime}}
+</div>
+
+<!-- FROM TO VIEW-->
+<div class="small-buss-button-container">
+    <button class="small-buss-button">{{from}}</button>
+    -
+    <button class="small-buss-button">{{to}}</button>
+</div>
+
+<!-- TRAVEL INFO TABLE -->
 <div class="travel-info-container">
     <table class="travel-info-table">
     {{#routes}}

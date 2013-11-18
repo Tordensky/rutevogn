@@ -24,6 +24,8 @@ body {
     background-color: white;
     max-width: 960px;
     margin: 0;
+
+    position: relative;
 }
 
 .app-header-container {
@@ -56,6 +58,11 @@ body {
     width: 100%;
     min-height: 300px;
     text-align: left;
+    margin-bottom: 180px;
+}
+
+.clear {
+    clear: both;
 }
 
 .buss-stop-button {
@@ -94,9 +101,14 @@ body {
 .page-button-container {
     clear: both;
     background-color: white;
-    width: 99%;
-    margin-top: 10%;
+    margin: 1%;
+    width: 97%;
+    /*margin-top: 10%;*/
     padding: 2% 0.5% 0.5%;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .page-button {
@@ -138,6 +150,7 @@ Travel info styling
     font-weight: bold;
 
     min-height: 200px;
+    margin-bottom: 180px;
 }
 
 /*
@@ -149,9 +162,12 @@ Travel info table
     text-align: center;
     border-collapse: collapse;
 
+    font-size: 2em;
+    margin-top: 5%;
 }
 
 .travel-info-table td {
+
     padding: 10px;
 }
 
