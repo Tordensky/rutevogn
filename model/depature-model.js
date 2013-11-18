@@ -7,7 +7,7 @@ var DepatureSchema = new Schema({
     toId: { type: Schema.Types.ObjectId, ref: 'Stop'},
     to: {type: String, required: true},
     date : { type: Date, required: true},
-    arrival : { type: Date, required: true},
+    arrival : { type: Date},
     route : { type: Number, required: true},
     hash : { type: String, index: {unique: true, dropDups: true}}
 });
