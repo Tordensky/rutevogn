@@ -23,7 +23,8 @@ _.each(config.busStops, function(stop){
 function insertDestinations(){
 	_.each(Object.keys(config.dictBusStops), function(dest){
 		_.each(config.dictBusStops[dest], function(tmp){
-			Stop.findOne({name: tmp}, function(err, stop){
+			Stop.findOne({name: tmp.name}, function(err, stop){
+				if(err)	console.log(err);
 				tmpFunc(stop, dest);
 			});
 		});
@@ -32,10 +33,10 @@ function insertDestinations(){
 
 function tmpFunc(destStop, orignal){	
 	Stop.findOne({name: orignal}, function(err, stop){
+	    console.log(destStop);
 		var subStop = new Stop({
 	      _id: destStop._id    // assign the _id from the stop
 	    });
-	    console.log(stop)
 
 	    stop.destinations.push(subStop);
 	    stop.save();    
