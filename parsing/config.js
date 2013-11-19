@@ -170,7 +170,7 @@ dictBusStops['Sentrum'] = [
 	{'name' : 'Gammelgård', 'routes' : ['28']},
 	{'name' : 'Storelva', 'routes' : ['42']},
 	{'name' : 'Slettaelva', 'routes' : ['40']},
-	{'name' : 'Fargereng', 'routes' : ['34']},
+	{'name' : 'Fagereng', 'routes' : ['34']},
 	{'name' : 'Åsgård', 'routes' : ['26', '34']},
 	{'name' : 'Tromsø Museum', 'routes' : ['37']},
 	{'name' : 'Myreng', 'routes' : ['26', '40']},
@@ -267,7 +267,7 @@ dictBusStops['Giæverbukta'] = [
 	{'name' : 'Gammelgård', 'routes' : ['28']},
 	{'name' : 'Storelva', 'routes' : ['42']},
 	{'name' : 'Slettaelva', 'routes' : ['40']},
-	{'name' : 'Fargereng', 'routes' : ['34']},
+	{'name' : 'Fagereng', 'routes' : ['34']},
 	{'name' : 'Myreng', 'routes' : ['26']},
 	{'name' : 'Elverhøy', 'routes' : ['26']},
 	{'name' : 'Åsgård', 'routes' : ['26', '34']},
@@ -419,15 +419,17 @@ everyBusStopToParse = Object.keys(dictBusStops);
 // TODO correct this IDs and real names
 realNames = {};
 realNames['Stakkevollan'] = ["Utsikten"];
-realNames['Sentrum'] = ['Wito'];
+realNames['Sentrum'] = ['Wito', "Fr. Langes gate F1", "Fr. Langes gate F2", "Fr. Langes gate F3",
+"Fr. Langes gate F4", "Fr. Langes gate F5", "Fr. Langes gate F6", "Fr. Langes gate F7", "Sjøgata S1",
+"Sjøgata S2", "Sjøgata S3", "Sjøgata S4", "Havnegata H1", "Havnegata H2", "Havnegata H3"];
 realNames['Tromsdalen'] = ["Tromsdalen Bruvegen", "Tromsdalen kirke"];
 realNames['Storelva'] = ["Storelv snuplass"];
 realNames['Universitet'] = ["UiTø/ISV"];
 realNames['UNN'] = ["Universitetssykehuset"];
 realNames['Giæverbukta'] = ['Giæverbukta'];
 realNames['Kroken'] = ['Krokensenteret'];
-realNames['Tromsø Lufthavn'] = ["Tromsø Lufthavn"];
-realNames['Hamna'] = "fff";
+realNames['Tromsø Lufthavn'] = ["Flyplassen"];
+realNames['Hamna'] = "Bjørnebekkvegen øvre";
 realNames['Slettaelva'] = ["Slettaelva skole"];
 realNames['Workinnmarka'] = ["Workinnmarka skole"];
 realNames['Åsgård'] = ["UNN,Åsgård", "Åsgård"];
@@ -436,8 +438,8 @@ realNames['Telegrafbukta'] = ["Telegrafbukta"];
 realNames['Kroken Sør'] = ["Kroken sykehjem"];
 realNames['Mortensnes'] = ["Mortensnes skole"];
 realNames['Fagereng'] = ["Alaskasvingen"];
-realNames['Lunheim'] = ["Mordi"];
-realNames['Tomasjord'] = ["Mordi"];
+realNames['Lunheim'] = ["Lunheim skole"];
+realNames['Tomasjord'] = ["Tomasjordnes"];
 realNames['Reinen'] = ["Reinen"];
 realNames['Gammelgård'] = ["Gammelgård"];
 realNames['Myreng'] = ["Trykkbassenget"];
@@ -446,8 +448,6 @@ realNames['UNN'] = ["Universitetssykehuset"];
 realNames['Elverhøy'] = ["Elverhøy"];
 realNames['Solligården'] = ["Solligården"];
 
-
-//{"Fr. Langes gate F1 (Tromsø)" : '19021017'};
 
 exports.realNames = realNames;
 exports.dictBusStops = dictBusStops;
