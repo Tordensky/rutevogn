@@ -25,15 +25,16 @@ function insertDestinations(){
 		_.each(config.dictBusStops[dest], function(tmp){
 			Stop.findOne({name: tmp.name}, function(err, stop){
 				if(err)	console.log(err);
-				tmpFunc(stop, dest);
+				console.log("Found ", stop, err);
+
+				saveSubDocument(stop, dest);
 			});
 		});
 	});
 };
 
-function tmpFunc(destStop, orignal){	
+function saveSubDocument(destStop, orignal){
 	Stop.findOne({name: orignal}, function(err, stop){
-	    console.log(destStop);
 		var subStop = new Stop({
 	      _id: destStop._id    // assign the _id from the stop
 	    });
