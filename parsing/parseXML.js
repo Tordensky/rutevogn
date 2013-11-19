@@ -16,52 +16,78 @@ var alldestinations = {};
 var firstRootUrl = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v1DepartureXML?"
 var urlGetId = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v1PointStageXML?name="
 
+var parseFromDate = new Date();
+var parseToDate = new Date(2013,12,12);
+
+// print process.argv
+process.argv.forEach(function (val, index, array) {
+	console.log(index + ': ' + val);
+	if(index == 2)
+		parseFromDate = new Date(val);
+	if(index == 3)
+		parseToDate = new Date(val);
+});
+
+
+var numDaysForward = (parseToDate - parseFromDate) / (1000*60*60*24);
+
+console.log("Days to fetch: ", numDaysForward);
+
 // Get ids and name for every stop, save it to stopsDict
 Stop.find(function(err, stops){
 	_.each(stops, function(stop){
-		console.log(stop);
+		// console.log(stop);
 		stopsDict[stop.name] = {
 			'id' : stop._id,
 			'city' : stop.city
 		};
 	});
-	crawlerStart();
+	var iterDate = parseFromDate;
+	for(var i=0; i <= numDaysForward; i++){
+		console.log("Crawls ", iterDate);
+	
+		crawlerStart(new Date(clone(iterDate)));
+		iterDate.setDate(iterDate.getDate() + 1);
+	}
 });
 
 
+// Cheat clone
+function clone(a) {
+   return JSON.parse(JSON.stringify(a));
+}
+
+
 // Start function to start it all
-function crawlerStart(){
+function crawlerStart(date){
 	_.each(config.everyBusStopToParse, function(fromStop){
-		getXML(fromStop, config.officalStartDate);
-		
-		getXML(fromStop, config.officalStartDate);
+		getXML(fromStop, date);
 	});
 };
 
-function getXML(name){
+function getXML(name, date){
 	var realnames = config.realNames[name];
+
 	_.each(realnames, function(realname){
 		var url = urlGetId + realname + "+%28Tromsø%29+%5Bholdeplass%5D";
-		console.log(url);
+
 		request(url, function (error, response, body){
 			var parseString = require('xml2js').parseString;
 			var xml = body;
 
 			parseString(xml, function (err, result) {
-	            console.log("Data %s", JSON.stringify(result, undefined, 2));
+	            // console.log("Data %s", JSON.stringify(result, undefined, 2));
 
 	            if(result.stages.i != undefined){
 		            var id = result.stages.i[0]['$'].v;
-		            console.log(id);
-		            getHtml(name, config.officalStartDate, id);
+		            getHtml(name, date, id);
 	            }
 	            else {
 	            	console.log("UNDEFINED RESULT OF QUERYING BUSSHOLDEPLASS");
 	            }
 			});
 		});
-	})
-
+	});
 }
 
 function getHtml(from, startDate, id){
@@ -81,22 +107,26 @@ function getHtml(from, startDate, id){
 }
 
 function prepareSave(depatures, depaturename){
+
 	_.each(depatures, function(depature){
 		depature = depature['$'];
 		var depatureTime = createDateObject(depature.departuretime);
 		var route = depature.routename;
 		var destination = depature.destination;
-		var finaldest = destination+":"+route.toString();
+		var finaldest = destination + ":" + route.toString();
 
-		console.log(depatureTime, route, depaturename, destination);
+		// console.log(depatureTime, route, depaturename, destination);
 
-		// Save busStops on the road to the final destination
+		/* Save busStops on the road to the final destination */
 		_.each(config.dictBusStops[depaturename], function(toDest){
+
+			// Iterate thorugh each route
 			_.each(toDest.routes, function(toDestRoute){
 				if(toDestRoute == finaldest){
-					console.log(toDestRoute, route, depaturename, toDest.name);
+					console.log(toDestRoute, depaturename, depatureTime);
 
-					var preHash = depaturename + toDest.name + depatureTime + route;
+					var preHash = depaturename + toDestRoute + depatureTime;
+
 					if(stopsDict[toDest.name] != undefined)
 						saveDepature(depatureTime, route, toDest.name, depaturename, preHash);
 				};
@@ -130,12 +160,8 @@ function saveDepature(depatureTime, route, destination, depature, preHash){
 
 function createDateObject(string){
 	var bits = string.split(/\D/);
-	//console.log("CreateDateObject: ", string);
-	var date = new Date(bits[2], (bits[1] - 1), bits[0], bits[3], bits[4], bits[5]);
-	return date;
+	return new Date(bits[2], (bits[1] - 1), bits[0], bits[3], bits[4], bits[5]);
 }
-
-
 
 function createUrl(from, date, id){
 	var dateStr = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();

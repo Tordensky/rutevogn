@@ -14,7 +14,7 @@ exports.getDepatures = function(req, res){
 		.exec(function(err, depatures){
 			console.log(err);
 			if(err)	res.send(400);
-			console.log(depatures);
+			// console.log(depatures);
 			res.jsonp(depatures);
 		});
 };
