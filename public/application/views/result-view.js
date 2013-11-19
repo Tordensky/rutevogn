@@ -165,6 +165,10 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
     },
 
     onRenderComplete: function() {
+        // create margin bottom for not rendering buss departures over the button menu
+        var containerHeight = this.$el.find("#page-button-container").outerHeight();
+        this.$el.find("#travel-info-container").css("margin-bottom", containerHeight);
+
         this.startCountDownForNextDeparture();
     }
 });

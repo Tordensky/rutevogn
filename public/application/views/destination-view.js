@@ -42,5 +42,11 @@ RuteVogn.DestinationView = RuteVogn.BaseView.extend({
 
     goToStartPage: function(event) {
         RuteVogn.router.navigate('', true);
+    },
+
+    onRenderComplete: function() {
+        // create margin bottom for not rendering buss stops over the button menu
+        var containerHeight = this.$el.find("#page-button-container").outerHeight();
+        this.$el.find("#buss-stop-container").css("margin-bottom", containerHeight);
     }
 });

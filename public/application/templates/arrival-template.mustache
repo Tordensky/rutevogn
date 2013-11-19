@@ -1,12 +1,12 @@
 <div class="page-title">{{title}}</div>
 
-<div class="buss-stops-container">
+<div class="buss-stops-container" id="buss-stop-container">
     {{#stops}}
     <button id="destination-buss-stop-button" data-id="{{_id}}" class="buss-stop-button">{{name}}</button>
     {{/stops}}
     <br class="clear" />
 </div>
 
-<div class="page-button-container">
+<div class="page-button-container" id="page-button-container">
     <button id="back-button" class="page-button">{{backButtonTitle}}</button>
 </div>

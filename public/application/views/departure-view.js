@@ -37,4 +37,6 @@ RuteVogn.DepartureView = RuteVogn.BaseView.extend({
         var stopId = $(event.currentTarget).data('id');
         RuteVogn.router.navigate('destination/'+stopId, true);
     }
+
+
 });
