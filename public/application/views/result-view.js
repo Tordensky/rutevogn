@@ -5,7 +5,9 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
 
     events: {
         "click #new-search-button" : "goToStartPage",
-        "click #destination-buss-stop-button" : "onBusStopClick"
+        "click #destination-buss-stop-button" : "onBusStopClick",
+        "click #from-destination-button" : "onFromDestinationClick",
+        "click #to-destination-button" : "onToDestinationClick"
     },
 
     initialize: function(options) {
@@ -72,7 +74,15 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
             var toName = data[0]["toName"];
 
             var depTime = this.createRemainingTimeString(data[0].depTimeInMs - currentTimeInMs, true);
-            this.render({routes: data, nextDepartureTime: depTime, title: "Bussen min går om", from: fromName, to: toName});
+            this.render({
+                routes: data,
+                nextDepartureTime: depTime,
+                title: "Bussen min går om",
+                from: fromName,
+                fromId: this.fromId,
+                to: toName,
+                toId: this.toId
+            });
         } else {
             this.nextDepTime = null;
             this.render({nextDepartureTime: "Ingen avganger"})
@@ -149,7 +159,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
         seconds -= minutes * 60;
 
         var timeString = "";
-        if (seconds == 0 && hours == 0 &&minutes == 0){
+        if (seconds < 10 && hours == 0 &&minutes == 0){
             timeString = "Nå"
         } else {
             if (hours) {
@@ -157,9 +167,13 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
             }
             else if (minutes) {
                 timeString +=  minutes + "min ";
+
             }
             if (seconds && showSeconds) {
                 timeString += seconds + "sek";
+            }
+            if(!showSeconds && hours == 0 && minutes == 0) {
+                timeString = "Under 1min"
             }
         }
         return timeString
@@ -171,5 +185,16 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
         this.$el.find("#travel-info-container").css("margin-bottom", containerHeight);
 
         this.startCountDownForNextDeparture();
+    },
+
+    onFromDestinationClick: function() {
+        this.goToStartPage();
+    },
+
+    onToDestinationClick: function(event) {
+        event.preventDefault();
+
+        var stopId = $(event.currentTarget).data('id');
+        RuteVogn.router.navigate('destination/'+stopId, true);
     }
 });
