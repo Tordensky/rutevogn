@@ -1,6 +1,12 @@
 var RuteVogn = RuteVogn || {};
 
 RuteVogn.BaseView = Backbone.View.extend({
+    events: {
+        "click #info-button" : "onInfoButtonPress"
+    },
+
+    templateRawData: null,
+
     getTemplate: function(templateName, callback) {
         $.get('application/templates/' + templateName + '.mustache', function(data) {
             callback(data)
@@ -13,17 +19,32 @@ RuteVogn.BaseView = Backbone.View.extend({
             _.extend(allDicts, arg);
         });
 
-        var that = this;
-        this.getTemplate(this.templateName, function(html){
-            var temp = Mustache.render(html, allDicts);
-            that.$el.html(temp);
-            that.onRenderComplete();
-        });
+        if (this.templateRawData == null) {
+            var that = this;
+            this.getTemplate(this.templateName, function(html){
+                that.templateRawData = html;
+                that.renderMustache(allDicts);
+                that.onRenderComplete();
+            });
+        } else {
+            this.renderMustache(allDicts);
+            this.onRenderComplete();
+        }
 
+    },
+
+    renderMustache: function(siteData) {
+        var temp = Mustache.render(this.templateRawData, siteData);
+        this.$el.html(temp);
     },
 
     // callback when render is completed
     onRenderComplete: function() {
         // implement in super class if something needs to be done when render is completed
+    },
+
+    onInfoButtonPress: function(event) {
+        event.preventDefault();
+        console.log("info button pressed");
     }
 });

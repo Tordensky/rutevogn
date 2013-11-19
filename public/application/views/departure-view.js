@@ -4,7 +4,7 @@ RuteVogn.DepartureView = RuteVogn.BaseView.extend({
     templateName: "departure-template",
 
     events: {
-        "click #buss-stop-button" : "onBusStopClick"
+        "click #buss-stop-button" : "onBusStopClick",
     },
 
     initialize: function(options) {

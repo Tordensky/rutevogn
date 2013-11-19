@@ -1,3 +1,5 @@
+var RuteVogn = RuteVogn || {};
+
 RuteVogn.DestinationView = RuteVogn.BaseView.extend({
     templateName: "arrival-template",
 

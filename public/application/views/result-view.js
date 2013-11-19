@@ -1,3 +1,4 @@
+var RuteVogn = RuteVogn || {};
 
 RuteVogn.ResultView = RuteVogn.BaseView.extend({
     templateName: "result-view",
