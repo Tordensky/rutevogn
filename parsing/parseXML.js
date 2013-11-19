@@ -33,6 +33,8 @@ Stop.find(function(err, stops){
 function crawlerStart(){
 	_.each(config.everyBusStopToParse, function(fromStop){
 		getXML(fromStop, config.officalStartDate);
+		
+		getXML(fromStop, config.officalStartDate);
 	});
 };
 
