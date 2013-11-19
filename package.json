@@ -1,0 +1,20 @@
+{
+  "name": "rutevogn",
+  "description": "Bus",
+  "version": "0.9.0",
+  "private": true,
+  "dependencies": {
+      "async": "*",
+      "cheerio": "*",
+      "cookie-jar": "*",
+      "crypto": "*",
+      "express": "*",
+      "mongoose": "*",
+      "request": "*",
+      "sleep": "*",
+      "superagent": "*",
+      "underscore": "*",
+      "winston": "*",
+      "xml2js": "*"
+    }
+}
