@@ -125,6 +125,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
     },
 
     goToStartPage: function() {
+        window.clearInterval(this.countDownTimer);
         RuteVogn.router.navigate('', true);
     },
 

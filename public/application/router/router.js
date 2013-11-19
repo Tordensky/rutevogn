@@ -5,7 +5,7 @@ RuteVogn.Router = Backbone.Router.extend({
         '': "home",
         'destination/:id': "destination",
         'trip/:fromId/:toId': "trip",
-        'trip/info': "info"
+        'info': "info"
     },
 
     departureView: null,
@@ -30,7 +30,6 @@ RuteVogn.Router = Backbone.Router.extend({
         }
 
         var el = $("#app");
-//        el.empty();
 
         if (this.destinationView == null) {
             this.destinationView = new RuteVogn.DestinationView({
@@ -42,7 +41,6 @@ RuteVogn.Router = Backbone.Router.extend({
 
     trip: function(fromId, toId) {
         var el = $("#app");
-//        el.empty();
 
         if (this.resultView == null) {
             this.resultView = new RuteVogn.ResultView({
@@ -54,6 +52,7 @@ RuteVogn.Router = Backbone.Router.extend({
     },
 
     info: function() {
+        console.log("goes to info");
         var el = $("#app");
         if (this.infoView == null) {
             this.infoView = new RuteVogn.InfoView({
