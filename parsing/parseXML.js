@@ -84,14 +84,14 @@ function prepareSave(depatures, depaturename){
 		var depatureTime = createDateObject(depature.departuretime);
 		var route = depature.routename;
 		var destination = depature.destination;
-		var tmp = destination+":"+route.toString();
+		var finaldest = destination+":"+route.toString();
 
 		console.log(depatureTime, route, depaturename, destination);
 
 		// Save busStops on the road to the final destination
 		_.each(config.dictBusStops[depaturename], function(toDest){
 			_.each(toDest.routes, function(toDestRoute){
-				if(toDestRoute == route){
+				if(toDestRoute == finaldest){
 					console.log(toDestRoute, route, depaturename, toDest.name);
 
 					var preHash = depaturename + toDest.name + depatureTime + route;
@@ -101,11 +101,11 @@ function prepareSave(depatures, depaturename){
 			});
 		});
 
-		var preHash = depaturename + destination + depatureTime + route;
+		// var preHash = depaturename + destination + depatureTime + route;
 
 		// Save final destination for route
-		if(stopsDict[destination] != undefined)
-			saveDepature(depatureTime, route, destination, depaturename, preHash);
+		// if(stopsDict[destination] != undefined)
+		// 	saveDepature(depatureTime, route, destination, depaturename, preHash);
 	});
 }
 
