@@ -2,7 +2,6 @@ var Stop = require('../model/stop-model.js');
 
 exports.getBusStops = function(req, res){
 	Stop.find({})
-	.sort({sort_id : 'asc'})
 	.populate('destinations')
 	.exec(function (err, destinations) {
 		if (err){
@@ -11,8 +10,8 @@ exports.getBusStops = function(req, res){
 		}
 		else {
 			// console.log("Data %s", JSON.stringify(destinations, undefined, 2));
-			console.log(sortItUp(destinations));
-			res.jsonp(destinations);
+			dest = sortItUp(destinations);
+			res.jsonp(dest);
 		}
 	});
 }
