@@ -1,9 +1,9 @@
 var express = require('express'),
 	depature = require('./routes/depatures'),
-	stop = require('./routes/stops'),
-	async = require('async');
-//,
-//	winston = require('winston');
+	stop = require('./routes/stops');
+
+winston = require('winston');
+winston.add(winston.transports.File, { filename: 'error.log' });
 
 mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/rutevogn');
@@ -12,14 +12,13 @@ var app = express();
 
 app.use(express.static(__dirname + '/public'));
 
-// Your own super cool function
-var logger = function(req, res, next) {
-    console.log("GOT REQUEST !", req.params, req.query);
-    next(); // Passing the request to the next handler in the stack.
-}
+// var logger = function(req, res, next) {
+// 	winston.log("GOT REQUEST !", req.params, req.query);
+//     next(); 
+// }
 
 app.configure(function(){
-	app.use(logger); // Here you add your logger to the stack.
+	// app.use(logger); // Here you add your logger to the stack.
 	app.use(express.bodyParser());
 });
 
@@ -30,5 +29,5 @@ app.listen(8080);
 
 console.log('Listening on port 8080...');
 
-// winston.add(winston.transports.File, { filename: 'error.log' });
 
+// service apache2 restart
