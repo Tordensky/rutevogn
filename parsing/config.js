@@ -251,7 +251,7 @@ dictBusStops['Kroken'] = [
 dictBusStops['Giæverbukta'] = [
 	{'name' : 'Stakkevollan', 'routes' : ['Stakkevollan:42']},
 	{'name' : 'Telegrafbukta', 'routes' : ['Universitetssykehuset:34']},
-	{'name' : 'Sentrum', 'routes' : ['Stakkevollan:42']},
+	{'name' : 'Sentrum', 'routes' : ['Stakkevollan:42', 'Sentrum:40', 'Sentrum:34', 'Kroken sør:24', 'Pyramiden:26', 'Solligården:28']},
 	{'name' : 'Tomasjord', 'routes' : ['Kroken sør:24']},
 	{'name' : 'UiT', 'routes' : ['Universitetssykehuset:34']},
 	{'name' : 'Tromsdalen', 'routes' : ['Kroken sør:24']},

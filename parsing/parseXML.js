@@ -18,6 +18,7 @@ var urlGetId = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v
 
 var parseFromDate = new Date();
 var parseToDate = new Date(2013,12,12);
+var listOfObjects = [];
 
 // print process.argv
 process.argv.forEach(function (val, index, array) {
@@ -30,8 +31,8 @@ process.argv.forEach(function (val, index, array) {
 
 
 var numDaysForward = (parseToDate - parseFromDate) / (1000*60*60*24);
-
 console.log("Days to fetch: ", numDaysForward);
+
 
 // Get ids and name for every stop, save it to stopsDict
 Stop.find(function(err, stops){
@@ -119,13 +120,12 @@ function prepareSave(depatures, depaturename){
 
 		/* Save busStops on the road to the final destination */
 		_.each(config.dictBusStops[depaturename], function(toDest){
-
 			// Iterate thorugh each route
 			_.each(toDest.routes, function(toDestRoute){
 				if(toDestRoute == finaldest){
 					console.log(toDestRoute, depaturename, depatureTime);
 
-					var preHash = depaturename + toDestRoute + depatureTime;
+					var preHash = depaturename + toDest.name + toDestRoute + depatureTime;
 
 					if(stopsDict[toDest.name] != undefined)
 						saveDepature(depatureTime, route, toDest.name, depaturename, preHash);
