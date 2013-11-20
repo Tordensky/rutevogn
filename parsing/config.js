@@ -173,11 +173,12 @@ dictBusStops['Sentrum'] = [
 	{'name' : 'Slettaelva', 'routes' : ['Slettaelva:40']},
 	{'name' : 'Fagereng', 'routes' : ['Universitetssykehuset:34']},
 	{'name' : 'Åsgård', 'routes' : ['Giæverbukta:26', 'Universitetssykehuset:34']},
-	{'name' : 'Tromsø Museum', 'routes' : ['Røstbakktoppen:37']},
+	{'name' : 'Tromsø Museum', 'routes' : ['Tromsø Museum:37']},
 	{'name' : 'Myreng', 'routes' : ['Giæverbukta:26', 'Slettaelva:40']},
 	{'name' : 'Elverhøy', 'routes' : ['Giæverbukta:26']},
 	{'name' : 'Hamna', 'routes' : ['Bjørnebekken:28']}
 ];
+
 dictBusStops['Tromsdalen'] = [
 	{'name' : 'Stakkevollan', 'routes' : ['Stakkevollan:20']},
 	{'name' : 'UiT', 'routes' : ['Stakkevollan:20']},
@@ -283,7 +284,7 @@ dictBusStops['Åsgård'] = [
 ];
 
 dictBusStops['Tromsø Museum'] = [
-	{'name' : 'Sentrum', 'routes' : ['Røstbakktoppen:37']}
+	{'name' : 'Sentrum', 'routes' : ['Sentrum:37']}
 ];
 
 dictBusStops['Telegrafbukta'] = [
