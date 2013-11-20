@@ -13,159 +13,159 @@ busStops = [
             'name' : 'Sentrum',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() - 1)
+            'sort_id' : 0
     },
     {
             'name' : 'Giæverbukta',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +1)
+            'sort_id' : 1
     },
     {
             'name' : 'UiT',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +2)
+            'sort_id' : 2
     },
     {
             'name' : 'UNN',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +3)
+            'sort_id' : 3
     },
     {
             'name' : 'Eidkjosen',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +4)
+            'sort_id' : 4
     },
     {
             'name' : 'Elverhøy',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +5)
+            'sort_id' : 5
     },
      {
             'name' : 'Fagereng',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +6)
+            'sort_id' : 6
     },
     {
             'name' : 'Gammelgård',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +7)
+            'sort_id' : 7
     },
     {
             'name' : 'Hamna',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +8)
+            'sort_id' : 8
 
     },
     {
             'name' : 'Kroken',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +9)
+            'sort_id' : 9
 
     },
     {
             'name' : 'Kroken Sør',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +10)
+            'sort_id' : 10
     },
     {
             'name' : 'Lunheim',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +11)
+            'sort_id' : 11
     },
     {
             'name' : 'Mortensnes',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +12)
+            'sort_id' : 12
     },
     {
             'name' : 'Myreng',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +13)
+            'sort_id' : 13
     },
         {
             'name' : 'Reinen',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +14)
+            'sort_id' : 14
     },
     {
             'name' : 'Slettaelva',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +15)
+            'sort_id' : 15
     },
     {
             'name' : 'Solligården',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +16)
+            'sort_id' : 16
     },
     {
             'name' : 'Stakkevollan',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +17)
+            'sort_id' : 17
     },
     {
             'name' : 'Storelva',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +18)
+            'sort_id' : 18
     },
     {
             'name' : 'Telegrafbukta',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +19)
+            'sort_id' : 19
     },
     {
             'name' : 'Tomasjord',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +20)
+            'sort_id' : 20
     },
     {
             'name' : 'Tromsdalen',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +21)
+            'sort_id' : 21
     },
     {
             'name' : 'Tromsø Lufthavn',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +22)
+            'sort_id' : 22
     },
     {
             'name' : 'Tromsø Museum',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +23)
+            'sort_id' : 23
     },
     {
             'name' : 'Workinnmarka',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +24)
+            'sort_id' : 24
     },
     {
             'name' : 'Åsgård',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : startDate.setDate(startDate.getDate() +25)
+            'sort_id' : 25
     },
 ];
 
