@@ -68,6 +68,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
                 });
             }
         });
+
         if (data.length > 0) {
             this.nextDepTime = data[0].depTimeInMs;
             var fromName = data[0]["fromName"];
@@ -84,8 +85,9 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
                 toId: this.toId
             });
         } else {
+            window.clearInterval(this.countDownTimer);
             this.nextDepTime = null;
-            this.render({nextDepartureTime: "Ingen avganger"})
+            this.render({nextDepartureTime: "Ingen avganger"});
         }
     },
 
