@@ -126,8 +126,8 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
         // Quick fix for having count down in each table cell
         if (this.isOnWholeMinute(currentTimeInMs)) {
             if (this.hasUpdatetTableForThisMinutte == false) {
-                this.parseTravelInfo();
                 this.hasUpdatetTableForThisMinutte = true;
+                this.parseTravelInfo();
             }
         } else {
             this.hasUpdatetTableForThisMinutte = false;
