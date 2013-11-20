@@ -11,132 +11,165 @@ busStops = [
     {
             'name' : 'Stakkevollan',
             'city' : 'Tromsø',
-            'destinations' : []
+            'destinations' : [],
+            'sort_id' : 17
     },
     {
             'name' : 'Sentrum',
             'city' : 'Tromsø',
-            'destinations' : []
+            'destinations' : [],
+            'sort_id' : 0
+
+
     },
     {
             'name' : 'UiT',
             'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Hamna',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Tromsdalen',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Storelva',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Kroken',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Giæverbukta',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Slettaelva',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Workinnmarka',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Åsgård',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Tromsø Museum',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Telegrafbukta',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Tromsø Lufthavn',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Kroken Sør',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Mortensnes',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Fagereng',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Lunheim',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Tomasjord',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Reinen',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Gammelgård',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Myreng',
-            'city' : 'Tromsø',
-            'destinations' : []
-    },
-    {
-            'name' : 'Eidkjosen',
-            'city' : 'Tromsø',
-            'destinations' : []
+            'destinations' : [],
+            'sort_id' : 2
     },
     {
             'name' : 'UNN',
             'city' : 'Tromsø',
-            'destinations' : []
+            'destinations' : [],
+            'sort_id' : 3
     },
+    {
+            'name' : 'Hamna',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 8
+
+    },
+    {
+            'name' : 'Tromsdalen',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 21
+
+    },
+    {
+            'name' : 'Storelva',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 18
+
+    },
+    {
+            'name' : 'Kroken',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 9
+
+    },
+    {
+            'name' : 'Giæverbukta',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 1
+    },
+    {
+            'name' : 'Slettaelva',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 15
+    },
+    {
+            'name' : 'Workinnmarka',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 25
+    },
+    {
+            'name' : 'Åsgård',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 26
+    },
+    {
+            'name' : 'Tromsø Museum',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 23
+    },
+    {
+            'name' : 'Telegrafbukta',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 19
+    },
+    {
+            'name' : 'Tromsø Lufthavn',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 22
+    },
+    {
+            'name' : 'Kroken Sør',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 10
+    },
+    {
+            'name' : 'Mortensnes',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 12
+    },
+    {
+            'name' : 'Fagereng',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 6
+    },
+    {
+            'name' : 'Lunheim',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 11
+    },
+    {
+            'name' : 'Tomasjord',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 20
+    },
+    {
+            'name' : 'Reinen',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 14
+    },
+    {
+            'name' : 'Gammelgård',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 7
+    },
+    {
+            'name' : 'Myreng',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 13
+    },
+    {
+            'name' : 'Eidkjosen',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 4
+    },
+
     {
             'name' : 'Elverhøy',
             'city' : 'Tromsø',
-            'destinations' : []
+            'destinations' : [],
+            'sort_id' : 5
     },
     {
             'name' : 'Solligården',
             'city' : 'Tromsø',
-            'destinations' : []
+            'destinations' : [],
+            'sort_id' : 16
     }
 ];
 
