@@ -274,10 +274,12 @@ dictBusStops['Giæverbukta'] = [
 
 dictBusStops['Åsgård'] = [
 	{'name' : 'Giæverbukta', 'routes' : ['Giæverbukta:26']},
-	{'name' : 'Elverhøy', 'routes' : ['Tromsdalen:26']},
-	{'name' : 'Sentrum', 'routes' : ['Tromsdalen:26']},
-	{'name' : 'Tromsdalen', 'routes' : ['Tromsdalen:26']},
-	{'name' : 'Myreng', 'routes' : ['Tromsdalen:26']}
+	{'name' : 'Elverhøy', 'routes' : ['Pyramiden:26', 'Skoglyst:36']},
+	{'name' : 'Sentrum', 'routes' : ['Pyramiden:26', 'Sentrum:34']},
+	{'name' : 'Tromsdalen', 'routes' : ['Pyramiden:26']},
+	{'name' : 'Myreng', 'routes' : ['Pyramiden:26']},
+	{'name' : 'UiT', 'routes' : ['Universitetssykehuset:34', 'Universitetssykehuset:36']},
+	{'name' : 'UNN', 'routes' : ['Universitetssykehuset:34', 'Universitetssykehuset:36']}
 ];
 
 dictBusStops['Tromsø Museum'] = [
@@ -369,8 +371,8 @@ dictBusStops['Gammelgård'] = [
 
 dictBusStops['Myreng'] = [
 	{'name' : 'Giæverbukta', 'routes' : ['Giæverbukta:26', 'Slettaelva:40']},
-	{'name' : 'Sentrum', 'routes' : ['Tromsdalen:26', 'Sentrum:40']},
-	{'name' : 'Tromsdalen', 'routes' : ['Tromsdalen:26']},
+	{'name' : 'Sentrum', 'routes' : ['Pyramiden:26', 'Sentrum:40']},
+	{'name' : 'Tromsdalen', 'routes' : ['Pyramiden:26']},
 	{'name' : 'Elverhøy', 'routes' : ['Giæverbukta:26']},
 	{'name' : 'Åsgård', 'routes' : ['Giæverbukta:26']}
 ]
@@ -394,9 +396,9 @@ dictBusStops['UNN'] = [
 dictBusStops['Elverhøy'] = [
 	{'name' : 'Giæverbukta', 'routes' : ['Giæverbukta:26']},
 	{'name' : 'Åsgård', 'routes' : ['Giæverbukta:26']},
-	{'name' : 'Sentrum', 'routes' : ['Tromsdalen:26']},
-	{'name' : 'Tromsdalen', 'routes' : ['Tromsdalen:26']},
-	{'name' : 'Myreng', 'routes' : ['Tromsdalen:26']}
+	{'name' : 'Sentrum', 'routes' : ['Pyramiden:26']},
+	{'name' : 'Tromsdalen', 'routes' : ['Pyramiden:26']},
+	{'name' : 'Myreng', 'routes' : ['Pyramiden:26']}
 ];
 
 dictBusStops['Solligården'] = [
@@ -426,7 +428,7 @@ realNames['Tromsø Lufthavn'] = ["Flyplassen"];
 realNames['Hamna'] = ["Hamna skole øst"];
 realNames['Slettaelva'] = ["Slettaelva skole"];
 realNames['Workinnmarka'] = ["Workinnmarka skole"];
-realNames['Åsgård'] = ["UNN,Åsgård", "Åsgård"];
+realNames['Åsgård'] = ["UNN, Åsgård", "Åsgård"];
 realNames['Tromsø Museum'] = ["Tromsø Museum"];
 realNames['Telegrafbukta'] = ["Telegrafbukta"];
 realNames['Kroken Sør'] = ["Kroken sykehjem"];
