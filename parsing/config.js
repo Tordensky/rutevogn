@@ -171,15 +171,15 @@ busStops = [
 
 dictBusStops = {};
 dictBusStops['Stakkevollan'] = [
-	{'name' : 'Sentrum', 'routes' : ['Kroken:20', 'Eidkjosen:42', 'Sentrum:32']},
-	{'name' : 'UiT', 'routes' : ['Kroken:20', 'Sentrum:32']},
+	{'name' : 'Sentrum', 'routes' : ['Kroken:20', 'Eidkjosen:42', 'Sentrum:32', 'Steinnes:20']},
+	{'name' : 'UiT', 'routes' : ['Kroken:20', 'Sentrum:32', 'Steinnes:20']},
 	{'name' : 'Tromsdalen', 'routes' : ['Kroken:20']},
 	{'name' : 'Kroken', 'routes' : ['Kroken:20']},
 	{'name' : 'Giæverbukta', 'routes' : ['Eidkjosen:42']},
 	{'name' : 'Tromsø Lufthavn', 'routes' : ['Eidkjosen:42']},
 	{'name' : 'Lunheim', 'routes' : ['Kroken:20']},
 	{'name' : 'Tomasjord', 'routes' : ['Kroken:20']},
-	{'name' : 'UNN', 'routes' : ['Kroken:20', 'Sentrum:32']},
+	{'name' : 'UNN', 'routes' : ['Kroken:20', 'Sentrum:32', 'Steinnes:20']},
 	{'name' : 'Hamna', 'routes' : ['Hamna sør:32']}
 ]
 
@@ -231,7 +231,7 @@ dictBusStops['Storelva'] = [
 ];
 
 dictBusStops['UiT'] = [
-	{'name' : 'Sentrum', 'routes' : ['Kroken:20', 'Polaria:21', 'Sentrum:32']},
+	{'name' : 'Sentrum', 'routes' : ['Kroken:20', 'Polaria:21', 'Sentrum:32', 'Steinnes:20']},
 	{'name' : 'Tromsdalen', 'routes' : ['Kroken:20']},
 	{'name' : 'Tomasjord', 'routes' : ['Kroken:20']},
 	{'name' : 'Giæverbukta', 'routes' : ['Sentrum:34']},
@@ -332,7 +332,6 @@ dictBusStops['Tromsø Lufthavn'] = [
 	{'name' : 'Stakkevollan', 'routes' : ['Stakkevollan:42']},
 ];
 
-// TODO fix routes
 dictBusStops['Kroken Sør'] = [
 	{'name' : 'Giæverbukta', 'routes' : ['Giæverbukta:24']},
 	{'name' : 'Sentrum', 'routes' : ['Giæverbukta:24']},
