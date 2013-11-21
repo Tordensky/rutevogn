@@ -373,9 +373,7 @@ dictBusStops['Lunheim'] = [
 	{'name' : 'Sentrum', 'routes' : ['Giæverbukta:24','Stakkevollan:20']},
 	{'name' : 'Mortensnes', 'routes' : ['Giæverbukta:24']},
 	{'name' : 'Kroken Sør', 'routes' : ['Kroken sør:24']},
-	{'name' : 'Tromsdalen', 'routes' : ['Giæverbukta:24','Stakkevollan:20']},
-	{'name' : 'Stakkevollan', 'routes' : ['Stakkevollan:20']},
-	{'name' : 'UiT', 'routes' : ['Stakkevollan:20']},
+	{'name' : 'Tromsdalen', 'routes' : ['Giæverbukta:24']},
 ];
 
 dictBusStops['Tomasjord'] = [
