@@ -127,10 +127,10 @@ function prepareSave(depatures, depaturename, realname){
 
 					var preHash = realname + toDest.name + toDestRoute + depatureTime;
 
-					console.log(preHash);
-
-					if(stopsDict[toDest.name] != undefined)
+					if(stopsDict[toDest.name] != undefined){
 						saveDepature(depatureTime, route, toDest.name, depaturename, preHash, realname);
+						console.log(preHash);
+					}
 				};
 			});
 		});
@@ -144,6 +144,7 @@ function prepareSave(depatures, depaturename, realname){
 }
 
 function saveDepature(depatureTime, route, destination, depature, preHash, realname){
+	// console.log("FromId: ", stopsDict[depature].id, ", ToId: ", stopsDict[destination].id);
 	var dep = new Depature({
 		'fromId' : stopsDict[depature].id,
 		'from' : depature,
@@ -174,7 +175,7 @@ function createUrl(from, date, id){
 	var urlStr = firstRootUrl +
 				"hpl=" + id + 
 				"&Date=" + dateStr;
-	console.log(urlStr);
+	//console.log(urlStr);
 	return urlStr;
 }
 

@@ -186,8 +186,9 @@ dictBusStops['Stakkevollan'] = [
 	{'name' : 'Lunheim', 'routes' : ['Kroken:20']},
 	{'name' : 'Tomasjord', 'routes' : ['Kroken:20']},
 	{'name' : 'UNN', 'routes' : ['Kroken:20', 'Sentrum:32', 'Steinnes:20']},
-	{'name' : 'Hamna', 'routes' : ['Hamna sør:32']}
-]
+	{'name' : 'Hamna', 'routes' : ['Hamna sør:32']},
+	{'name' : 'Storelva', 'routes' : ['Eidkjosen:42']},
+];
 
 dictBusStops['Sentrum'] = [
 	{'name' : 'Stakkevollan', 'routes' : ['Stakkevollan:42', 'Stakkevollan:20']},
@@ -455,7 +456,10 @@ dictBusStops['Skoglyst'] = [
 	{'name' : 'UNN', 'routes' : ['Universitetssykehuset:36']},
 	{'name' : 'UiT', 'routes' : ['Universitetssykehuset:36']},
 	{'name' : 'Åsgård', 'routes' : ['Universitetssykehuset:36']},
-	{'name' : 'Elverhøy', 'routes' : ['Universitetssykehuset:36']}
+	{'name' : 'Elverhøy', 'routes' : ['Universitetssykehuset:36']},
+	{'name' : 'Sentrum', 'routes' : ['Pyramiden:26']},
+	{'name' : 'Tromsdalen', 'routes' : ['Pyramiden:26']},
+	{'name' : 'Giæverbukta', 'routes' : ['Giæverbukta:26']}
 ];
 
 everyBusStopToParse = Object.keys(dictBusStops);
@@ -491,6 +495,7 @@ realNames['Eidkjosen'] = ["Eidkjosen"];
 realNames['UNN'] = ["Universitetssykehuset"];
 realNames['Elverhøy'] = ["Elverhøy"];
 realNames['Solligården'] = ["Solligården"];
+realNames['Skoglyst'] = ["Skoglyst"];
 
 
 exports.realNames = realNames;
