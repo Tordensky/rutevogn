@@ -189,8 +189,11 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
         this.startCountDownForNextDeparture();
     },
 
-    onFromDestinationClick: function() {
-        this.goToStartPage();
+    onFromDestinationClick: function(event) {
+        event.preventDefault();
+
+        var stopId = $(event.currentTarget).data('id');
+        RuteVogn.router.navigate('destination/'+stopId, true);
     },
 
     onToDestinationClick: function(event) {
