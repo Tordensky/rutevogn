@@ -153,6 +153,7 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 		'date' : depatureTime,
 		'arrival' : "",
 		'route' : parseInt(route),
+		'busstop' : realname,
 		'hash': crypto.createHash('md5').update(preHash).digest('hex')
 	});
 
