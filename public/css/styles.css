@@ -42,6 +42,19 @@ body {
 
 }
 
+h1 {
+    display: inline-block;
+}
+
+
+.logo-image {
+    position: relative;
+    top: 0.5em;
+    display: inline-block;
+    height: 2em;
+    margin-right: 1em;
+}
+
 .app-footer-container {
     width: 100%;
     padding-top: 0.5em;
