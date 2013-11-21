@@ -86,9 +86,9 @@ body {
     background-color: #79c8ff;
 }
 
-.buss-stop-button:active {
-    background-color: #bdeeff;
-}
+/*.buss-stop-button:active {*/
+    /*background-color: #bdeeff;*/
+/*}*/
 
 .page-title {
     margin-top: 0.5em;
