@@ -488,7 +488,7 @@ everyBusStopToParse = Object.keys(dictBusStops);
 // TODO correct this IDs and real names
 realNames = {};
 realNames['Stakkevollan'] = ["Utsikten"];
-realNames['Sentrum'] = ['Wito', "Fr. Langes gate F1", "Fr. Langes gate F2", "Fr. Langes gate F3",
+realNames['Sentrum'] = ["Fr. Langes gate F1", "Fr. Langes gate F2", "Fr. Langes gate F3",
 "Fr. Langes gate F4", "Fr. Langes gate F5", "Fr. Langes gate F6", "Fr. Langes gate F7", "Sjøgata S1",
 "Sjøgata S2", "Sjøgata S3", "Sjøgata S4", "Havnegata H1", "Havnegata H2", "Havnegata H3"];
 realNames['Tromsdalen'] = ["Tromsdalen Bruvegen", "Tromsdalen kirke"];
