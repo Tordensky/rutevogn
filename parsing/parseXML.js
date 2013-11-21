@@ -18,6 +18,7 @@ var urlGetId = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v
 
 var parseFromDate = new Date();
 var parseToDate = new Date(2013,12,12);
+var listOfObjects = [];
 
 // print process.argv
 process.argv.forEach(function (val, index, array) {
@@ -30,8 +31,8 @@ process.argv.forEach(function (val, index, array) {
 
 
 var numDaysForward = (parseToDate - parseFromDate) / (1000*60*60*24);
-
 console.log("Days to fetch: ", numDaysForward);
+
 
 // Get ids and name for every stop, save it to stopsDict
 Stop.find(function(err, stops){
@@ -80,7 +81,7 @@ function getXML(name, date){
 
 	            if(result.stages.i != undefined){
 		            var id = result.stages.i[0]['$'].v;
-		            getHtml(name, date, id);
+		            getHtml(name, date, id, realname);
 	            }
 	            else {
 	            	console.log("UNDEFINED RESULT OF QUERYING BUSSHOLDEPLASS");
@@ -90,7 +91,7 @@ function getXML(name, date){
 	});
 }
 
-function getHtml(from, startDate, id){
+function getHtml(from, startDate, id, realname){
 	console.log(from, startDate);
 
 	var urlStr = createUrl(from, startDate, id);
@@ -101,12 +102,12 @@ function getHtml(from, startDate, id){
 		parseString(xml, function (err, result) {
            //console.log("Data %s", JSON.stringify(result, undefined, 2));
 
-		    prepareSave(result.departurelist['departure'], from);
+		    prepareSave(result.departurelist['departure'], from, realname);
 		});
 	});
 }
 
-function prepareSave(depatures, depaturename){
+function prepareSave(depatures, depaturename, realname){
 
 	_.each(depatures, function(depature){
 		depature = depature['$'];
@@ -119,16 +120,17 @@ function prepareSave(depatures, depaturename){
 
 		/* Save busStops on the road to the final destination */
 		_.each(config.dictBusStops[depaturename], function(toDest){
-
 			// Iterate thorugh each route
 			_.each(toDest.routes, function(toDestRoute){
 				if(toDestRoute == finaldest){
-					console.log(toDestRoute, depaturename, depatureTime);
+					// console.log(toDestRoute, depaturename, depatureTime);
 
-					var preHash = depaturename + toDestRoute + depatureTime;
+					var preHash = realname + toDest.name + toDestRoute + depatureTime;
+
+					console.log(preHash);
 
 					if(stopsDict[toDest.name] != undefined)
-						saveDepature(depatureTime, route, toDest.name, depaturename, preHash);
+						saveDepature(depatureTime, route, toDest.name, depaturename, preHash, realname);
 				};
 			});
 		});
@@ -141,7 +143,7 @@ function prepareSave(depatures, depaturename){
 	});
 }
 
-function saveDepature(depatureTime, route, destination, depature, preHash){
+function saveDepature(depatureTime, route, destination, depature, preHash, realname){
 	var dep = new Depature({
 		'fromId' : stopsDict[depature].id,
 		'from' : depature,
@@ -154,7 +156,9 @@ function saveDepature(depatureTime, route, destination, depature, preHash){
 	});
 
 	dep.save(function(err){
-		if(err)	console.log("Error saving depature: " + err);
+		if(err){
+			console.log("Error saving depature: " + err);
+		}
 	});
 }
 
