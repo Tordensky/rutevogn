@@ -39,13 +39,11 @@ body {
     color: white;
 
     font-size: 1em;
-
 }
 
 h1 {
     display: inline-block;
 }
-
 
 .logo-image {
     position: relative;

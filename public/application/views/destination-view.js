@@ -31,8 +31,12 @@ RuteVogn.DestinationView = RuteVogn.BaseView.extend({
             from: departureStop.get("name"),
             backButtonTitle: "Tilbake"};
 
-        var stops = {stops: departureStop.get("destinations")};
-        this.render(pageInfo, stops);
+        var stops = departureStop.get("destinations");
+
+        stops = _.sortBy(stops, function(stop){
+            return stop.name;
+        });
+        this.render(pageInfo, {stops: stops});
     },
 
     onBusStopClick: function(event) {
