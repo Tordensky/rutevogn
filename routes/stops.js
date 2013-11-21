@@ -11,7 +11,6 @@ exports.getBusStops = function(req, res){
 		}
 		else {
 			// console.log("Data %s", JSON.stringify(destinations, undefined, 2));
-			//dest = sortItUp(destinations);
 			res.json(destinations);
 		}
 	});
