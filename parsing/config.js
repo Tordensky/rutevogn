@@ -372,11 +372,13 @@ dictBusStops['Sentrum'] = [
 
 dictBusStops['Elverhøy'] = [
 	{'name' : 'Giæverbukta', 'routes' : ['Giæverbukta:26']},
-	{'name' : 'Åsgård', 'routes' : ['Giæverbukta:26']},
+	{'name' : 'Åsgård', 'routes' : ['Giæverbukta:26', 'Universitetssykehuset:36']},
 	{'name' : 'Sentrum', 'routes' : ['Pyramiden:26']},
 	{'name' : 'Tromsdalen', 'routes' : ['Pyramiden:26']},
 	{'name' : 'Myreng', 'routes' : ['Pyramiden:26']},
 	{'name' : 'Skoglyst', 'routes' : ['Skoglyst:36']},
+	{'name' : 'UNN', 'routes' : ['Universitetssykehuset:36']},
+	{'name' : 'UiT', 'routes' : ['Universitetssykehuset:36']},
 ];
 
 dictBusStops['Fagereng'] = [
