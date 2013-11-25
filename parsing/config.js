@@ -34,144 +34,155 @@ busStops = [
             'sort_id' : 3
     },
     {
-            'name' : 'Eidkjosen',
+            'name' : 'Doktordalen',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 4
     },
     {
-            'name' : 'Elverhøy',
+            'name' : 'Eidkjosen',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 5
     },
-     {
-            'name' : 'Fagereng',
+    {
+            'name' : 'Elverhøy',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 6
     },
-    {
-            'name' : 'Gammelgård',
+	{
+            'name' : 'Fagereng',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 7
     },
     {
-            'name' : 'Hamna',
+            'name' : 'Gammelgård',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 8
-
+    },
+    {
+            'name' : 'Hamna',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 9
     },
     {
             'name' : 'Kroken',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : 9
+            'sort_id' : 10
 
     },
     {
             'name' : 'Kroken Sør',
             'city' : 'Tromsø',
             'destinations' : [],
-            'sort_id' : 10
-    },
-    {
-            'name' : 'Lunheim',
-            'city' : 'Tromsø',
-            'destinations' : [],
             'sort_id' : 11
     },
     {
-            'name' : 'Mortensnes',
+            'name' : 'Kræmer',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 12
     },
     {
-            'name' : 'Myreng',
+            'name' : 'Lunheim',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 13
     },
-        {
-            'name' : 'Reinen',
+    {
+            'name' : 'Mortensnes',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 14
     },
     {
-            'name' : 'Skoglyst',
+            'name' : 'Myreng',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 15
     },
     {
-            'name' : 'Slettaelva',
+            'name' : 'Reinen',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 16
     },
     {
-            'name' : 'Solligården',
+            'name' : 'Skoglyst',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 17
     },
     {
-            'name' : 'Stakkevollan',
+            'name' : 'Slettaelva',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 18
     },
     {
-            'name' : 'Storelva',
+            'name' : 'Solligården',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 19
     },
     {
-            'name' : 'Telegrafbukta',
+            'name' : 'Stakkevollan',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 20
     },
     {
-            'name' : 'Tomasjordnes',
+            'name' : 'Storelva',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 21
     },
     {
-            'name' : 'Tromsdalen',
+            'name' : 'Telegrafbukta',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 22
     },
     {
-            'name' : 'Tromsø Lufthavn',
+            'name' : 'Tomasjordnes',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 23
     },
     {
-            'name' : 'Tromsø Museum',
+            'name' : 'Tromsdalen',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 24
     },
     {
-            'name' : 'Workinnmarka',
+            'name' : 'Tromsø Lufthavn',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 25
     },
     {
-            'name' : 'Åsgård',
+            'name' : 'Tromsø Museum',
             'city' : 'Tromsø',
             'destinations' : [],
             'sort_id' : 26
+    },
+    {
+            'name' : 'Workinnmarka',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 27
+    },
+    {
+            'name' : 'Åsgård',
+            'city' : 'Tromsø',
+            'destinations' : [],
+            'sort_id' : 28
     },
 ];
 
@@ -183,14 +194,15 @@ dictBusStops['Eidkjosen'] = [
 	{'name' : 'Giæverbukta', 'routes' : ['Stakkevollan:42']},
 	{'name' : 'Sentrum', 'routes' : ['Stakkevollan:42']},
 	{'name' : 'Storelva', 'routes' : ['Stakkevollan:42']},
-	{'name' : 'Stakkevollan','routes' : ['Stakkevollan:42']},	
+	{'name' : 'Stakkevollan','routes' : ['Stakkevollan:42']},
+	{'name' : 'Kræmer','routes' : ['Stakkevollan:42']},		
 ];
 dictBusStops['Slettaelva'] = [
 	{'name' : 'Giæverbukta', 'routes' : ['Sentrum:40']},
 	{'name' : 'Workinnmarka', 'routes' : ['Sentrum:40']},
 	{'name' : 'Sentrum', 'routes' : ['Sentrum:40']},
 	{'name' : 'Tromsø Lufthavn', 'routes' : ['Sentrum:40']},
-	{'name' : 'Myreng', 'routes' : ['Sentrum:40']}
+	{'name' : 'Myreng', 'routes' : ['Sentrum:40']},
 ];
 
 
@@ -201,7 +213,7 @@ dictBusStops['Storelva'] = [
 	{'name' : 'Tromsø Lufthavn', 'routes' : ['Stakkevollan:42']},
 	{'name' : 'UNN', 'routes' : ['Breivika:43']},
 	{'name' : 'Eidkjosen', 'routes' : ['Eidkjosen:42']},
-
+	{'name' : 'Kræmer','routes' : ['Stakkevollan:42']},
 ];
 
 
@@ -217,6 +229,7 @@ dictBusStops['Hamna'] = [
 	{'name' : 'UNN', 'routes' : ['Sentrum:32']},
 	{'name' : 'Stakkevollan', 'routes' : ['Sentrum:32']},
 	{'name' : 'UiT', 'routes' : ['Sentrum:32']},
+	{'name' : 'Kræmer','routes' : ['Sentrum:32']},	
 ];
 
 dictBusStops['Stakkevollan'] = [
@@ -231,6 +244,8 @@ dictBusStops['Stakkevollan'] = [
 	{'name' : 'UNN', 'routes' : ['Kroken:20', 'Sentrum:32', 'Steinnes:20']},
 	{'name' : 'Hamna', 'routes' : ['Hamna sør:32']},
 	{'name' : 'Storelva', 'routes' : ['Eidkjosen:42']},
+	{'name' : 'Kræmer','routes' : ['Eidkjosen:42']},
+	{'name' : 'Doktordalen','routes' : ['Kroken:20']},		
 ];
 
 
@@ -245,6 +260,9 @@ dictBusStops['UNN'] = [
 	{'name' : 'Skoglyst', 'routes' : ['Skoglyst:36']},
 	{'name' : 'Åsgård', 'routes' : ['Skoglyst:36']},
 	{'name' : 'Elverhøy', 'routes' : ['Skoglyst:36']},
+	{'name' : 'Kræmer','routes' : ['Sentrum:32']},
+	{'name' : 'Doktordalen','routes' : ['Kroken:20']},	
+
 
 ];
 
@@ -260,6 +278,8 @@ dictBusStops['UiT'] = [
 	{'name' : 'Åsgård', 'routes' : ['Skoglyst:36']},
 	{'name' : 'Elverhøy', 'routes' : ['Skoglyst:36']},
 	{'name' : 'Kroken', 'routes' : ['Kroken:20']},
+	{'name' : 'Kræmer','routes' : ['Sentrum:32']},
+	{'name' : 'Doktordalen','routes' : ['Kroken:20']},	
 ];
 
 dictBusStops['Mortensnes'] = [
@@ -269,6 +289,7 @@ dictBusStops['Mortensnes'] = [
 	{'name' : 'Lunheim', 'routes' : ['Kroken sør:24']},
 	{'name' : 'Tomasjordnes', 'routes' : ['Kroken sør:24']},
 	{'name' : 'Tromsdalen', 'routes' : ['Kroken sør:24']},
+	{'name' : 'Doktordalen','routes' : ['Kroken sør:24']},
 ];
 
 /* ---------- Vest øya ---------- */
@@ -279,6 +300,7 @@ dictBusStops['Tromsø Lufthavn'] = [
 	{'name' : 'Sentrum', 'routes' : ['Sentrum:40', 'Stakkevollan:42']},
 	{'name' : 'Myreng', 'routes' : ['Sentrum:40']},
 	{'name' : 'Stakkevollan', 'routes' : ['Stakkevollan:42']},
+	{'name' : 'Kræmer','routes' : ['Stakkevollan:42']},
 ];
 
 dictBusStops['Giæverbukta'] = [
@@ -304,6 +326,8 @@ dictBusStops['Giæverbukta'] = [
 	{'name' : 'Åsgård', 'routes' : ['Pyramiden:26', 'Sentrum:34']},
 	{'name' : 'Hamna', 'routes' : ['Bjørnebekken:28']},
 	{'name' : 'Skoglyst', 'routes' : ['Pyramiden:26']},
+	{'name' : 'Kræmer','routes' : ['Stakkevollan:42']},
+	{'name' : 'Doktordalen','routes' : ['Kroken sør:24']},
 ];
 
 dictBusStops['Workinnmarka'] = [
@@ -315,6 +339,31 @@ dictBusStops['Workinnmarka'] = [
 ];
 
 /*  Midt øya */
+
+dictBusStops['Doktordalen'] = [
+	{'name' : 'Sentrum', 'routes' : ['Kroken:20', 'Polaria:21', 'Kroken sør:24', 'Sentrum:32', 'Steinnes:20']},
+	{'name' : 'Tromsdalen', 'routes' : ['Kroken:20', 'Kroken sør:24']},
+	{'name' : 'Tomasjordnes', 'routes' : ['Kroken:20']},
+	{'name' : 'Giæverbukta', 'routes' : ['Giæverbukta:24']},
+	{'name' : 'Stakkevollan', 'routes' : ['Stakkevollan:20']},
+	{'name' : 'UNN', 'routes' : ['Stakkevollan:20', 'Forskningsparken:21']},
+	{'name' : 'UiT', 'routes' : ['Stakkevollan:20', 'Forskningsparken:21']},
+	{'name' : 'Kroken Sør', 'routes' : ['Kroken sør:24']},
+	{'name' : 'Kroken', 'routes' : ['Kroken:20']},
+	{'name' : 'Mortensnes', 'routes' : ['Giæverbukta:24']},
+	{'name' : 'Lunheim', 'routes' : ['Kroken sør:24']},
+];
+
+dictBusStops['Kræmer'] = [
+	{'name' : 'Stakkevollan', 'routes' : ['Stakkevollan:42', 'Hamna sør:32']},
+	{'name' : 'Sentrum', 'routes' : ['Eidkjosen:42', 'Sentrum:32']},
+	{'name' : 'Giæverbukta', 'routes' : ['Eidkjosen:42']},
+	{'name' : 'Tromsø Lufthavn', 'routes' : ['Eidkjosen:42']},
+	{'name' : 'UNN', 'routes' : ['Breivika:43', 'Hamna sør:32']},
+	{'name' : 'UiT', 'routes' : ['Hamna sør:32']},
+	{'name' : 'Hamna', 'routes' : ['Hamna sør:32']},
+	{'name' : 'Eidkjosen', 'routes' : ['Eidkjosen:42']},
+];
 
 dictBusStops['Åsgård'] = [
 	{'name' : 'Giæverbukta', 'routes' : ['Giæverbukta:26']},
@@ -370,6 +419,8 @@ dictBusStops['Sentrum'] = [
 	{'name' : 'Elverhøy', 'routes' : ['Giæverbukta:26']},
 	{'name' : 'Hamna', 'routes' : ['Bjørnebekken:28']},
 	{'name' : 'Tromsø Lufthavn', 'routes' : ['Eidkjosen:42', 'Slettaelva:40']},
+	{'name' : 'Kræmer', 'routes' : ['Bjørnebekken:32', 'Stakkevollan:42']},
+	{'name' : 'Doktordalen','routes' : ['Stakkevollan:20', 'Giæverbukta:24']},
 ];
 
 /*  ----------- Sør øya ----------- */
@@ -446,7 +497,8 @@ dictBusStops['Tromsdalen'] = [
 	{'name' : 'Myreng', 'routes' : ['Giæverbukta:26']},
 	{'name' : 'UNN', 'routes' : ['Stakkevollan:20']},
 	{'name' : 'Elverhøy', 'routes' : ['Giæverbukta:26']},
-	{'name' : 'Giæverbukta', 'routes' : ['Giæverbukta:26', '24', 'Bjørnebekken:28']}
+	{'name' : 'Giæverbukta', 'routes' : ['Giæverbukta:26', '24', 'Bjørnebekken:28']},
+	{'name' : 'Doktordalen','routes' : ['Stakkevollan:20', 'Giæverbukta:24']},
 ];
 
 dictBusStops['Tomasjordnes'] = [
@@ -456,6 +508,7 @@ dictBusStops['Tomasjordnes'] = [
 	{'name' : 'Stakkevollan', 'routes' : ['Stakkevollan:20']},
 	{'name' : 'UiT', 'routes' : ['Stakkevollan:20', 'Universitetssykehuset:20']},
 	{'name' : 'UNN', 'routes' : ['Stakkevollan:20', 'Universitetssykehuset:20']},
+	{'name' : 'Doktordalen','routes' : ['Stakkevollan:20']},
 ];
 
 dictBusStops['Lunheim'] = [
@@ -467,6 +520,7 @@ dictBusStops['Lunheim'] = [
 	{'name' : 'Stakkevollan', 'routes' : ['Stakkevollan:20']},
 	{'name' : 'UiT', 'routes' : ['Stakkevollan:20', 'Universitetssykehuset:20']},
 	{'name' : 'UNN', 'routes' : ['Stakkevollan:20', 'Universitetssykehuset:20']},
+	{'name' : 'Doktordalen','routes' : ['Giæverbukta:24']},
 ];
 
 dictBusStops['Kroken Sør'] = [
@@ -475,6 +529,7 @@ dictBusStops['Kroken Sør'] = [
 	{'name' : 'Mortensnes', 'routes' : ['Giæverbukta:24']},
 	{'name' : 'Lunheim', 'routes' : ['Giæverbukta:24']},
 	{'name' : 'Tromsdalen', 'routes' : ['Giæverbukta:24']},
+	{'name' : 'Doktordalen','routes' : ['Giæverbukta:24']},
 ];
 
 dictBusStops['Kroken'] = [
@@ -485,6 +540,7 @@ dictBusStops['Kroken'] = [
 	{'name' : 'Lunheim', 'routes' : ['Stakkevollan:20']},
 	{'name' : 'UiT', 'routes' : ['Stakkevollan:20', 'Universitetssykehuset:20']},
 	{'name' : 'UNN', 'routes' : ['Stakkevollan:20', 'Universitetssykehuset:20']},
+	{'name' : 'Doktordalen','routes' : ['Giæverbukta:24']},
 ];
 
 
@@ -524,7 +580,8 @@ realNames['UNN'] = ["Universitetssykehuset"];
 realNames['Elverhøy'] = ["Elverhøy"];
 realNames['Solligården'] = ["Solligården"];
 realNames['Skoglyst'] = ["Skoglyst"];
-
+realNames['Doktordalen'] = ["Doktordalen"];
+realNames['Kræmer'] = ['Kræmer'];
 
 exports.realNames = realNames;
 exports.dictBusStops = dictBusStops;
