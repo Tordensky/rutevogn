@@ -273,7 +273,7 @@ dictBusStops['UiT'] = [
 	{'name' : 'Giæverbukta', 'routes' : ['Sentrum:34']},
 	{'name' : 'Fagereng', 'routes' : ['Sentrum:34']},
 	{'name' : 'Telegrafbukta', 'routes' : ['Sentrum:34']},
-	{'name' : 'Stakkevollan', 'routes' : ['Stakkevollan:20']},
+	{'name' : 'Stakkevollan', 'routes' : ['Stakkevollan:20', "Hamna sør:32"]},
 	{'name' : 'Skoglyst', 'routes' : ['Skoglyst:36']},
 	{'name' : 'Åsgård', 'routes' : ['Skoglyst:36']},
 	{'name' : 'Elverhøy', 'routes' : ['Skoglyst:36']},
