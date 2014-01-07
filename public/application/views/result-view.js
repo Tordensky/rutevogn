@@ -192,6 +192,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
     onFromDestinationClick: function(event) {
         event.preventDefault();
 
+        window.clearInterval(this.countDownTimer);
         var stopId = $(event.currentTarget).data('id');
         RuteVogn.router.navigate('destination/'+stopId, true);
     },
@@ -199,6 +200,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
     onToDestinationClick: function(event) {
         event.preventDefault();
 
+        window.clearInterval(this.countDownTimer);
         var stopId = $(event.currentTarget).data('id');
         RuteVogn.router.navigate('destination/'+stopId, true);
     }
