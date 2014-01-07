@@ -5,9 +5,8 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
 
     events: {
         "click #new-search-button" : "goToStartPage",
-        "click #destination-buss-stop-button" : "onBusStopClick",
-        "click #from-destination-button" : "onFromDestinationClick",
-        "click #to-destination-button" : "onToDestinationClick"
+        "click #from-destination-button" : "onBussStopButtonClick",
+        "click #to-destination-button" : "onBussStopButtonClick"
     },
 
     initialize: function(options) {
@@ -189,15 +188,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
         this.startCountDownForNextDeparture();
     },
 
-    onFromDestinationClick: function(event) {
-        event.preventDefault();
-
-        window.clearInterval(this.countDownTimer);
-        var stopId = $(event.currentTarget).data('id');
-        RuteVogn.router.navigate('destination/'+stopId, true);
-    },
-
-    onToDestinationClick: function(event) {
+    onBussStopButtonClick: function(event) {
         event.preventDefault();
 
         window.clearInterval(this.countDownTimer);
