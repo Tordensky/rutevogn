@@ -137,6 +137,9 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
 
     goToStartPage: function() {
         window.clearInterval(this.countDownTimer);
+
+        _gaq.push(['_trackEvent', 'ButtonClick', 'New search button']);
+
         RuteVogn.router.navigate('', true);
     },
 
@@ -193,6 +196,10 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
 
         window.clearInterval(this.countDownTimer);
         var stopId = $(event.currentTarget).data('id');
+        var stopName = $(event.currentTarget).data('name');
+
+        _gaq.push(['_trackEvent', 'ButtonClick', 'Transfer buttons', stopName + ' (transfer)']);
+
         RuteVogn.router.navigate('destination/'+stopId, true);
     }
 });
