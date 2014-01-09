@@ -15,6 +15,7 @@ RuteVogn.DepartureView = RuteVogn.BaseView.extend({
     },
 
     showPage: function() {
+        _gaq.push(['_trackPageview', '/home']);
         this.getBusStops()
     },
 

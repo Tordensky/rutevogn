@@ -13,6 +13,7 @@ RuteVogn.DestinationView = RuteVogn.BaseView.extend({
     },
 
     showPage: function(departureId, busStopsCollection){
+        _gaq.push(['_trackPageview', '/destination']);
         this.departureId = departureId;
         this.busStopsCollection = busStopsCollection;
 
