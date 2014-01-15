@@ -35,6 +35,11 @@ RuteVogn.DepartureView = RuteVogn.BaseView.extend({
 
     onBusStopClick: function(event) {
         var stopId = $(event.currentTarget).data('id');
+        var stopName = $(event.currentTarget).data('name');
+
+        // Click Tracking for google analytics
+        _gaq.push(['_trackEvent', 'ButtonClick', 'Traveling-From', stopName + " (from)"]);
+
         RuteVogn.router.navigate('destination/'+stopId, true);
     }
 
