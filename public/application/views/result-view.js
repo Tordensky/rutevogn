@@ -23,6 +23,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
     },
 
     showView: function(fromId, toId) {
+        _gaq.push(['_trackPageview', '/result']);
         var date = new Date().toJSON();
         var that = this;
 
