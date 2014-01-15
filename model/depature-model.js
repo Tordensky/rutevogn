@@ -9,6 +9,7 @@ var DepatureSchema = new Schema({
     date : { type: Date, required: true},
     arrival : { type: Date},
     route : { type: Number, required: true},
+    busstop : {type: String, required: true},
     hash : { type: String, index: {unique: true, dropDups: true}}
 });
 

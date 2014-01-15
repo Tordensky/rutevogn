@@ -13,6 +13,7 @@ RuteVogn.DestinationView = RuteVogn.BaseView.extend({
     },
 
     showPage: function(departureId, busStopsCollection){
+        _gaq.push(['_trackPageview', '/destination']);
         this.departureId = departureId;
         this.busStopsCollection = busStopsCollection;
 
@@ -31,12 +32,22 @@ RuteVogn.DestinationView = RuteVogn.BaseView.extend({
             from: departureStop.get("name"),
             backButtonTitle: "Tilbake"};
 
-        var stops = {stops: departureStop.get("destinations")};
-        this.render(pageInfo, stops);
+        var stops = departureStop.get("destinations");
+
+        stops = _.sortBy(stops, function(stop){
+            return stop.name;
+        });
+        this.render(pageInfo, {stops: stops});
     },
 
     onBusStopClick: function(event) {
         var destinationId = $(event.currentTarget).data('id');
+
+        var destinationName = $(event.currentTarget).data('name');
+
+        // Click Tracking for google analytics
+        _gaq.push(['_trackEvent', 'ButtonClick', 'Traveling-To',  destinationName  + " (dest)"]);
+
         RuteVogn.router.navigate('trip/'+this.departureId+'/'+destinationId, true);
     },
 

@@ -20,6 +20,10 @@ var parseFromDate = new Date();
 var parseToDate = new Date(2013,12,12);
 var listOfObjects = [];
 
+var timeOut = 100000;
+var mytimeOut;
+
+
 // print process.argv
 process.argv.forEach(function (val, index, array) {
 	console.log(index + ': ' + val);
@@ -127,10 +131,10 @@ function prepareSave(depatures, depaturename, realname){
 
 					var preHash = realname + toDest.name + toDestRoute + depatureTime;
 
-					console.log(preHash);
-
-					if(stopsDict[toDest.name] != undefined)
+					if(stopsDict[toDest.name] != undefined){
 						saveDepature(depatureTime, route, toDest.name, depaturename, preHash, realname);
+						console.log(preHash);
+					}
 				};
 			});
 		});
@@ -144,6 +148,7 @@ function prepareSave(depatures, depaturename, realname){
 }
 
 function saveDepature(depatureTime, route, destination, depature, preHash, realname){
+	// console.log("FromId: ", stopsDict[depature].id, ", ToId: ", stopsDict[destination].id);
 	var dep = new Depature({
 		'fromId' : stopsDict[depature].id,
 		'from' : depature,
@@ -152,6 +157,7 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 		'date' : depatureTime,
 		'arrival' : "",
 		'route' : parseInt(route),
+		'busstop' : realname,
 		'hash': crypto.createHash('md5').update(preHash).digest('hex')
 	});
 
@@ -159,6 +165,8 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 		if(err){
 			console.log("Error saving depature: " + err);
 		}
+		clearTimeout(mytimeOut);
+		mytimeOut = setTimeout(quit, timeOut);
 	});
 }
 
@@ -174,7 +182,15 @@ function createUrl(from, date, id){
 	var urlStr = firstRootUrl +
 				"hpl=" + id + 
 				"&Date=" + dateStr;
-	console.log(urlStr);
+	//console.log(urlStr);
 	return urlStr;
 }
+
+
+function quit() {
+    console.log("done sleeping");
+    console.log("DONE");
+	process.exit(0);
+};
+
 

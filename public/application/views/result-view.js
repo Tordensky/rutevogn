@@ -5,9 +5,8 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
 
     events: {
         "click #new-search-button" : "goToStartPage",
-        "click #destination-buss-stop-button" : "onBusStopClick",
-        "click #from-destination-button" : "onFromDestinationClick",
-        "click #to-destination-button" : "onToDestinationClick"
+        "click #from-destination-button" : "onBussStopButtonClick",
+        "click #to-destination-button" : "onBussStopButtonClick"
     },
 
     initialize: function(options) {
@@ -24,6 +23,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
     },
 
     showView: function(fromId, toId) {
+        _gaq.push(['_trackPageview', '/result']);
         var date = new Date().toJSON();
         var that = this;
 
@@ -138,6 +138,9 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
 
     goToStartPage: function() {
         window.clearInterval(this.countDownTimer);
+
+        _gaq.push(['_trackEvent', 'ButtonClick', 'New search button']);
+
         RuteVogn.router.navigate('', true);
     },
 
@@ -189,14 +192,15 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
         this.startCountDownForNextDeparture();
     },
 
-    onFromDestinationClick: function() {
-        this.goToStartPage();
-    },
-
-    onToDestinationClick: function(event) {
+    onBussStopButtonClick: function(event) {
         event.preventDefault();
 
+        window.clearInterval(this.countDownTimer);
         var stopId = $(event.currentTarget).data('id');
+        var stopName = $(event.currentTarget).data('name');
+
+        _gaq.push(['_trackEvent', 'ButtonClick', 'Transfer buttons', stopName + ' (transfer)']);
+
         RuteVogn.router.navigate('destination/'+stopId, true);
     }
 });
