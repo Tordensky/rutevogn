@@ -164,6 +164,7 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 	dep.save(function(err){
 		if(err){
 			console.log("Error saving depature: " + err);
+			return;
 		}
 		clearTimeout(mytimeOut);
 		mytimeOut = setTimeout(quit, timeOut);
