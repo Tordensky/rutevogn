@@ -12,15 +12,45 @@ var iter = 0;
 var counter = 1;
 // Insert bus stops to DB
 _.each(config.busStops, function(stop){
+	Stop.findOne({name : stop.name}, function(err, foundStop){
+		if(err){
+			console.log('err creating stop ' + err);
+			process.exit(0);
+		}
+
+		if(foundStop == null){
+			createNewStop(stop);
+		}
+		else {
+			// Update current stop by setting new sort_id
+			foundStop.sort_id = stop.sort_id;
+			foundStop.destinations = stop.destinations;
+			foundStop.save(function(err){
+				if(err){
+					console.log("ERROR SAVING UPDATE OF OLD BUSSTOP: ", foundStop, err);
+					process.exit(0);
+				}
+				startInserting();
+			});
+		}
+	});
+
+});
+
+function createNewStop(stop){
 	new Stop(stop).save(function(err, stop){
 		if(err)	console.log('err creating stop ' + err);
 
-		if(counter >= config.busStops.length)
-			insertDestinations();
-
-		counter++;
+		startInserting();
 	});
-});
+}
+
+function startInserting(){
+	if(counter >= config.busStops.length)
+		insertDestinations();
+
+	counter++;
+}
 
 function insertDestinations(){	
 	_.each(Object.keys(config.dictBusStops), function(dest){
@@ -37,6 +67,7 @@ function insertDestinations(){
 
 function saveSubDocument(destStop, orignal){
 	Stop.findOne({name: orignal}, function(err, stop){
+		console.log("FOUND: ", destStop);
 		var subStop = new Stop({
 	      _id: destStop._id    // assign the _id from the stop
 	    });
