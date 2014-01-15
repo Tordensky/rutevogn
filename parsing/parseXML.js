@@ -20,6 +20,10 @@ var parseFromDate = new Date();
 var parseToDate = new Date(2013,12,12);
 var listOfObjects = [];
 
+var timeOut = 100000;
+var mytimeOut;
+
+
 // print process.argv
 process.argv.forEach(function (val, index, array) {
 	console.log(index + ': ' + val);
@@ -160,7 +164,10 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 	dep.save(function(err){
 		if(err){
 			console.log("Error saving depature: " + err);
+			return;
 		}
+		clearTimeout(mytimeOut);
+		mytimeOut = setTimeout(quit, timeOut);
 	});
 }
 
@@ -179,4 +186,12 @@ function createUrl(from, date, id){
 	//console.log(urlStr);
 	return urlStr;
 }
+
+
+function quit() {
+    console.log("done sleeping");
+    console.log("DONE");
+	process.exit(0);
+};
+
 
