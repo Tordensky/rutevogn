@@ -13,7 +13,7 @@ exports.getDepatures = function(req, res){
 		.limit(10)
 		.exec(function(err, depatures){
 			if(err){
-				winston.log('error', err);
+				winston.log('error getDepatures ', err);
 				res.send(400);
 			}
 			else {
@@ -21,7 +21,6 @@ exports.getDepatures = function(req, res){
 			}
 		});
 };
-
 
 exports.getDepaturesFromNames = function(req, res){
 	var from = req.query.from;
@@ -36,7 +35,7 @@ exports.getDepaturesFromNames = function(req, res){
 		.limit(10)
 		.exec(function(err, depatures){
 			if(err){
-				winston.log('error', err);
+				winston.log('error getDepaturesFromNames ', err);
 				res.send(400);
 			}
 			else {

@@ -6,7 +6,7 @@ exports.getBusStops = function(req, res){
 	.populate('destinations')
 	.exec(function (err, destinations) {
 		if (err){
-			winston.log('error', err);
+			winston.log('error getBusStops ', err);
 			res.send(400);
 		}
 		else {
