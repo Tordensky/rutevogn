@@ -387,7 +387,7 @@ dictBusStops['Åsgård'] = [
 	{'name' : 'Myreng', 'routes' : ['Pyramiden:26']},
 	{'name' : 'UiT', 'routes' : ['Universitetssykehuset:34', 'Universitetssykehuset:36']},
 	{'name' : 'UNN', 'routes' : ['Universitetssykehuset:34', 'Universitetssykehuset:36']},
-	{'name' : 'Skoglyst', 'routes' : ['Skoglyst:36']},
+	{'name' : 'Skoglyst', 'routes' : ['Skoglyst:36', 'Pyramiden:26']},
 ];
 
 
@@ -403,8 +403,8 @@ dictBusStops['Myreng'] = [
 dictBusStops['Skoglyst'] = [
 	{'name' : 'UNN', 'routes' : ['Universitetssykehuset:36']},
 	{'name' : 'UiT', 'routes' : ['Universitetssykehuset:36']},
-	{'name' : 'Åsgård', 'routes' : ['Universitetssykehuset:36']},
-	{'name' : 'Elverhøy', 'routes' : ['Universitetssykehuset:36']},
+	{'name' : 'Åsgård', 'routes' : ['Universitetssykehuset:36', 'Giæverbukta:26']},
+	{'name' : 'Elverhøy', 'routes' : ['Universitetssykehuset:36', 'Giæverbukta:26']},
 	{'name' : 'Sentrum', 'routes' : ['Pyramiden:26']},
 	{'name' : 'Tromsdalen', 'routes' : ['Pyramiden:26']},
 	{'name' : 'Giæverbukta', 'routes' : ['Giæverbukta:26']}
@@ -463,7 +463,7 @@ dictBusStops['Elverhøy'] = [
 	{'name' : 'Sentrum', 'routes' : ['Pyramiden:26']},
 	{'name' : 'Tromsdalen', 'routes' : ['Pyramiden:26']},
 	{'name' : 'Myreng', 'routes' : ['Pyramiden:26']},
-	{'name' : 'Skoglyst', 'routes' : ['Skoglyst:36']},
+	{'name' : 'Skoglyst', 'routes' : ['Skoglyst:36', 'Pyramiden:26']},
 	{'name' : 'UNN', 'routes' : ['Universitetssykehuset:36']},
 	{'name' : 'UiT', 'routes' : ['Universitetssykehuset:36']},
 ];
