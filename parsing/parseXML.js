@@ -26,7 +26,7 @@ var mytimeOut;
 
 // print process.argv
 process.argv.forEach(function (val, index, array) {
-	console.log(index + ': ' + val);
+	// console.log(index + ': ' + val);
 	if(index == 2)
 		parseFromDate = new Date(val);
 	if(index == 3)
@@ -35,7 +35,7 @@ process.argv.forEach(function (val, index, array) {
 
 
 var numDaysForward = (parseToDate - parseFromDate) / (1000*60*60*24);
-console.log("Days to fetch: ", numDaysForward);
+// console.log("Days to fetch: ", numDaysForward);
 
 
 // Get ids and name for every stop, save it to stopsDict
@@ -49,7 +49,7 @@ Stop.find(function(err, stops){
 	});
 	var iterDate = parseFromDate;
 	for(var i=0; i <= numDaysForward; i++){
-		console.log("Crawls ", iterDate);
+		// console.log("Crawls ", iterDate);
 	
 		crawlerStart(new Date(clone(iterDate)));
 		iterDate.setDate(iterDate.getDate() + 1);
@@ -133,7 +133,7 @@ function prepareSave(depatures, depaturename, realname){
 
 					if(stopsDict[toDest.name] != undefined){
 						saveDepature(depatureTime, route, toDest.name, depaturename, preHash, realname);
-						console.log(preHash);
+						// console.log(preHash);
 					}
 				};
 			});
@@ -163,7 +163,7 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 
 	dep.save(function(err){
 		if(err){
-			console.log("Error saving depature: " + err);
+			// console.log("Error saving depature: " + err);
 			return;
 		}
 		clearTimeout(mytimeOut);

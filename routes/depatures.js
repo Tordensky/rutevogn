@@ -4,7 +4,6 @@ exports.getDepatures = function(req, res){
 	var fromId = req.query.from;
 	var toId = req.query.to;
 	var date = req.query.date;
-	console.log(req.query);
 
 	var start = new Date(date);
 
@@ -13,7 +12,7 @@ exports.getDepatures = function(req, res){
 		.limit(10)
 		.exec(function(err, depatures){
 			if(err){
-				winston.log('error getDepatures ', err);
+				// winston.log('error getDepatures ', err);
 				res.send(400);
 			}
 			else {
@@ -26,8 +25,6 @@ exports.getDepaturesFromNames = function(req, res){
 	var from = req.query.from;
 	var to = req.query.to;
 	var date = req.query.date;
-	console.log(req.query);
-
 	var start = new Date(date);
 
 	Depature.find({'from' : from, 'to' : to, 'date' : {$gte : start}})
@@ -35,7 +32,7 @@ exports.getDepaturesFromNames = function(req, res){
 		.limit(10)
 		.exec(function(err, depatures){
 			if(err){
-				winston.log('error getDepaturesFromNames ', err);
+				// winston.log('error getDepaturesFromNames ', err);
 				res.send(400);
 			}
 			else {
