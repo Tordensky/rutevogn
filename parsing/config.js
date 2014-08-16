@@ -592,7 +592,7 @@ realNames['Sentrum'] = ["Fr. Langes gate F1", "Fr. Langes gate F2", "Fr. Langes 
 "Sjøgata S2", "Sjøgata S3", "Sjøgata S4", "Havnegata H1", "Havnegata H2", "Havnegata H3"];
 realNames['Tromsdalen'] = ["Tromsdalen Bruvegen", "Tromsdalen kirke"];
 realNames['Storelva'] = ["Storelv snuplass"];
-realNames['UiT'] = ["UiTø/ISV"];
+realNames['UiT'] = ["UiT"];
 realNames['UNN'] = ["Universitetssykehuset"];
 realNames['Giæverbukta'] = ['Giæverbukta'];
 realNames['Kroken'] = ['Krokensenteret'];
