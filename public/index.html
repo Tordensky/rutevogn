@@ -83,12 +83,13 @@
     <!-- FACEBOOK API END -->
 
 
-    <!--<script>-->
-        <!--function goToHome(){-->
-            <!--RuteVogn.router.navigate('', true);-->
-        <!--}-->
-    <!--</script>-->
-    <div id="header" class="app-header-container"">
+    <script>
+        function goToHome(){
+            RuteVogn.router.navigate('', true);
+        }
+    </script>
+
+    <div id="header" class="app-header-container" onClick="goToHome()">
         <img class="logo-image" src="images/logo-buss.png">
         <h1>rutebuss.no (beta)</h1>
     </div>
