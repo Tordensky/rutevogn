@@ -75,6 +75,7 @@ function getXML(name, date){
 
 	_.each(realnames, function(realname){
 		var url = urlGetId + realname + "+%28Tromsø%29+%5Bholdeplass%5D";
+		//console.log("UrlGetId: " + url);
 
 		request(url, function (error, response, body){
 			var parseString = require('xml2js').parseString;
@@ -96,18 +97,20 @@ function getXML(name, date){
 }
 
 function getHtml(from, startDate, id, realname){
-	console.log(from, startDate);
+	//console.log(from, startDate);
 
 	var urlStr = createUrl(from, startDate, id);
 
 	request(urlStr, function (error, response, body){
 		var parseString = require('xml2js').parseString;
 		var xml = body;
-		parseString(xml, function (err, result) {
-           //console.log("Data %s", JSON.stringify(result, undefined, 2));
+		if(xml){
+			parseString(xml, function (err, result) {
+	           //console.log("Data %s", JSON.stringify(result, undefined, 2));
 
-		    prepareSave(result.departurelist['departure'], from, realname);
-		});
+			    prepareSave(result.departurelist['departure'], from, realname);
+			});
+		}
 	});
 }
 
@@ -115,6 +118,8 @@ function prepareSave(depatures, depaturename, realname){
 
 	_.each(depatures, function(depature){
 		depature = depature['$'];
+		//console.log("Data %s", JSON.stringify(depature, undefined, 2));
+
 		var depatureTime = createDateObject(depature.departuretime);
 		var route = depature.routename;
 		var destination = depature.destination;
@@ -148,7 +153,7 @@ function prepareSave(depatures, depaturename, realname){
 }
 
 function saveDepature(depatureTime, route, destination, depature, preHash, realname){
-	// console.log("FromId: ", stopsDict[depature].id, ", ToId: ", stopsDict[destination].id);
+	//console.log("FromId: ", stopsDict[depature].id, ", ToId: ", stopsDict[destination].id);
 	var dep = new Depature({
 		'fromId' : stopsDict[depature].id,
 		'from' : depature,
