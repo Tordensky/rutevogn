@@ -6,7 +6,7 @@ RuteVogn.Router = Backbone.Router.extend({
         'destination/:id': "destination",
         'trip/:fromId/:toId': "trip",
         'info': 'info',
-        'cities': 'cities'
+        'depature/:name': 'depature'
     },
 
     departureView: null,
@@ -17,21 +17,21 @@ RuteVogn.Router = Backbone.Router.extend({
     cityView: null,
 
     home: function() {
-        if (this.departureView == null) {
-            this.departureView = new RuteVogn.DepartureView({
-                el: $("#app")
-            });
-        }
-        this.departureView.showPage();
-    },
-
-    cities: function(){
         if (this.cityView == null) {
             this.cityView = new RuteVogn.ChangeCityView({
                 el: $("#app")
             });
         }
         this.cityView.showPage();
+    },
+
+    depature: function(cityName){
+        if (this.departureView == null) {
+            this.departureView = new RuteVogn.DepartureView({
+                el: $("#app")
+            });
+        }
+        this.departureView.showPage(cityName);
     },
 
     destination: function(id) {
@@ -51,7 +51,7 @@ RuteVogn.Router = Backbone.Router.extend({
     },
 
     trip: function(fromId, toId) {
-        var el = $("#app");
+        var el = $("#app"); 
 
         if (this.resultView == null) {
             this.resultView = new RuteVogn.ResultView({

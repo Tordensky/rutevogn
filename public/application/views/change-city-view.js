@@ -32,6 +32,10 @@ RuteVogn.ChangeCityView = RuteVogn.BaseView.extend({
     },
 
     onChangeCityClick: function(event) {
-        console.log("onChangeCityClick");
+        var cityId = $(event.currentTarget).data('id');
+        var cityName = $(event.currentTarget).data('name');
+        console.log("onChangeCityClick", cityId, cityName);
+        RuteVogn.router.navigate('depature/' + cityName, true);
+
     }
 });

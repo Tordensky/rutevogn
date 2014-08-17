@@ -1,7 +1,8 @@
 var Stop = require('../model/stop-model.js');
 
 exports.getBusStops = function(req, res){
-	Stop.find({})
+	console.log("Params: ", req.params.city);
+	Stop.find({city: req.params.city})
 	.sort({sort_id : 'asc'})
 	.populate('destinations')
 	.exec(function (err, destinations) {

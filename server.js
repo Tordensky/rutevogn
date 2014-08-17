@@ -25,12 +25,12 @@ app.configure(function(){
 
 app.get('/departure?', depature.getDepatures);
 app.get('/departureFromNames?', depature.getDepaturesFromNames);
-app.get('/stops', stop.getBusStops);
+app.get('/stops/:city', stop.getBusStops);
 app.get('/cities', cities.getCities);
 
-app.listen(8080);
+app.listen(3000);
 
-console.log('Listening on port 8080...');
+console.log('Listening on port 3000...');
 
 
 // forever restartall
