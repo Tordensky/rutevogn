@@ -1,5 +1,6 @@
 var express = require('express'),
 	depature = require('./routes/depatures'),
+	cities = require('./routes/cities'),
 	stop = require('./routes/stops');
 
 winston = require('winston');
@@ -25,6 +26,7 @@ app.configure(function(){
 app.get('/departure?', depature.getDepatures);
 app.get('/departureFromNames?', depature.getDepaturesFromNames);
 app.get('/stops', stop.getBusStops);
+app.get('/cities', cities.getCities);
 
 app.listen(8080);
 

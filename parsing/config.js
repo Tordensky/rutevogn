@@ -620,6 +620,9 @@ realNames['Doktordalen'] = ["Doktordalen"];
 realNames['Kræmer'] = ['Kræmer'];
 realNames['Prestvannet'] = ['Prestvannet'];
 
+cities = ['Tromsø', 'Oslo', 'Harstad', 'Bodø'];
+
+exports.cities = cities;
 exports.realNames = realNames;
 exports.dictBusStops = dictBusStops;
 exports.busStops = busStops;
