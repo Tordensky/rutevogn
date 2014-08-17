@@ -3,6 +3,7 @@ var RuteVogn = RuteVogn || {};
 RuteVogn.Router = Backbone.Router.extend({
     routes: {
         '': "home",
+        'city': 'chooseCityView',
         'destination/:id': "destination",
         'trip/:fromId/:toId': "trip",
         'info': 'info',
@@ -17,6 +18,29 @@ RuteVogn.Router = Backbone.Router.extend({
     cityView: null,
 
     home: function() {
+        html5 = this.supports_html5_storage();
+
+        if(html5 != false){
+            var city = window.localStorage.getItem("city");
+            console.log("City: ", city);
+            if(city){
+                RuteVogn.router.navigate('depature/' + city, true);
+                return;
+            }
+        }
+        else {
+            console.log("does not support html5");
+        }
+
+        if (this.cityView == null) {
+            this.cityView = new RuteVogn.ChangeCityView({
+                el: $("#app")
+            });
+        }
+        this.cityView.showPage();
+    },
+
+    chooseCityView: function(){
         if (this.cityView == null) {
             this.cityView = new RuteVogn.ChangeCityView({
                 el: $("#app")
@@ -71,5 +95,13 @@ RuteVogn.Router = Backbone.Router.extend({
             })
         }
         this.infoView.showView();
+    },
+
+    supports_html5_storage: function() {
+      try {
+        return 'localStorage' in window && window['localStorage'] !== null;
+      } catch (e) {
+        return false;
+      }
     }
 });
