@@ -84,7 +84,7 @@ function getXML(name, date){
 			parseString(xml, function (err, result) {
 	            // console.log("Data %s", JSON.stringify(result, undefined, 2));
 
-	            if(result.stages.i != undefined){
+	            if(result.stages.i){
 		            var id = result.stages.i[0]['$'].v;
 		            getHtml(name, date, id, realname);
 	            }
@@ -136,7 +136,7 @@ function prepareSave(depatures, depaturename, realname){
 
 					var preHash = realname + toDest.name + toDestRoute + depatureTime;
 
-					if(stopsDict[toDest.name] != undefined){
+					if(stopsDict[toDest.name]){
 						saveDepature(depatureTime, route, toDest.name, depaturename, preHash, realname);
 						// console.log(preHash);
 					}
@@ -192,11 +192,8 @@ function createUrl(from, date, id){
 	return urlStr;
 }
 
-
 function quit() {
     console.log("done sleeping");
     console.log("DONE");
 	process.exit(0);
 };
-
-
