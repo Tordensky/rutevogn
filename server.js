@@ -25,7 +25,10 @@ app.configure(function(){
 
 app.get('/departure?', depature.getDepatures);
 app.get('/departureFromNames?', depature.getDepaturesFromNames);
+app.get('/allroutes', depature.getAllRoutes);
 app.get('/stops/:city', stop.getBusStops);
+app.get('/stops/:city/minified', stop.getBusStopsMinified);
+
 app.get('/cities', cities.getCities);
 
 app.listen(3000);

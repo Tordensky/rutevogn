@@ -17,6 +17,24 @@ exports.getBusStops = function(req, res){
 	});
 }
 
+exports.getBusStopsMinified = function(req, res){
+	console.log("Params: ", req.params.city);
+	Stop.find({city: req.params.city}, 'name', function (err, destinations) {
+		if (err){
+			// winston.log('error getBusStops ', err);
+			res.send(400);
+		}
+		else {
+			// console.log("Data %s", JSON.stringify(destinations, undefined, 2));
+			var result = [];
+			destinations.forEach(function(bus){
+				result.push(bus.name);
+			})
+			res.json(result);
+		}
+	});
+}
+
 
 
 function sortItUp(destinations){

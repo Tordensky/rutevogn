@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
     <script type="text/javascript" src="http://backbonejs.org/backbone-min.js"></script>
     <script type="text/javascript" src="external/mustache.js"></script>
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 
     <!-- BACKBONE APPLICATION FILES TODO not correct path-->
     <script type="text/javascript" src="/application/router/router.js"></script>
@@ -93,13 +96,48 @@
 
         function goToChooseCityHeader(){
             RuteVogn.router.navigate('city', true);
-        }
+        }   
+        $( document ).ready(function() {
+            $.ajax({
+                url: "/stops/Tromsø/minified",
+                success: function(data) {
+                    console.log(data);
+                    $( "#searchfieldFra" ).autocomplete({
+                        source: data,
+                        delay: 100
+                    });
+                    $( "#searchfieldTil" ).autocomplete({
+                        source: data,
+                        delay: 100
+                    });
+                },
+                error: function() {
+                    alert("There was a problem with the request!");
+                }
+            });
+
+
+
+            console.log( "ready!" );
+            $('#searchfieldTil').keypress(function (e) {
+                if (e.which == 13) {
+                    e.preventDefault();
+                    console.log($(this).val());
+                    var til = $(this).val();
+                    var from = $('#searchfieldFrom').val();
+                    
+                }
+            });
+        });
+
     </script>
 
     <div id="header" class="app-header-container">
+        <button onClick="goToChooseCityHeader()">Velg by</button>
         <img class="logo-image" src="images/logo-buss.png" onClick="goToHomeHeader()">
         <h1>rutebuss.no</h1>
-        <button onClick="goToChooseCityHeader()">Velg by</button>
+        <input id="searchfieldFra" type="text" placeholder="Søk busstopp" />
+        <input id="searchfieldTil" type="text" placeholder="Søk busstopp" />
     </div>
     <div id="app" class="app">
         <!--APP CONTENT WILL BE RENDERED HERE-->

@@ -1,4 +1,5 @@
 var Depature = require('../model/depature-model');
+var Config = require('../parsing/config');
 
 exports.getDepatures = function(req, res){
 	var fromId = req.query.from;
@@ -39,4 +40,8 @@ exports.getDepaturesFromNames = function(req, res){
 				res.jsonp(depatures);
 			}
 		});
+}
+
+exports.getAllRoutes = function(req, res){
+	res.send(Config.allRoutes);
 }
