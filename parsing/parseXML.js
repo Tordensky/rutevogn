@@ -16,8 +16,8 @@ var alldestinations = {};
 var firstRootUrl = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v1DepartureXML?"
 var urlGetId = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v1PointStageXML?name="
 
-var parseFromDate = new Date();
-var parseToDate = new Date(2013,12,12);
+var parseFromDate;
+var parseToDate;
 var listOfObjects = [];
 
 var timeOut = 100000;
@@ -32,7 +32,6 @@ process.argv.forEach(function (val, index, array) {
 	if(index == 3)
 		parseToDate = new Date(val);
 });
-
 
 var numDaysForward = (parseToDate - parseFromDate) / (1000*60*60*24);
 // console.log("Days to fetch: ", numDaysForward);
@@ -178,7 +177,9 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 
 function createDateObject(string){
 	var bits = string.split(/\D/);
-	return new Date(bits[2], (bits[1] - 1), bits[0], bits[3], bits[4], bits[5]);
+	var date = new Date(bits[2], (bits[1] - 1), bits[0], bits[3], bits[4], bits[5]);
+	console.log("Date: ", string, date.toUTCString());
+	return date;
 }
 
 function createUrl(from, date, id){
