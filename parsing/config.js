@@ -580,7 +580,15 @@ dictBusStops['Kroken'] = [
 ];
 
 
+var allRoutes = [];
 
+for(var key in dictBusStops){
+	for(var i=0; i < dictBusStops[key].length; i++){
+		var to = dictBusStops[key][i];
+		console.log("Added: ", key + "-" + to.name);
+		allRoutes.push(key + "-" + to.name);
+	}
+}
 
 everyBusStopToParse = Object.keys(dictBusStops);
 
@@ -622,6 +630,7 @@ realNames['Prestvannet'] = ['Prestvannet'];
 
 cities = ['Tromsø', 'Oslo', 'Harstad', 'Bodø'];
 
+exports.allRoutes = allRoutes;
 exports.cities = cities;
 exports.realNames = realNames;
 exports.dictBusStops = dictBusStops;
