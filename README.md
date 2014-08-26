@@ -1,15 +1,28 @@
-rutevogn
+Rutevogn
 ========
 
-1. Download MongoDB
-2. Install node modules: inside root folder (where .git is) run "npm install". Installs all packages listed in package.json
-3. Start server with: "node server.js"
-4. Edit parsing/RUN.py to have the correct paths. Uncommenting the listed one will do. Run parser from root: python parsing/RUN.py
-5. Make very fancy features that will blow your socks off.
+A web application that provides a quick and easy way of finding your next bus in Tromsø.
+
+## Inital Setup
+
+1. Install MongoDB: http://www.mongodb.org/downloads
+
+2. Install Node: http://nodejs.org/download/
+  - This should give you the "npm" command in your terminal. 
+
+3. Install the node modules for the project. These modules and their specified versions is listed in package.json. These modules will be automaticly installed by typing the command `npm install` inside the root folder
+
+4. Start server by typing the command `node server.js` in the root folder: 
+
+5. Edit parsing/RUN.py to have the correct paths. Uncommenting the listed one will do. Run parser from the root folder with: `python parsing/RUN.py`
+
+6. Make very fancy features that will blow your socks off.
+
+## Bugs and Fixes
+TODO: How and where to run the parser if the data is wrong
 
 
-
---- PARSER ----
+## Tromskortet API Info
 
 var firstRootUrl = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v1DepartureXML?"
 var urlGetId = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v1PointStageXML?name="
@@ -31,9 +44,11 @@ COMMENTS:
 Has the ID ever changed? May skip that part of the parser. 
 
 
+### Production config:
+To get the node project to run forever on the apache server we are using the node module forever. This do require some setup to work after reboots in the crontab. Furhtermore we also utilize crontab to be able to run the parser each night at 0300. 
 
-Crontab config:
-```bash
+The following two lines of code should be present at the end of the crontab file at the production server:
+```
 0 2 * * * python /root/rutevogn//parsing/RUN.py > /dev/null 2>&1 
 @reboot /usr/bin/forever start /root/rutevogn/server.js
 ```
