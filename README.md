@@ -44,7 +44,7 @@ COMMENTS:
 Has the ID ever changed? May skip that part of the parser. 
 
 
-### Production config:
+## Production crontab config:
 To get the node project to run forever on the apache server we are using the node module forever. This do require some setup to work after reboots in the crontab. Furhtermore we also utilize crontab to be able to run the parser each night at 0300. 
 
 The following two lines of code should be present at the end of the crontab file at the production server:
