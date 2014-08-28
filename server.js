@@ -23,6 +23,7 @@ app.configure(function(){
 });
 
 app.get('/departure?', depature.getDepatures);
+app.get('/departureFromNames?', depature.getDepaturesFromNames);
 app.get('/stops', stop.getBusStops);
 
 app.listen(8080);

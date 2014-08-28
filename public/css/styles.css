@@ -55,9 +55,9 @@ h1 {
 
 .app-footer-container {
     width: 100%;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    font-size: 1.5em;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-size: 15px;
     font-weight: bold;
 
     background-color: #252525;
@@ -65,11 +65,28 @@ h1 {
     color: white;
 }
 
+.footer-mail {
+    color: #ffffff;
+    text-decoration: none;
+}
+
 .buss-stops-container {
     width: 100%;
     min-height: 300px;
     text-align: left;
     /*margin-bottom: 180px;*/
+}
+
+.footer-text-container {
+    display: inline-block;
+    position: relative;
+    top: -10px;
+}
+
+.facebook-like-container {
+    display: inline-block;
+    margin-left: 10px;
+    overflow: hidden;
 }
 
 .clear {

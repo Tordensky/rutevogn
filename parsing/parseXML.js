@@ -16,8 +16,8 @@ var alldestinations = {};
 var firstRootUrl = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v1DepartureXML?"
 var urlGetId = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v1PointStageXML?name="
 
-var parseFromDate = new Date();
-var parseToDate = new Date(2013,12,12);
+var parseFromDate;
+var parseToDate;
 var listOfObjects = [];
 
 var timeOut = 100000;
@@ -26,16 +26,15 @@ var mytimeOut;
 
 // print process.argv
 process.argv.forEach(function (val, index, array) {
-	console.log(index + ': ' + val);
+	// console.log(index + ': ' + val);
 	if(index == 2)
 		parseFromDate = new Date(val);
 	if(index == 3)
 		parseToDate = new Date(val);
 });
 
-
 var numDaysForward = (parseToDate - parseFromDate) / (1000*60*60*24);
-console.log("Days to fetch: ", numDaysForward);
+// console.log("Days to fetch: ", numDaysForward);
 
 
 // Get ids and name for every stop, save it to stopsDict
@@ -49,7 +48,7 @@ Stop.find(function(err, stops){
 	});
 	var iterDate = parseFromDate;
 	for(var i=0; i <= numDaysForward; i++){
-		console.log("Crawls ", iterDate);
+		// console.log("Crawls ", iterDate);
 	
 		crawlerStart(new Date(clone(iterDate)));
 		iterDate.setDate(iterDate.getDate() + 1);
@@ -75,6 +74,7 @@ function getXML(name, date){
 
 	_.each(realnames, function(realname){
 		var url = urlGetId + realname + "+%28Tromsø%29+%5Bholdeplass%5D";
+		//console.log("UrlGetId: " + url);
 
 		request(url, function (error, response, body){
 			var parseString = require('xml2js').parseString;
@@ -83,7 +83,7 @@ function getXML(name, date){
 			parseString(xml, function (err, result) {
 	            // console.log("Data %s", JSON.stringify(result, undefined, 2));
 
-	            if(result.stages.i != undefined){
+	            if(result.stages.i){
 		            var id = result.stages.i[0]['$'].v;
 		            getHtml(name, date, id, realname);
 	            }
@@ -96,18 +96,20 @@ function getXML(name, date){
 }
 
 function getHtml(from, startDate, id, realname){
-	console.log(from, startDate);
+	//console.log(from, startDate);
 
 	var urlStr = createUrl(from, startDate, id);
 
 	request(urlStr, function (error, response, body){
 		var parseString = require('xml2js').parseString;
 		var xml = body;
-		parseString(xml, function (err, result) {
-           //console.log("Data %s", JSON.stringify(result, undefined, 2));
+		if(xml){
+			parseString(xml, function (err, result) {
+	           //console.log("Data %s", JSON.stringify(result, undefined, 2));
 
-		    prepareSave(result.departurelist['departure'], from, realname);
-		});
+			    prepareSave(result.departurelist['departure'], from, realname);
+			});
+		}
 	});
 }
 
@@ -115,6 +117,8 @@ function prepareSave(depatures, depaturename, realname){
 
 	_.each(depatures, function(depature){
 		depature = depature['$'];
+		//console.log("Data %s", JSON.stringify(depature, undefined, 2));
+
 		var depatureTime = createDateObject(depature.departuretime);
 		var route = depature.routename;
 		var destination = depature.destination;
@@ -131,9 +135,9 @@ function prepareSave(depatures, depaturename, realname){
 
 					var preHash = realname + toDest.name + toDestRoute + depatureTime;
 
-					if(stopsDict[toDest.name] != undefined){
+					if(stopsDict[toDest.name]){
 						saveDepature(depatureTime, route, toDest.name, depaturename, preHash, realname);
-						console.log(preHash);
+						// console.log(preHash);
 					}
 				};
 			});
@@ -148,7 +152,7 @@ function prepareSave(depatures, depaturename, realname){
 }
 
 function saveDepature(depatureTime, route, destination, depature, preHash, realname){
-	// console.log("FromId: ", stopsDict[depature].id, ", ToId: ", stopsDict[destination].id);
+	//console.log("FromId: ", stopsDict[depature].id, ", ToId: ", stopsDict[destination].id);
 	var dep = new Depature({
 		'fromId' : stopsDict[depature].id,
 		'from' : depature,
@@ -163,7 +167,7 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 
 	dep.save(function(err){
 		if(err){
-			console.log("Error saving depature: " + err);
+			// console.log("Error saving depature: " + err);
 			return;
 		}
 		clearTimeout(mytimeOut);
@@ -173,7 +177,9 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 
 function createDateObject(string){
 	var bits = string.split(/\D/);
-	return new Date(bits[2], (bits[1] - 1), bits[0], bits[3], bits[4], bits[5]);
+	var date = new Date(bits[2], (bits[1] - 1), bits[0], bits[3], bits[4], bits[5]);
+	console.log("Date: ", string, date.toUTCString());
+	return date;
 }
 
 function createUrl(from, date, id){
@@ -187,11 +193,8 @@ function createUrl(from, date, id){
 	return urlStr;
 }
 
-
 function quit() {
     console.log("done sleeping");
     console.log("DONE");
 	process.exit(0);
 };
-
-
