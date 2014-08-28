@@ -54,3 +54,14 @@ build
 .grunt
 
 node_modules/
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+
+
+# Intellij
+.idea/
+*.iws
