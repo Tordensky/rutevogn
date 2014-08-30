@@ -4,12 +4,21 @@ var _ = require('underscore');
 var Stop = require('../model/stop-model.js');
 var async = require('async');
 var Schema = mongoose.Schema;
-var config = require('./config.js');	// local config file
 
-
+var config = require('./configoslo.js');		// default
 var numSubDocuments = countHowManySubDocuments();
 var iter = 0;
 var counter = 1;
+console.log("ARGV faklsjflsajflksjf lkj");
+console.log("ARGV: ", process.argv)
+
+if(process.argv[2] === "Oslo"){
+	config = require('./configoslo.js');	// local config file
+}
+else if(process.argv[2] === "Tromso"){
+	config = require('./configtromso.js');	// local config file
+}
+
 // Insert bus stops to DB
 _.each(config.busStops, function(stop){
 	Stop.findOne({name : stop.name}, function(err, foundStop){
@@ -39,7 +48,10 @@ _.each(config.busStops, function(stop){
 
 function createNewStop(stop){
 	new Stop(stop).save(function(err, stop){
-		if(err)	console.log('err creating stop ' + err);
+		if(err){
+			console.log('err creating stop ' + err);
+			process.exit(9);
+		}
 
 		startInserting();
 	});
@@ -56,8 +68,12 @@ function insertDestinations(){
 	_.each(Object.keys(config.dictBusStops), function(dest){
 		_.each(config.dictBusStops[dest], function(tmp){
 			Stop.findOne({name: tmp.name}, function(err, stop){
-				if(err)	console.log(err);
-				console.log("Found ", stop, err);
+				if(err){
+					console.log(err);
+					process.exit(1);
+
+				}
+				console.log("Found ", stop);
 
 				saveSubDocument(stop, dest);
 			});
@@ -66,6 +82,7 @@ function insertDestinations(){
 };
 
 function saveSubDocument(destStop, orignal){
+	console.log(destStop);
 	Stop.findOne({name: orignal}, function(err, stop){
 		console.log("FOUND: ", destStop);
 		var subStop = new Stop({

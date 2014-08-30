@@ -10,6 +10,7 @@ var request = require('request');
 var async = require('async');
 var crypto = require('crypto');
 var config = require('./config.js');	// local config file
+var common  =require('./common.js');
 
 // Local variables
 var stopsDict = {};
@@ -23,19 +24,6 @@ var listOfObjects = [];
 
 var timeOut = 100000;
 var mytimeOut;
-
-_.each(config.cities, function(name){
-	var city = City({
-		'name': name
-	});
-
-	city.save(function(err){
-		if(err){
-			console.log("Error saving depature: " + err);
-			return;
-		};
-	});
-});
 
 // print process.argv
 process.argv.forEach(function (val, index, array) {
@@ -51,14 +39,7 @@ var numDaysForward = (parseToDate - parseFromDate) / (1000*60*60*24);
 // console.log("Days to fetch: ", numDaysForward);
 
 // Get ids and name for every stop, save it to stopsDict
-Stop.find(function(err, stops){
-	_.each(stops, function(stop){
-		// console.log(stop);
-		stopsDict[stop.name] = {
-			'id' : stop._id,
-			'city' : stop.city
-		};
-	});
+function start(){
 	var iterDate = parseFromDate;
 	for(var i=0; i <= numDaysForward; i++){
 		// console.log("Crawls ", iterDate);
@@ -66,7 +47,7 @@ Stop.find(function(err, stops){
 		crawlerStart(new Date(clone(iterDate)));
 		iterDate.setDate(iterDate.getDate() + 1);
 	}
-});
+}
 
 
 // Cheat clone
