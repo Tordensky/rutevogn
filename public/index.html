@@ -5,6 +5,7 @@
     <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
     <script type="text/javascript" src="http://backbonejs.org/backbone-min.js"></script>
     <script type="text/javascript" src="external/mustache.js"></script>
+    <script type='application/javascript' src='external/fastclick.js'></script>
 
     <!-- BACKBONE APPLICATION FILES TODO not correct path-->
     <script type="text/javascript" src="/application/router/router.js"></script>
@@ -23,6 +24,10 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+            window.addEventListener('load', function() {
+                FastClick.attach(document.body);
+            }, false);
+
             var setFooter = function setFooter() {
                 var windowHeight = $(window).height();
                 var headerHeight = $("#header").outerHeight();
