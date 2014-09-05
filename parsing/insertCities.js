@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/rutevogn');
+mongoose.connect('mongodb://localhost:27017/rutevogn-develop');
 
 var Depature = require('../model/depature-model');
 var Stop = require('../model/stop-model.js');
@@ -9,7 +9,7 @@ var _ = require('underscore');
 var request = require('request');
 var async = require('async');
 var crypto = require('crypto');
-var config = require('./config.js');	// local config file
+var config = require('./configcommon.js');	// local config file
 
 
 var length = config.cities.length;
@@ -26,7 +26,8 @@ _.each(config.cities, function(name){
 			return;
 		};
 		saved += 1;
-		if(saved == length){
+		if(saved === length){
+			console.log("exiting insert cities");
 			process.exit(0);
 		}
 	});

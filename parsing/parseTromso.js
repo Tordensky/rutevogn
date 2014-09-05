@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/rutevogn');
+mongoose.connect('mongodb://localhost:27017/rutevogn-develop');
 
 var Depature = require('../model/depature-model');
 var Stop = require('../model/stop-model.js');
@@ -9,7 +9,7 @@ var _ = require('underscore');
 var request = require('request');
 var async = require('async');
 var crypto = require('crypto');
-var config = require('./config.js');	// local config file
+var config = require('./configtromso.js');	// local config file
 var common  =require('./common.js');
 
 // Local variables
@@ -25,6 +25,8 @@ var listOfObjects = [];
 var timeOut = 100000;
 var mytimeOut;
 
+console.log("------ Starting parsing tromso ------");
+
 // print process.argv
 process.argv.forEach(function (val, index, array) {
 	// console.log(index + ': ' + val);
@@ -36,19 +38,20 @@ process.argv.forEach(function (val, index, array) {
 
 
 var numDaysForward = (parseToDate - parseFromDate) / (1000*60*60*24);
-// console.log("Days to fetch: ", numDaysForward);
 
-// Get ids and name for every stop, save it to stopsDict
-function start(){
+
+stopsDict = {}
+common.findAndReturnStopIds(function(stops){
+	stopsDict = stops;
 	var iterDate = parseFromDate;
+	
 	for(var i=0; i <= numDaysForward; i++){
 		// console.log("Crawls ", iterDate);
 	
 		crawlerStart(new Date(clone(iterDate)));
 		iterDate.setDate(iterDate.getDate() + 1);
 	}
-}
-
+});
 
 // Cheat clone
 function clone(a) {

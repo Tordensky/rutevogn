@@ -1,23 +1,28 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/rutevogn');
+mongoose.connect('mongodb://localhost:27017/rutevogn-develop');
 var _ = require('underscore');
 var Stop = require('../model/stop-model.js');
 var async = require('async');
 var Schema = mongoose.Schema;
 
-var config = require('./configoslo.js');		// default
-var numSubDocuments = countHowManySubDocuments();
-var iter = 0;
-var counter = 1;
-console.log("ARGV faklsjflsajflksjf lkj");
-console.log("ARGV: ", process.argv)
+var config = null;
 
 if(process.argv[2] === "Oslo"){
+	console.log("Process argv is oslo")
 	config = require('./configoslo.js');	// local config file
 }
 else if(process.argv[2] === "Tromso"){
+	console.log("Process argv is Tromso")
 	config = require('./configtromso.js');	// local config file
 }
+else {
+	console.log("Process argv is not set")
+	process.exit(1);
+}
+
+var numSubDocuments = countHowManySubDocuments();
+var iter = 0;
+var counter = 1;
 
 // Insert bus stops to DB
 _.each(config.busStops, function(stop){
@@ -27,7 +32,7 @@ _.each(config.busStops, function(stop){
 			process.exit(0);
 		}
 
-		if(foundStop == null){
+		if(foundStop === null){
 			createNewStop(stop);
 		}
 		else {
