@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/rutevogn-develop');
+mongoose.connect(require('./configcommon').mongodbUrl);
 var _ = require('underscore');
 var Stop = require('../model/stop-model.js');
 var async = require('async');

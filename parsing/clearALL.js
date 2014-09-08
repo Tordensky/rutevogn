@@ -1,7 +1,8 @@
 //SHOULD ONLY BE USED FOR TEST PURPOSES
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/rutevogn-develop');
+
+mongoose.connect(require('./configcommon').mongodbUrl);
 
 var Depature = require('../model/depature-model');
 var Stop = require('../model/stop-model.js');
