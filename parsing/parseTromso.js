@@ -18,8 +18,8 @@ var alldestinations = {};
 var firstRootUrl = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v1DepartureXML?"
 var urlGetId = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v1PointStageXML?name="
 
-var parseFromDate = new Date();
-var parseToDate = new Date(2013,12,12);
+var parseFromDate;
+var parseToDate;
 var listOfObjects = [];
 
 var timeOut = 100000;
@@ -35,7 +35,6 @@ process.argv.forEach(function (val, index, array) {
 	if(index == 3)
 		parseToDate = new Date(val);
 });
-
 
 var numDaysForward = (parseToDate - parseFromDate) / (1000*60*60*24);
 
@@ -80,7 +79,7 @@ function getXML(name, date){
 			parseString(xml, function (err, result) {
 	            // console.log("Data %s", JSON.stringify(result, undefined, 2));
 
-	            if(result.stages.i != undefined){
+	            if(result.stages.i){
 		            var id = result.stages.i[0]['$'].v;
 		            getHtml(name, date, id, realname);
 	            }
@@ -132,7 +131,7 @@ function prepareSave(depatures, depaturename, realname){
 
 					var preHash = realname + toDest.name + toDestRoute + depatureTime;
 
-					if(stopsDict[toDest.name] != undefined){
+					if(stopsDict[toDest.name]){
 						saveDepature(depatureTime, route, toDest.name, depaturename, preHash, realname);
 						// console.log(preHash);
 					}
@@ -174,7 +173,9 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 
 function createDateObject(string){
 	var bits = string.split(/\D/);
-	return new Date(bits[2], (bits[1] - 1), bits[0], bits[3], bits[4], bits[5]);
+	var date = new Date(bits[2], (bits[1] - 1), bits[0], bits[3], bits[4], bits[5]);
+	console.log("Date: ", string, date.toUTCString());
+	return date;
 }
 
 function createUrl(from, date, id){
@@ -188,11 +189,8 @@ function createUrl(from, date, id){
 	return urlStr;
 }
 
-
 function quit() {
     console.log("done sleeping");
     console.log("DONE");
 	process.exit(0);
 };
-
-
