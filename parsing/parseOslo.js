@@ -12,7 +12,12 @@ var common = require('./common.js');
 var config = require('./configoslo.js');
 var rootUrl = "http://reisapi.ruter.no/StopVisit/GetDepartures/"
 
+var timeOut = 10000;
+var mytimeOut;
+
 console.log("------ Starting parsing oslo ------");
+
+
 
 dbInsertedStops = {}
 common.findAndReturnStopIds(function(stops){
@@ -20,15 +25,14 @@ common.findAndReturnStopIds(function(stops){
 	console.log("dbInsertedStops", dbInsertedStops);
 	_.each(Object.keys(dbInsertedStops), function(nameStop){
 		_.each(dbInsertedStops[nameStop]['ids'], function(id){
-			console.log("Id: ", id, "nameStop");
+			console.log("Id: ", id, "nameStop", nameStop);
 			fetchDepaturesFromStop(id, nameStop);
 		});
 	});
 });
 
-
 function fetchDepaturesFromStop(id, depatureName){
-	var url = rootUrl + id //+ "?datetime=2014-08-30T16:37";
+	var url = rootUrl + id //+ "?datetime=2014-09-06T16:51";
 	request(url, function (error, response, allDepaturesBody){
 		if(error){
 			console.log(error);
@@ -95,6 +99,8 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 			console.log("Error saving depature: " + err, preHash);
 			return;
 		}
+		clearTimeout(mytimeOut);
+		mytimeOut = setTimeout(quit, timeOut);
 	});
 }
 
@@ -104,3 +110,10 @@ function createDateObject(string){
 	console.log("Date: ", string, date.toUTCString());
 	return date;
 }
+
+
+function quit() {
+    console.log("done sleeping");
+    console.log("DONE");
+	process.exit(0);
+};
