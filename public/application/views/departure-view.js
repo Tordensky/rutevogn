@@ -9,14 +9,13 @@ RuteVogn.DepartureView = RuteVogn.BaseView.extend({
 
     initialize: function(options) {
         this.el = options.el;
-
         this.busStopsCollection = new RuteVogn.BussStopCollection();
-
     },
 
-    showPage: function() {
+    showPage: function(cityName) {
         _gaq.push(['_trackPageview', '/home']);
-        this.getBusStops()
+        this.busStopsCollection.url = "stops/" + cityName;  
+        this.getBusStops();
     },
 
     getBusStops: function() {

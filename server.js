@@ -1,12 +1,14 @@
 var express = require('express'),
 	depature = require('./routes/depatures'),
+	cities = require('./routes/cities'),
+	configcommon = require('./parsing/configcommon'),
 	stop = require('./routes/stops');
 
 winston = require('winston');
 winston.add(winston.transports.File, { filename: 'error.log' });
 
 mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/rutevogn');
+mongoose.connect(configcommon.mongodbUrl);
 
 var app = express();
 
@@ -24,11 +26,14 @@ app.configure(function(){
 
 app.get('/departure?', depature.getDepatures);
 app.get('/departureFromNames?', depature.getDepaturesFromNames);
-app.get('/stops', stop.getBusStops);
+app.get('/allroutes', depature.getAllRoutes);
+app.get('/stops/:city', stop.getBusStops);
+app.get('/stops/:city/minified', stop.getBusStopsMinified);
+app.get('/cities', cities.getCities);
 
-app.listen(8080);
+app.listen(3000);
 
-console.log('Listening on port 8080...');
+console.log('Listening on port 3000...');
 
 
 // forever restartall
