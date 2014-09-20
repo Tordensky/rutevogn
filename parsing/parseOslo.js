@@ -22,10 +22,10 @@ console.log("------ Starting parsing oslo ------");
 dbInsertedStops = {}
 common.findAndReturnStopIds(function(stops){
 	dbInsertedStops = stops;
-	console.log("dbInsertedStops", dbInsertedStops);
+	// console.log("dbInsertedStops", dbInsertedStops);
 	_.each(Object.keys(dbInsertedStops), function(nameStop){
 		_.each(dbInsertedStops[nameStop]['ids'], function(id){
-			console.log("Id: ", id, "nameStop", nameStop);
+			// console.log("Id: ", id, "nameStop", nameStop);
 			fetchDepaturesFromStop(id, nameStop);
 		});
 	});
@@ -69,10 +69,10 @@ function shouldSaveDepature(depatureName, destinationName, line){
 			var realLine = tmp[1];
 
 			if(line === realLine && realDest === destinationName){
-				console.log(realLine + ":" + realDest + " equals? " + line + ":" + destinationName);
+				// console.log(realLine + ":" + realDest + " equals? " + line + ":" + destinationName);
 
 				// Found a depature to save
-				console.log(line, realLine, realDest, destinationName);
+				// console.log(line, realLine, realDest, destinationName);
 				returnvalue.push([true, to['name']]);
 			}
 		});
@@ -81,7 +81,7 @@ function shouldSaveDepature(depatureName, destinationName, line){
 }
 
 function saveDepature(depatureTime, route, destination, depature, preHash, realname){
-	console.log("Save - Depature: ",depature, "Destination: ", destination);
+	// console.log("Save - Depature: ",depature, "Destination: ", destination);
 	var dep = new Depature({
 		'fromId' : dbInsertedStops[depature].id,
 		'from' : depature,
@@ -96,7 +96,7 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 
 	dep.save(function(err){
 		if(err){
-			console.log("Error saving depature: " + err, preHash);
+			// console.log("Error saving depature: " + err, preHash);
 			return;
 		}
 		clearTimeout(mytimeOut);
@@ -107,7 +107,7 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 function createDateObject(string){
 	var bits = string.split(/\D/);
 	var date = new Date(bits[0], (bits[1]), bits[2], bits[3], bits[4], bits[5]);
-	console.log("Date: ", string, date.toUTCString());
+	// console.log("Date: ", string, date.toUTCString());
 	return date;
 }
 
