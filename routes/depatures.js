@@ -1,6 +1,6 @@
 var Depature = require('../model/depature-model');
-var Config = require('../parsing/config');
-
+var Configtromso = require('../parsing/configtromso');
+var Configoslo = require('../parsing/configoslo')
 exports.getDepatures = function(req, res){
 	var fromId = req.query.from;
 	var toId = req.query.to;
@@ -43,5 +43,6 @@ exports.getDepaturesFromNames = function(req, res){
 }
 
 exports.getAllRoutes = function(req, res){
-	res.send(Config.allRoutes);
+
+	res.send(Configtromso.allRoutes + Configoslo.allRoutes);
 }

@@ -10,6 +10,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
     },
 
     initialize: function(options) {
+        // TODO add slider to search for avganger in the next 24h
         this.el = options.el;
         this.travelInfoCollection = new RuteVogn.TravelInfoCollection()
 

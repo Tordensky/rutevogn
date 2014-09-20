@@ -28,17 +28,45 @@ body {
     position: relative;
 }
 
+
+
 .app-header-container {
     width: 100%;
     padding-top: 1em;
     padding-bottom: 1em;
 
     background-color: #252525;
+    font-size: 1em;
+}
 
+.app-header-general {
     text-align: center;
     color: white;
+}
 
-    font-size: 1em;
+.menu {
+    float: left;
+    padding-left: 15px;
+    display: block;
+}
+    
+.menulinks {
+    display: block; padding: 25px 40px;
+    color: #757575; text-decoration: none;
+}
+
+.dropdownlist {
+    top: 48px;
+    left: 0;
+    width: 150px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 0 20px;
+    list-style: none;
+    position: absolute;
+    display: none;
+    background-color: #ffffff;
 }
 
 h1 {

@@ -7,16 +7,11 @@ winston = require('winston');
 winston.add(winston.transports.File, { filename: 'error.log' });
 
 mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/rutevogn');
+mongoose.connect('mongodb://localhost:27017/rutevogn-develop');
 
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
-
-// var logger = function(req, res, next) {
-// 	winston.log("GOT REQUEST !", req.params, req.query);
-//     next(); 
-// }
 
 app.configure(function(){
 	// app.use(logger); // Here you add your logger to the stack.
@@ -31,10 +26,18 @@ app.get('/stops/:city/minified', stop.getBusStopsMinified);
 
 app.get('/cities', cities.getCities);
 
-app.listen(3000);
+function myFuc(){
+        var exec = require('child_process').exec;
+        var cmd = 'python /root/new/rutevogn/parsing/RUNOSLO.py';
+        console.log("Reparsing");
+        //var cmd = 'python ' + __dirname + '/parsing/RUNOSLO.py';
+        exec(cmd, function(err, stdout){
+                if(err){
+                        console.log("ERROR: ", err);
+                }
+        });
+}
 
-console.log('Listening on port 3000...');
-
-
-// forever restartall
-// service apache2 restart
+setInterval(myFuc, 3600000);
+myFuc();
+exports.app = app;
