@@ -5,7 +5,8 @@ var StopSchema = new Schema({
     name : { type: String, required: true},
     city : { type: String, required: true},
     destinations : [{type: Schema.Types.ObjectId, ref: 'Stop'}],
-    sort_id : {type: Number, required: true}
+    sort_id : {type: Number, required: true},
+    ids : [{type: String}]
 });
 
 module.exports = mongoose.model('Stop', StopSchema);
