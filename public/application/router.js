@@ -13,23 +13,58 @@ var DepartureView = require('./views/departure-view'),
 module.exports = Backbone.Router.extend({
     routes: {
         '': "home",
+        'city': 'chooseCityView',
         'destination/:id': "destination",
         'trip/:fromId/:toId': "trip",
-        'info': "info"
+        'info': 'info',
+        'depature/:name': 'depature'
     },
 
     departureView: null,
     destinationView: null,
     resultView: null,
     infoView: null,
+    cityView: null,
 
     home: function() {
+        html5 = this.supports_html5_storage();
+
+        if(html5 != false){
+            var city = window.localStorage.getItem("city");
+            console.log("City: ", city);
+            if(city){
+                RuteVogn.router.navigate('depature/' + city, true);
+                return;
+            }
+        }
+        else {
+            console.log("does not support html5");
+        }
+
+        if (this.cityView == null) {
+            this.cityView = new RuteVogn.ChangeCityView({
+                el: $("#app")
+            });
+        }
+        this.cityView.showPage();
+    },
+
+    chooseCityView: function(){
+        if (this.cityView == null) {
+            this.cityView = new RuteVogn.ChangeCityView({
+                el: $("#app")
+            });
+        }
+        this.cityView.showPage();
+    },
+
+    depature: function(cityName){
         if (this.departureView == null) {
             this.departureView = new DepartureView({
                 el: $("#app")
             });
         }
-        this.departureView.showPage();
+        this.departureView.showPage(cityName);
     },
 
     destination: function(id) {
@@ -49,7 +84,7 @@ module.exports = Backbone.Router.extend({
     },
 
     trip: function(fromId, toId) {
-        var el = $("#app");
+        var el = $("#app"); 
 
         if (this.resultView == null) {
             this.resultView = new ResultView({
@@ -69,5 +104,13 @@ module.exports = Backbone.Router.extend({
             })
         }
         this.infoView.showView();
+    },
+
+    supports_html5_storage: function() {
+      try {
+        return 'localStorage' in window && window['localStorage'] !== null;
+      } catch (e) {
+        return false;
+      }
     }
 });

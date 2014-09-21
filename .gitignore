@@ -49,15 +49,21 @@ pids
 results
 .grunt
 
-node_modules/
+
+node_modules
+
+rutevogn.iml
+
 
 ## generic files to ignore
 *~
 *.lock
 *.DS_Store
 *.swp
+*.log
 
 
 # Intellij
 .idea/
 *.iws
+
