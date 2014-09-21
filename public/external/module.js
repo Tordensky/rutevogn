@@ -1610,7 +1610,7 @@
 
 },{"underscore":6}],2:[function(require,module,exports){
 module.exports=require(1)
-},{"/Users/Simen/Desktop/domainhandler-rutevogn/production/node_modules/Backbone/backbone.js":1,"underscore":6}],3:[function(require,module,exports){
+},{"/Users/Simen/Projects/Rutevogn/rutevogn/node_modules/Backbone/backbone.js":1,"underscore":6}],3:[function(require,module,exports){
 /**
  * @preserve FastClick: polyfill to remove click delays on browsers with touch UIs.
  *
@@ -13789,7 +13789,7 @@ Backbone.history.start();
         setFooter();
     };
 })();
-},{"./router":12,"backbone":2,"fastclick":3,"jquery-browserify":4}],8:[function(require,module,exports){
+},{"./router":14,"backbone":2,"fastclick":3,"jquery-browserify":4}],8:[function(require,module,exports){
 var $ = require('jquery-browserify'),
 	BussStopModel = require('./buss-stop-model'),
     Backbone = require('backbone');
@@ -13812,6 +13812,27 @@ module.exports = Backbone.Model.extend({
    url: "/stops"
 });
 },{"backbone":2,"jquery-browserify":4}],10:[function(require,module,exports){
+var $ = require('jquery-browserify'),
+	CityModel = require('./city-model'),
+    Backbone = require('backbone');
+
+Backbone.$ = $;
+
+module.exports = Backbone.Collection.extend({
+    model: CityModel,
+    url: "cities"
+});
+},{"./city-model":11,"backbone":2,"jquery-browserify":4}],11:[function(require,module,exports){
+var $ = require('jquery-browserify'),
+    Backbone = require('backbone');
+
+Backbone.$ = $;
+
+module.exports = Backbone.Model.extend({
+    url: "/city"
+});
+
+},{"backbone":2,"jquery-browserify":4}],12:[function(require,module,exports){
 var	Backbone = require('Backbone'),
 	TravelInfoModel = require('./travel-info-model'),
 	$ = require('jquery-browserify');
@@ -13824,7 +13845,7 @@ module.exports = Backbone.Collection.extend({
 });
 
 
-},{"./travel-info-model":11,"Backbone":1,"jquery-browserify":4}],11:[function(require,module,exports){
+},{"./travel-info-model":13,"Backbone":1,"jquery-browserify":4}],13:[function(require,module,exports){
 var $ = require('jquery-browserify'),
 	Backbone = require('Backbone');
 
@@ -13833,7 +13854,7 @@ Backbone.$ = $;
 module.exports = Backbone.Model.extend({
     url: "/departure"
 });
-},{"Backbone":1,"jquery-browserify":4}],12:[function(require,module,exports){
+},{"Backbone":1,"jquery-browserify":4}],14:[function(require,module,exports){
 "use strict";
 
 var $ = require('jquery-browserify'),
@@ -13844,28 +13865,64 @@ Backbone.$ = $;
 var DepartureView = require('./views/departure-view'),
     DestinationView = require('./views/destination-view'),
     ResultView = require('./views/result-view'),
+    ChangeCityView = require('./views/change-city-view'),
     InfoView = require('./views/info-view');
 
 module.exports = Backbone.Router.extend({
     routes: {
         '': "home",
+        'city': 'chooseCityView',
         'destination/:id': "destination",
         'trip/:fromId/:toId': "trip",
-        'info': "info"
+        'info': 'info',
+        'depature/:name': 'depature'
     },
 
     departureView: null,
     destinationView: null,
     resultView: null,
     infoView: null,
+    cityView: null,
 
     home: function() {
+        var html5 = this.supports_html5_storage();
+
+        if(html5 != false){
+            var city = window.localStorage.getItem("city");
+            console.log("City: ", city);
+            if(city){
+                window.RuteVogn.Router.navigate('depature/' + city, true);
+                return;
+            }
+        }
+        else {
+            console.log("does not support html5");
+        }
+
+        if (this.cityView == null) {
+            this.cityView = new ChangeCityView({
+                el: $("#app")
+            });
+        }
+        this.cityView.showPage();
+    },
+
+    chooseCityView: function(){
+        if (this.cityView == null) {
+            this.cityView = new ChangeCityView({
+                el: $("#app")
+            });
+        }
+        this.cityView.showPage();
+    },
+
+    depature: function(cityName){
         if (this.departureView == null) {
             this.departureView = new DepartureView({
                 el: $("#app")
             });
         }
-        this.departureView.showPage();
+        this.departureView.showPage(cityName);
     },
 
     destination: function(id) {
@@ -13885,7 +13942,7 @@ module.exports = Backbone.Router.extend({
     },
 
     trip: function(fromId, toId) {
-        var el = $("#app");
+        var el = $("#app"); 
 
         if (this.resultView == null) {
             this.resultView = new ResultView({
@@ -13905,9 +13962,17 @@ module.exports = Backbone.Router.extend({
             })
         }
         this.infoView.showView();
+    },
+
+    supports_html5_storage: function() {
+      try {
+        return 'localStorage' in window && window['localStorage'] !== null;
+      } catch (e) {
+        return false;
+      }
     }
 });
-},{"./views/departure-view":14,"./views/destination-view":15,"./views/info-view":16,"./views/result-view":17,"backbone":2,"jquery-browserify":4}],13:[function(require,module,exports){
+},{"./views/change-city-view":16,"./views/departure-view":17,"./views/destination-view":18,"./views/info-view":19,"./views/result-view":20,"backbone":2,"jquery-browserify":4}],15:[function(require,module,exports){
 var $ = require('jquery-browserify'),
     Mustache = require('mustache'),
     _ = require('underscore'),
@@ -13963,7 +14028,56 @@ module.exports = Backbone.View.extend({
         console.log("info button pressed");
     }
 });
-},{"backbone":2,"jquery-browserify":4,"mustache":5,"underscore":6}],14:[function(require,module,exports){
+},{"backbone":2,"jquery-browserify":4,"mustache":5,"underscore":6}],16:[function(require,module,exports){
+var $ = require('jquery-browserify'),
+    BaseView = require('./base-view'),
+    Backbone = require('backbone'),
+    _ = require('underscore'),
+    CityCollection = require('../models/city-collection');
+
+Backbone.$ = $;
+
+module.exports = BaseView.extend({
+    templateName: "change-city-template",
+
+    events: {
+        "click .citybutton" : "onChangeCityClick",
+    },
+
+    initialize: function(options) {
+        this.el = options.el;
+        this.cityCollection = new CityCollection();
+    },
+
+    showPage: function() {
+        this.getCities();
+    },
+
+    getCities: function() {
+        var that = this;
+        this.cityCollection.fetch({
+            success: function(){
+                that.onCitiesResult();
+            }
+        });
+    },
+
+    onCitiesResult: function () {
+        var cities = {cities: this.cityCollection.toJSON()};
+        var screenInfo = {title: "Velg by"};
+        this.render(cities, screenInfo);
+    },
+
+    onChangeCityClick: function(event) {
+        var cityId = $(event.currentTarget).data('id');
+        var cityName = $(event.currentTarget).data('name');
+        window.localStorage.setItem("city", cityName);
+        window.RuteVogn.Router.navigate('depature/' + cityName, true);
+
+    }
+});
+
+},{"../models/city-collection":10,"./base-view":15,"backbone":2,"jquery-browserify":4,"underscore":6}],17:[function(require,module,exports){
 var $ = require('jquery-browserify'),
     BaseView = require('./base-view'),
     Backbone = require('backbone'),
@@ -13982,14 +14096,14 @@ module.exports = BaseView.extend({
 
     initialize: function(options) {
         this.el = options.el;
-
         this.busStopsCollection = new BussStopCollection();
 
     },
 
-    showPage: function() {
+    showPage: function(cityName) {
         _gaq.push(['_trackPageview', '/home']);
-        this.getBusStops()
+        this.busStopsCollection.url = "stops/" + cityName;  
+        this.getBusStops();
     },
 
     getBusStops: function() {
@@ -14017,7 +14131,7 @@ module.exports = BaseView.extend({
     }
 });
 
-},{"../models/buss-stop-collection":8,"./base-view":13,"backbone":2,"jquery-browserify":4,"underscore":6}],15:[function(require,module,exports){
+},{"../models/buss-stop-collection":8,"./base-view":15,"backbone":2,"jquery-browserify":4,"underscore":6}],18:[function(require,module,exports){
 var $ = require('jquery-browserify'),
     BaseView = require('./base-view'),
     Backbone = require('backbone'),
@@ -14087,7 +14201,7 @@ module.exports  = BaseView.extend({
     }
 });
 
-},{"./base-view":13,"backbone":2,"jquery-browserify":4,"underscore":6}],16:[function(require,module,exports){
+},{"./base-view":15,"backbone":2,"jquery-browserify":4,"underscore":6}],19:[function(require,module,exports){
 var $ = require('jquery-browserify'),
     BaseView = require('./base-view'),
        _ = require('underscore'),
@@ -14104,7 +14218,7 @@ module.exports  = BaseView.extend({
         console.log("ready to render");
     }
 });
-},{"./base-view":13,"backbone":2,"jquery-browserify":4,"underscore":6}],17:[function(require,module,exports){
+},{"./base-view":15,"backbone":2,"jquery-browserify":4,"underscore":6}],20:[function(require,module,exports){
 var $ = require('jquery-browserify'),
     BaseView = require('./base-view'),
     _ = require('underscore'),
@@ -14317,4 +14431,4 @@ module.exports = BaseView.extend({
         window.RuteVogn.Router.navigate('destination/'+stopId, true);
     }
 });
-},{"../models/travel-info-collection":10,"./base-view":13,"backbone":2,"jquery-browserify":4,"underscore":6}]},{},[7]);
+},{"../models/travel-info-collection":12,"./base-view":15,"backbone":2,"jquery-browserify":4,"underscore":6}]},{},[7]);

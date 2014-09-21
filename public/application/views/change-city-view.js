@@ -1,15 +1,21 @@
-var RuteVogn = RuteVogn || {};
+var $ = require('jquery-browserify'),
+    BaseView = require('./base-view'),
+    Backbone = require('backbone'),
+    _ = require('underscore'),
+    CityCollection = require('../models/city-collection');
 
-RuteVogn.ChangeCityView = RuteVogn.BaseView.extend({
+Backbone.$ = $;
+
+module.exports = BaseView.extend({
     templateName: "change-city-template",
 
     events: {
-        "click #change-city-button" : "onChangeCityClick",
+        "click .citybutton" : "onChangeCityClick",
     },
 
     initialize: function(options) {
         this.el = options.el;
-        this.cityCollection = new RuteVogn.CityCollection();
+        this.cityCollection = new CityCollection();
     },
 
     showPage: function() {
@@ -34,9 +40,8 @@ RuteVogn.ChangeCityView = RuteVogn.BaseView.extend({
     onChangeCityClick: function(event) {
         var cityId = $(event.currentTarget).data('id');
         var cityName = $(event.currentTarget).data('name');
-        console.log("onChangeCityClick", cityId, cityName);
         window.localStorage.setItem("city", cityName);
-        RuteVogn.router.navigate('depature/' + cityName, true);
+        window.RuteVogn.Router.navigate('depature/' + cityName, true);
 
     }
 });

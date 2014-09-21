@@ -8,6 +8,7 @@ Backbone.$ = $;
 var DepartureView = require('./views/departure-view'),
     DestinationView = require('./views/destination-view'),
     ResultView = require('./views/result-view'),
+    ChangeCityView = require('./views/change-city-view'),
     InfoView = require('./views/info-view');
 
 module.exports = Backbone.Router.extend({
@@ -27,13 +28,13 @@ module.exports = Backbone.Router.extend({
     cityView: null,
 
     home: function() {
-        html5 = this.supports_html5_storage();
+        var html5 = this.supports_html5_storage();
 
         if(html5 != false){
             var city = window.localStorage.getItem("city");
             console.log("City: ", city);
             if(city){
-                RuteVogn.router.navigate('depature/' + city, true);
+                window.RuteVogn.Router.navigate('depature/' + city, true);
                 return;
             }
         }
@@ -42,7 +43,7 @@ module.exports = Backbone.Router.extend({
         }
 
         if (this.cityView == null) {
-            this.cityView = new RuteVogn.ChangeCityView({
+            this.cityView = new ChangeCityView({
                 el: $("#app")
             });
         }
@@ -51,7 +52,7 @@ module.exports = Backbone.Router.extend({
 
     chooseCityView: function(){
         if (this.cityView == null) {
-            this.cityView = new RuteVogn.ChangeCityView({
+            this.cityView = new ChangeCityView({
                 el: $("#app")
             });
         }

@@ -1,6 +1,10 @@
-var RuteVogn = RuteVogn || {};
+var $ = require('jquery-browserify'),
+	CityModel = require('./city-model'),
+    Backbone = require('backbone');
 
-RuteVogn.CityCollection = Backbone.Collection.extend({
-    model: RuteVogn.CityModel,
+Backbone.$ = $;
+
+module.exports = Backbone.Collection.extend({
+    model: CityModel,
     url: "cities"
 });

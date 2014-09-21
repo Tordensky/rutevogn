@@ -53,6 +53,10 @@ h1 {
 
 }
 
+.citybutton {
+
+}
+
 .logo-image {
     position: relative;
     top: 0.5em;
@@ -113,8 +117,6 @@ h1 {
     float: left;
     background-color: #38b1ff;
     color:#ffffff;
-    box-shadow: 3px 3px 3px #888888;
-
 
     border: 0;
     margin: 0.5%;
