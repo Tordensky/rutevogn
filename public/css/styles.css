@@ -41,8 +41,6 @@ body {
 
 /* slide left menu stuff */
 .custom-button {
-    font-family: "Open Sans", sans-serif;
-    font-size: 14px;
     cursor: pointer;
     border: none;
     -webkit-appearance: none;
@@ -324,7 +322,6 @@ Travel info table
 
 .travel-info-table tr:nth-child(odd) {
     background-color: #e4e4e4;
-
 }
 
 .small-buss-button-container {
