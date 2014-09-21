@@ -52,6 +52,8 @@ body {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+    font-size: 12px;
+
 }
 
 .custom-button-header {    
@@ -101,10 +103,22 @@ nav.menu ul {
     margin: 0;
     padding: 0;
 }
+
 nav.menu a {
     font-weight: 300;
     color: #fff;
+        text-decoration: none;
 }
+nav.menu ul li:hover {
+        background-color: #3184a1;
+
+}
+
+nav.menu ul li:first-child:hover {
+        background-color: #67b5d1;
+
+}
+
 button.close-menu {
     background-color: #3184a1;
     color: #fff;

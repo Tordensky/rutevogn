@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
+    <meta name="viewport" content="width=width, user-scalable=no">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">  
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
@@ -32,7 +33,7 @@
                 mask = document.createElement("div"),
                 toggleSlideLeft = document.querySelector( ".toggle-slide-left" ),
                 slideMenuLeft = document.querySelector( ".slide-menu-left" ),
-                activeNav;
+                activeNav = "";
         
             mask.className = "mask";    // dimming
 
@@ -43,13 +44,18 @@
                 activeNav = "sml-open";
             } );
 
-            /* hide active menu if close menu button is clicked */
-            [].slice.call(document.querySelectorAll(".close-menu")).forEach(function(el,i){
-                el.addEventListener( "click", function(){
-                    body.removeClass(activeNav);
-                    activeNav = "";
-                    document.body.removeChild(mask);
-                } );
+            $(document).mouseup(function (e){
+                var container = $("menulist");
+
+                if (!container.is(e.target) // if the target of the click isn't the container...
+                    && container.has(e.target).length === 0) // ... nor a descendant of the container
+                {
+                    if(activeNav.length > 0){
+                        body.removeClass(activeNav);
+                        activeNav = "";
+                        document.body.removeChild(mask);
+                    }
+                }
             });
             
             window.addEventListener('load', function() {
@@ -101,7 +107,7 @@
     <title>rutebuss.no</title>
 </head>
 <body>
-    <nav class="menu slide-menu-left">
+    <nav id="menulist" class="menu slide-menu-left">
         <ul class="menulist">
             <li><button class="custom-button close-menu">&larr; Close</button></li>
             <li><a href="#city">Velg by</a></li>
