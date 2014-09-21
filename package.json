@@ -1,19 +1,35 @@
 {
   "name": "rutevogn",
   "description": "Bus",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "build": "browserify -e public/application/application.js -o public/external/module.js"
+  },
   "dependencies": {
-      "async": "*",
-      "cheerio": "*",
-      "cookie-jar": "*",
-      "express": "3.0.0",
-      "mongoose": "*",
-      "request": "*",
-      "sleep": "*",
-      "superagent": "*",
-      "underscore": "*",
-      "winston": "*",
-      "xml2js": "*"
-    }
+    "async": "*",
+    "backbone": "^1.1.2",
+    "cheerio": "*",
+    "cookie-jar": "*",
+    "express": "3.0.0",
+    "fastclick" : "*",
+    "grunt" : "*",
+    "grunt-browserify": "3.0.0",
+    "jquery": "^1.9.1",
+    "jquery-browserify" : "*",
+    "mongoose": "*",
+    "mustache": "*",
+    "request": "*",
+    "sleep": "*",
+    "superagent": "*",
+    "underscore": "1.7.0",
+    "winston": "*",
+    "xml2js": "*"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-contrib-uglify": "~0.5.0"
+  }
 }
