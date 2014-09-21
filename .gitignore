@@ -54,3 +54,7 @@ build
 .grunt
 
 node_modules
+
+.idea
+rutevogn.iml
+/node_modules
