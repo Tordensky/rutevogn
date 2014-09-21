@@ -1,6 +1,12 @@
-var RuteVogn = RuteVogn || {};
+var $ = require('jquery-browserify'),
+    BaseView = require('./base-view'),
+    _ = require('underscore'),
+    TravelInfoCollection = require('../models/travel-info-collection'),
+    Backbone = require('backbone');
 
-RuteVogn.ResultView = RuteVogn.BaseView.extend({
+Backbone.$ = $;
+
+module.exports = BaseView.extend({
     templateName: "result-view",
 
     events: {
@@ -11,7 +17,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
 
     initialize: function(options) {
         this.el = options.el;
-        this.travelInfoCollection = new RuteVogn.TravelInfoCollection()
+        this.travelInfoCollection = new TravelInfoCollection()
 
         this.nextDepTime = null;
         this.countDownTimer = null;
@@ -141,7 +147,7 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
 
         _gaq.push(['_trackEvent', 'ButtonClick', 'New search button']);
 
-        RuteVogn.router.navigate('', true);
+        window.RuteVogn.Router.navigate('', true);
     },
 
     getTimeString: function(date) {
@@ -201,6 +207,6 @@ RuteVogn.ResultView = RuteVogn.BaseView.extend({
 
         _gaq.push(['_trackEvent', 'ButtonClick', 'Transfer buttons', stopName + ' (transfer)']);
 
-        RuteVogn.router.navigate('destination/'+stopId, true);
+        window.RuteVogn.Router.navigate('destination/'+stopId, true);
     }
 });

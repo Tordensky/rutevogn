@@ -1,65 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
-    <script type="text/javascript" src="http://backbonejs.org/backbone-min.js"></script>
-    <script type="text/javascript" src="external/mustache.js"></script>
-    <script type='application/javascript' src='external/fastclick.js'></script>
-
-    <!-- BACKBONE APPLICATION FILES TODO not correct path-->
-    <script type="text/javascript" src="/application/router/router.js"></script>
-    <script type="text/javascript" src="/application/views/base-view.js"></script>
-    <script type="text/javascript" src="/application/views/departure-view.js"></script>
-    <script type="text/javascript" src="/application/views/destination-view.js"></script>
-    <script type="text/javascript" src="/application/views/result-view.js"></script>
-    <script type="text/javascript" src="/application/views/info-view.js"></script>
-    <script type="text/javascript" src="/application/models/buss-stop-model.js"></script>
-    <script type="text/javascript" src="/application/models/buss-stop-collection.js"></script>
-    <script type="text/javascript" src="/application/models/travel-info-model.js"></script>
-    <script type="text/javascript" src="/application/models/travel-info-collection.js"></script>
-    <script type="text/javascript" src="/application/application.js"></script>
-
+    <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
-
     <script type="text/javascript">
-        $(document).ready(function() {
-            window.addEventListener('load', function() {
-                FastClick.attach(document.body);
-            }, false);
-
-            var setFooter = function setFooter() {
-                var windowHeight = $(window).height();
-                var headerHeight = $("#header").outerHeight();
-                var footerHeight = $("#footer").outerHeight();
-                var appHeight = windowHeight - (headerHeight + footerHeight);
-                $("#app").css("min-height", appHeight);
-            };
-            setFooter();
-
-            window.onresize = function() {
-                setFooter();
-            };
-
-            $(function(){
-                var app = RuteVogn.Application;
-                app.run();
-            });
-        });
-    </script>
-    <!-- NOTE OLD TRACKING CODE, NOT SURE IF TOY ACTUALLY NEED THIS TRACKER CODE-->
-    <!--<script>-->
-        <!--(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){-->
-            <!--(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),-->
-                <!--m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)-->
-        <!--})(window,document,'script','//www.google-analytics.com/analytics.js','ga');-->
-
-        <!--ga('create', 'UA-45755254-1', 'rutebuss.no');-->
-        <!--ga('send', 'pageview');-->
-    <!--</script>-->
-
-    <script type="text/javascript">
-
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-45755254-1']);
         _gaq.push(['_trackPageview']);
@@ -71,7 +15,6 @@
         })();
 
     </script>
-
 
     <title>rutebuss.no</title>
 </head>
@@ -87,16 +30,9 @@
     }(document, 'script', 'facebook-jssdk'));</script>
     <!-- FACEBOOK API END -->
 
-
-    <script>
-        function goToHome(){
-            RuteVogn.router.navigate('', true);
-        }
-    </script>
-
-    <div id="header" class="app-header-container" onClick="goToHome()">
+    <div id="header" class="app-header-container">
         <img class="logo-image" src="images/logo-buss.png">
-        <h1>rutebuss.no (beta)</h1>
+        <h1>rutebuss.no</h1>
     </div>
     <div id="app" class="app">
         <!--APP CONTENT WILL BE RENDERED HERE-->
@@ -116,5 +52,8 @@
         </div>
 
     </div>
+
+    <script type="text/javascript" src="/external/module.js"></script>
+
 </body>
 </html>

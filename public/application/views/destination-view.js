@@ -1,11 +1,16 @@
-var RuteVogn = RuteVogn || {};
+var $ = require('jquery-browserify'),
+    BaseView = require('./base-view'),
+    Backbone = require('backbone'),
+    _ = require('underscore');
 
-RuteVogn.DestinationView = RuteVogn.BaseView.extend({
+Backbone.$ = $;
+
+module.exports  = BaseView.extend({
     templateName: "arrival-template",
 
     events: {
         "click #back-button" : "goToStartPage",
-        "click #destination-buss-stop-button" : "onBusStopClick"
+        "click .destination" : "onBusStopClick"
     },
 
     initialize: function(options) {
@@ -44,15 +49,15 @@ RuteVogn.DestinationView = RuteVogn.BaseView.extend({
         var destinationId = $(event.currentTarget).data('id');
 
         var destinationName = $(event.currentTarget).data('name');
-
+        console.log("onBusStopClick");
         // Click Tracking for google analytics
         _gaq.push(['_trackEvent', 'ButtonClick', 'Traveling-To',  destinationName  + " (dest)"]);
 
-        RuteVogn.router.navigate('trip/'+this.departureId+'/'+destinationId, true);
+        window.RuteVogn.Router.navigate('trip/'+this.departureId+'/'+destinationId, true);
     },
 
     goToStartPage: function(event) {
-        RuteVogn.router.navigate('', true);
+        window.RuteVogn.Router.navigate('', true);
     },
 
     onRenderComplete: function() {

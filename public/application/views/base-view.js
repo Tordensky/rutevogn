@@ -1,6 +1,11 @@
-var RuteVogn = RuteVogn || {};
+var $ = require('jquery-browserify'),
+    Mustache = require('mustache'),
+    _ = require('underscore'),
+    Backbone = require('backbone');
 
-RuteVogn.BaseView = Backbone.View.extend({
+Backbone.$ = $;
+
+module.exports = Backbone.View.extend({
     events: {
         "click #info-button" : "onInfoButtonPress"
     },

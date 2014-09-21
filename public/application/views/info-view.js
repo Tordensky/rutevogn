@@ -1,6 +1,11 @@
-var RuteVogn = RuteVogn || {};
+var $ = require('jquery-browserify'),
+    BaseView = require('./base-view'),
+       _ = require('underscore'),
+    Backbone = require('backbone');
 
-RuteVogn.InfoView = RuteVogn.BaseView.extend({
+Backbone.$ = $;
+
+module.exports  = BaseView.extend({
     initialize: function(options) {
         this.el = options.el;
     },

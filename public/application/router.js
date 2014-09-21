@@ -1,6 +1,16 @@
-var RuteVogn = RuteVogn || {};
+"use strict";
 
-RuteVogn.Router = Backbone.Router.extend({
+var $ = require('jquery-browserify'),
+    Backbone = require('backbone');
+
+Backbone.$ = $;
+
+var DepartureView = require('./views/departure-view'),
+    DestinationView = require('./views/destination-view'),
+    ResultView = require('./views/result-view'),
+    InfoView = require('./views/info-view');
+
+module.exports = Backbone.Router.extend({
     routes: {
         '': "home",
         'destination/:id': "destination",
@@ -11,12 +21,11 @@ RuteVogn.Router = Backbone.Router.extend({
     departureView: null,
     destinationView: null,
     resultView: null,
-    bussStopInfo: null,
     infoView: null,
 
     home: function() {
         if (this.departureView == null) {
-            this.departureView = new RuteVogn.DepartureView({
+            this.departureView = new DepartureView({
                 el: $("#app")
             });
         }
@@ -32,7 +41,7 @@ RuteVogn.Router = Backbone.Router.extend({
         var el = $("#app");
 
         if (this.destinationView == null) {
-            this.destinationView = new RuteVogn.DestinationView({
+            this.destinationView = new DestinationView({
                 el: el
             });
         }
@@ -43,7 +52,7 @@ RuteVogn.Router = Backbone.Router.extend({
         var el = $("#app");
 
         if (this.resultView == null) {
-            this.resultView = new RuteVogn.ResultView({
+            this.resultView = new ResultView({
                 el: el
             });
         }
@@ -55,7 +64,7 @@ RuteVogn.Router = Backbone.Router.extend({
         console.log("goes to info");
         var el = $("#app");
         if (this.infoView == null) {
-            this.infoView = new RuteVogn.InfoView({
+            this.infoView = new InfoView({
                 el: el
             })
         }

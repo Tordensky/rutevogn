@@ -1,5 +1,8 @@
-var RuteVogn = RuteVogn || {};
+var $ = require('jquery-browserify'),
+	Backbone = require('Backbone');
 
-RuteVogn.TravelInfoModel = Backbone.Model.extend({
+Backbone.$ = $;
+
+module.exports = Backbone.Model.extend({
     url: "/departure"
 });
