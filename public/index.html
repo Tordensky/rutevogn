@@ -25,11 +25,34 @@
     <script type="text/javascript" src="/application/models/travel-info-model.js"></script>
     <script type="text/javascript" src="/application/models/travel-info-collection.js"></script>
     <script type="text/javascript" src="/application/application.js"></script>
-
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
     <script type="text/javascript">
         $(document).ready(function() {
+
+            var body = $("body"),
+                mask = document.createElement("div"),
+                toggleSlideLeft = document.querySelector( ".toggle-slide-left" ),
+                slideMenuLeft = document.querySelector( ".slide-menu-left" ),
+                activeNav;
+        
+            mask.className = "mask";    // dimming
+
+            /* slide menu left */
+            toggleSlideLeft.addEventListener( "click", function(){
+                body.addClass("sml-open");
+                document.body.appendChild(mask);
+                activeNav = "sml-open";
+            } );
+
+            /* hide active menu if close menu button is clicked */
+            [].slice.call(document.querySelectorAll(".close-menu")).forEach(function(el,i){
+                el.addEventListener( "click", function(){
+                    body.removeClass(activeNav);
+                    activeNav = "";
+                    document.body.removeChild(mask);
+                } );
+            });
             
             window.addEventListener('load', function() {
                 FastClick.attach(document.body);
@@ -47,6 +70,18 @@
             window.onresize = function() {
                 setFooter();
             };
+
+            function goToHomeHeader(){
+                RuteVogn.router.navigate('', true);
+            }
+
+            (function(d, s, id) {   
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
 
             $(function(){
                 var app = RuteVogn.Application;
@@ -68,76 +103,45 @@
     <title>rutebuss.no</title>
 </head>
 <body>
-    <!-- FACEBOOK API -->
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-    <!-- FACEBOOK API END -->
+    <nav class="menu slide-menu-left">
+        <ul class="menulist">
+            <li><button class="custom-button close-menu">&larr; Close</button></li>
+            <li><a href="#city">Velg by</a></li>
+            <li><a href="#">Om siden</a></li>
+        </ul>
+    </nav>
 
+    <div id="wrapper">
+        <div id="fb-root"></div>
+        <div id="header" class="app-header-container">
 
-    <script>
-        function goToHomeHeader(){
-            RuteVogn.router.navigate('', true);
-        }
-
-
-        function showHideMenu(){
-            var value = $(".dropdownlist").css("display");
-            if(value === "none"){
-                $(".dropdownlist").css("display", "inline-table");
-            }
-            else {
-                $(".dropdownlist").css("display", "none");
-            }
-        }
-
-        function goToChooseCityHeader(){
-            RuteVogn.router.navigate('city', true);
-            $(".dropdownlist").css("display", "none");
-        }   
-    </script>
-
-    <div id="header" class="app-header-container">
-        <div class="menu">
-            <div>
-                <ul>
-                    <li> 
-                        <img onClick="showHideMenu()" src="images/menu.jpg"><img>
-                        <ul class="dropdownlist">
-                            <li class="menulinks" onClick="goToChooseCityHeader()">Velg by</li>
-                        </ul>
-                    </li>
-                </ul>
+            <div class="app-header-general">
+                <button id="showMenuButton" class="custom-button custom-button-header nav-toggler toggle-slide-left">Menu</button>
+                <img class="logo-image" src="images/logo-buss.png" onClick="goToHomeHeader()">
+                <h1>rutebuss.no</h1>
             </div>
         </div>
-        <div class="app-header-general">
-            <img class="logo-image" src="images/logo-buss.png" onClick="goToHomeHeader()">
-            <h1>rutebuss.no</h1>
+
+        <div id="app" class="app wrapper">
+            <!--APP CONTENT WILL BE RENDERED HERE-->
         </div>
-    </div>
-    <div id="app" class="app">
 
-        <!--APP CONTENT WILL BE RENDERED HERE-->
-    </div>
-    <div id="footer" class="app-footer-container">
-        <span class="footer-text-container">
-            <a class="footer-mail" href="mailto:info@rutevogn.no">info@rutevogn.no</a>
-             -
-            Data fra tromskortet.no/ruter.no
-        </span>
+        <div id="footer" class="app-footer-container">
+            <span class="footer-text-container">
+                <a class="footer-mail" href="mailto:info@rutevogn.no">info@rutevogn.no</a>
+                 -
+                Data fra tromskortet.no/ruter.no
+            </span>
 
-        <div class="facebook-like-container fb-like"
-             data-href="https://www.facebook.com/rutebuss.no"
-             data-layout="button_count" data-action="like"
-             data-show-faces="true"
-             data-share="true">
+            <div class="facebook-like-container fb-like"
+                 data-href="https://www.facebook.com/rutebuss.no"
+                 data-layout="button_count" data-action="like"
+                 data-show-faces="true"
+                 data-share="true">
+            </div>
         </div>
 
     </div>
+
 </body>
 </html>
