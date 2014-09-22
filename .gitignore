@@ -49,6 +49,7 @@ pids
 results
 .grunt
 
+<<<<<<< HEAD
 
 node_modules
 
@@ -67,3 +68,10 @@ rutevogn.iml
 .idea/
 *.iws
 
+=======
+node_modules/*
+node_modules
+
+.idea
+rutevogn.iml
+>>>>>>> origin/develop

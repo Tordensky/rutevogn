@@ -9,9 +9,8 @@ body {
     font-size: 12px;
     width: 100%;
     clear: both;
-
     background-color: #dedede;
-
+    overflow-x: hidden;
     text-align: center;
 }
 
@@ -24,7 +23,6 @@ body {
     background-color: white;
     max-width: 960px;
     margin: 0;
-
     position: relative;
 }
 
@@ -32,14 +30,142 @@ body {
     width: 100%;
     padding-top: 1em;
     padding-bottom: 1em;
-
     background-color: #252525;
-
-    text-align: center;
-    color: white;
-
     font-size: 1em;
 }
+
+.app-header-general {
+    text-align: center;
+    color: white;
+}
+
+/* slide left menu stuff */
+.custom-button {
+    cursor: pointer;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    font-size: 12px;
+
+}
+
+.custom-button-header {    
+    float:left;
+    margin-left: 10px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #38b1ff;
+}
+
+#wrapper {
+    position: relative;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 15;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+nav.menu {
+    position: fixed;
+    z-index: 20;
+    background-color: #67b5d1;
+    overflow: hidden;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+nav.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav.menu a {
+    font-weight: 300;
+    color: #fff;
+        text-decoration: none;
+}
+nav.menu ul li:hover {
+        background-color: #3184a1;
+
+}
+
+nav.menu ul li:first-child:hover {
+        background-color: #67b5d1;
+
+}
+
+button.close-menu {
+    background-color: #3184a1;
+    color: #fff;
+}
+button.close-menu:focus {
+    outline: none
+}
+
+nav.slide-menu-left {
+    top: 0;
+    width: 300px;
+    height: 100%;
+}
+nav.slide-menu-left li {
+    display: block;
+    text-align: center;
+    border-bottom: solid 1px #3184a1;
+    border-top: solid 1px #b5dbe9;
+}
+nav.slide-menu-left li:first-child {
+    border-top: none
+}
+nav.slide-menu-left li:last-child {
+    border-bottom: none
+}
+nav.slide-menu-left a {
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+}
+nav.slide-menu-left button.close-menu {
+    margin: 10px 0;
+    padding: 10px 30px;
+    background-color: #3184a1;
+    color: #fff;
+}
+
+nav.slide-menu-left {
+    left: -300px
+}
+
+body.sml-open nav.slide-menu-left {
+    left: 0
+}
+
+/* slide left menu stuff END _--- */
+
 
 h1 {
     display: inline-block;
@@ -113,11 +239,9 @@ h1 {
 
     font-size: 2em;
     font-weight: bold;
-
     float: left;
     background-color: #38b1ff;
     color:#ffffff;
-
     border: 0;
     margin: 0.5%;
 }
@@ -224,7 +348,6 @@ Travel info table
 
 .travel-info-table tr:nth-child(odd) {
     background-color: #e4e4e4;
-
 }
 
 .small-buss-button-container {
