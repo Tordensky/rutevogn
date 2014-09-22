@@ -21,18 +21,33 @@ app.get('/stops/:city', stop.getBusStops);
 app.get('/stops/:city/minified', stop.getBusStopsMinified);
 app.get('/cities', cities.getCities);
 
-function myFuc(){
+function parseTromso(){
         var exec = require('child_process').exec;
-        var cmd = 'python /root/new/rutevogn/parsing/RUNOSLO.py';
         console.log("Reparsing");
-        //var cmd = 'python ' + __dirname + '/parsing/RUNOSLO.py';
-        exec(cmd, function(err, stdout){
-                if(err){
-                        console.log("ERROR: ", err);
-                }
-        });
+        var cmd = 'python ' + __dirname + '/parsing/RUNTROMSO.py';
+        exec(cmd);
 }
 
-setInterval(myFuc, 3600000);
-myFuc();
-exports.app = app;
+function parseOslo(){
+        var exec = require('child_process').exec;
+        console.log("Reparsing");
+        var cmd = 'python ' + __dirname + '/parsing/RUNOSLO.py';
+        exec(cmd);
+}
+
+function parseBoth(){
+        var exec = require('child_process').exec;
+        console.log("Reparsing");
+        var cmd = 'python ' + __dirname + '/parsing/RUN.py';
+        exec(cmd);
+}
+
+setInterval(parseOslo, 3600000);
+setInterval(parseTromso, 3600000 * 24);
+
+parseBoth();
+
+app.listen(8080);
+
+console.log("Server up and running on port 8080");
+

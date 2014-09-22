@@ -13772,10 +13772,40 @@ attachFastClick(document.body);
 var RuteVogn = {};
 RuteVogn.Router = new Router();
 window.RuteVogn = RuteVogn;
+console.log("inside application js");
 
 Backbone.history.start();
 
-(function() {
+    console.log("doucment ready");
+    var body = $("body"),
+        mask = document.createElement("div"),
+        toggleSlideLeft = document.querySelector( ".toggle-slide-left" ),
+        slideMenuLeft = document.querySelector( ".slide-menu-left" ),
+        activeNav = "";
+
+    mask.className = "mask";    // dimming
+
+    /* slide menu left */
+    toggleSlideLeft.addEventListener( "click", function(){
+        body.addClass("sml-open");
+        document.body.appendChild(mask);
+        activeNav = "sml-open";
+    } );
+
+    $(document).mouseup(function (e){
+        var container = $("menulist");
+
+        if (!container.is(e.target) // if the target of the click isn't the container...
+            && container.has(e.target).length === 0) // ... nor a descendant of the container
+        {
+            if(activeNav.length > 0){
+                body.removeClass(activeNav);
+                activeNav = "";
+                document.body.removeChild(mask);
+            }
+        }
+    });
+
     var setFooter = function setFooter() {
         var windowHeight = $(window).height();
         var headerHeight = $("#header").outerHeight();
@@ -13788,7 +13818,7 @@ Backbone.history.start();
     window.onresize = function() {
         setFooter();
     };
-})();
+
 },{"./router":14,"backbone":2,"fastclick":3,"jquery-browserify":4}],8:[function(require,module,exports){
 var $ = require('jquery-browserify'),
 	BussStopModel = require('./buss-stop-model'),
@@ -14101,7 +14131,7 @@ module.exports = BaseView.extend({
     },
 
     showPage: function(cityName) {
-        _gaq.push(['_trackPageview', '/home']);
+        // window._gaq.push(['_trackPageview', '/home']);
         this.busStopsCollection.url = "stops/" + cityName;  
         this.getBusStops();
     },
@@ -14126,7 +14156,7 @@ module.exports = BaseView.extend({
         var stopName = $(event.currentTarget).data('name');
         console.log("Are you here");
         // Click Tracking for google analytics
-        _gaq.push(['_trackEvent', 'ButtonClick', 'Traveling-From', stopName + " (from)"]);
+        // window._gaq.push(['_trackEvent', 'ButtonClick', 'Traveling-From', stopName + " (from)"]);
         window.RuteVogn.Router.navigate('destination/'+stopId, true);
     }
 });
@@ -14152,7 +14182,7 @@ module.exports  = BaseView.extend({
     },
 
     showPage: function(departureId, busStopsCollection){
-        _gaq.push(['_trackPageview', '/destination']);
+        // window._gaq.push(['_trackPageview', '/destination']);
         this.departureId = departureId;
         this.busStopsCollection = busStopsCollection;
 
@@ -14185,8 +14215,7 @@ module.exports  = BaseView.extend({
         var destinationName = $(event.currentTarget).data('name');
         console.log("onBusStopClick");
         // Click Tracking for google analytics
-        _gaq.push(['_trackEvent', 'ButtonClick', 'Traveling-To',  destinationName  + " (dest)"]);
-
+        // window._gaq.push(['_trackEvent', 'ButtonClick', 'Traveling-To',  destinationName  + " (dest)"]);
         window.RuteVogn.Router.navigate('trip/'+this.departureId+'/'+destinationId, true);
     },
 
@@ -14237,6 +14266,7 @@ module.exports = BaseView.extend({
     },
 
     initialize: function(options) {
+        // TODO add slider to search for avganger in the next 24h
         this.el = options.el;
         this.travelInfoCollection = new TravelInfoCollection()
 
@@ -14250,7 +14280,7 @@ module.exports = BaseView.extend({
     },
 
     showView: function(fromId, toId) {
-        _gaq.push(['_trackPageview', '/result']);
+        // window._gaq.push(['_trackPageview', '/result']);
         var date = new Date().toJSON();
         var that = this;
 
@@ -14366,7 +14396,7 @@ module.exports = BaseView.extend({
     goToStartPage: function() {
         window.clearInterval(this.countDownTimer);
 
-        _gaq.push(['_trackEvent', 'ButtonClick', 'New search button']);
+        // window._gaq.push(['_trackEvent', 'ButtonClick', 'New search button']);
 
         window.RuteVogn.Router.navigate('', true);
     },
@@ -14426,9 +14456,10 @@ module.exports = BaseView.extend({
         var stopId = $(event.currentTarget).data('id');
         var stopName = $(event.currentTarget).data('name');
 
-        _gaq.push(['_trackEvent', 'ButtonClick', 'Transfer buttons', stopName + ' (transfer)']);
+        // window._gaq.push(['_trackEvent', 'ButtonClick', 'Transfer buttons', stopName + ' (transfer)']);
 
         window.RuteVogn.Router.navigate('destination/'+stopId, true);
     }
 });
+
 },{"../models/travel-info-collection":12,"./base-view":15,"backbone":2,"jquery-browserify":4,"underscore":6}]},{},[7]);

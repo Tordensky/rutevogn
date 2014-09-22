@@ -21,7 +21,7 @@ module.exports = BaseView.extend({
     },
 
     showPage: function(cityName) {
-        _gaq.push(['_trackPageview', '/home']);
+        // window._gaq.push(['_trackPageview', '/home']);
         this.busStopsCollection.url = "stops/" + cityName;  
         this.getBusStops();
     },
@@ -46,7 +46,7 @@ module.exports = BaseView.extend({
         var stopName = $(event.currentTarget).data('name');
         console.log("Are you here");
         // Click Tracking for google analytics
-        _gaq.push(['_trackEvent', 'ButtonClick', 'Traveling-From', stopName + " (from)"]);
+        // window._gaq.push(['_trackEvent', 'ButtonClick', 'Traveling-From', stopName + " (from)"]);
         window.RuteVogn.Router.navigate('destination/'+stopId, true);
     }
 });

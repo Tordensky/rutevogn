@@ -76,7 +76,6 @@ function insertDestinations(){
 				if(err){
 					console.log(err);
 					process.exit(1);
-
 				}
 				console.log("Found ", stop);
 

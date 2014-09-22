@@ -30,7 +30,7 @@ module.exports = BaseView.extend({
     },
 
     showView: function(fromId, toId) {
-        _gaq.push(['_trackPageview', '/result']);
+        // window._gaq.push(['_trackPageview', '/result']);
         var date = new Date().toJSON();
         var that = this;
 
@@ -146,7 +146,7 @@ module.exports = BaseView.extend({
     goToStartPage: function() {
         window.clearInterval(this.countDownTimer);
 
-        _gaq.push(['_trackEvent', 'ButtonClick', 'New search button']);
+        // window._gaq.push(['_trackEvent', 'ButtonClick', 'New search button']);
 
         window.RuteVogn.Router.navigate('', true);
     },
@@ -206,7 +206,7 @@ module.exports = BaseView.extend({
         var stopId = $(event.currentTarget).data('id');
         var stopName = $(event.currentTarget).data('name');
 
-        _gaq.push(['_trackEvent', 'ButtonClick', 'Transfer buttons', stopName + ' (transfer)']);
+        // window._gaq.push(['_trackEvent', 'ButtonClick', 'Transfer buttons', stopName + ' (transfer)']);
 
         window.RuteVogn.Router.navigate('destination/'+stopId, true);
     }

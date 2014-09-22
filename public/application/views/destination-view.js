@@ -18,7 +18,7 @@ module.exports  = BaseView.extend({
     },
 
     showPage: function(departureId, busStopsCollection){
-        _gaq.push(['_trackPageview', '/destination']);
+        // window._gaq.push(['_trackPageview', '/destination']);
         this.departureId = departureId;
         this.busStopsCollection = busStopsCollection;
 
@@ -51,8 +51,7 @@ module.exports  = BaseView.extend({
         var destinationName = $(event.currentTarget).data('name');
         console.log("onBusStopClick");
         // Click Tracking for google analytics
-        _gaq.push(['_trackEvent', 'ButtonClick', 'Traveling-To',  destinationName  + " (dest)"]);
-
+        // window._gaq.push(['_trackEvent', 'ButtonClick', 'Traveling-To',  destinationName  + " (dest)"]);
         window.RuteVogn.Router.navigate('trip/'+this.departureId+'/'+destinationId, true);
     },
 
