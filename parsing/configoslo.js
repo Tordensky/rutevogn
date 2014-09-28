@@ -11,7 +11,7 @@ var OSLO_S = "Jernbanetorget";			// 60, 30, 54, 34, 70, 37, 31
 var ST_HANSHAUGEN = "St. Hanshaugen";	// 33, 37, 21
 var SAGENE = "Sagene";				// 20, 37, 54, 34
 var SKOYEN = "Skøyen";				// 20
-var TORSHOV = "Torshov (vogts)";	// 20, 30, 28
+var TORSHOV = "Torshov";	// 20, 30, 28
 	
 
 // TODO Automatic query for ids based on name
