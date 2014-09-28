@@ -27,7 +27,6 @@ TODO: How and where to run the parser if the data is wrong
 var firstRootUrl = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v1DepartureXML?"
 var urlGetId = "http://rp.tromskortet.no/scripts/TravelMagic/TravelMagicWE.dll/v1PointStageXML?name="
 
-
 1. First get ID of busstopp with url: urlGetId + realname + "+%28Tromsø%29+%5Bholdeplass%5D";
 2. Get avganger with url using id gained in step 1: firstRootUrl + "hpl=" + id + "&Date=" + dateStr;
 

@@ -169,6 +169,14 @@ h1 {
     display: inline-block;
 }
 
+.techlist {
+    list-style-type: none;
+}
+
+.about-page {
+    font-size: 16px;
+}
+
 .destination {
 
 }

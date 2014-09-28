@@ -9,6 +9,7 @@ var DepartureView = require('./views/departure-view'),
     DestinationView = require('./views/destination-view'),
     ResultView = require('./views/result-view'),
     ChangeCityView = require('./views/change-city-view'),
+    AboutView = require('./views/about-view'),
     InfoView = require('./views/info-view');
 
 module.exports = Backbone.Router.extend({
@@ -18,7 +19,8 @@ module.exports = Backbone.Router.extend({
         'destination/:id': "destination",
         'trip/:fromId/:toId': "trip",
         'info': 'info',
-        'depature/:name': 'depature'
+        'depature/:name': 'depature',
+        'about': 'about'
     },
 
     departureView: null,
@@ -26,6 +28,7 @@ module.exports = Backbone.Router.extend({
     resultView: null,
     infoView: null,
     cityView: null,
+    aboutView: null,
 
     home: function() {
         var html5 = this.supports_html5_storage();
@@ -97,7 +100,6 @@ module.exports = Backbone.Router.extend({
     },
 
     info: function() {
-        console.log("goes to info");
         var el = $("#app");
         if (this.infoView == null) {
             this.infoView = new InfoView({
@@ -105,6 +107,16 @@ module.exports = Backbone.Router.extend({
             })
         }
         this.infoView.showView();
+    },
+
+    about: function() {
+        var el = $("#app");
+        if(this.aboutView === null){
+            this.aboutView = new AboutView({
+                el:el
+            });
+        }
+        this.aboutView.showPage();
     },
 
     supports_html5_storage: function() {

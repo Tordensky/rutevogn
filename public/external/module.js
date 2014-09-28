@@ -13896,6 +13896,7 @@ var DepartureView = require('./views/departure-view'),
     DestinationView = require('./views/destination-view'),
     ResultView = require('./views/result-view'),
     ChangeCityView = require('./views/change-city-view'),
+    AboutView = require('./views/about-view'),
     InfoView = require('./views/info-view');
 
 module.exports = Backbone.Router.extend({
@@ -13905,7 +13906,8 @@ module.exports = Backbone.Router.extend({
         'destination/:id': "destination",
         'trip/:fromId/:toId': "trip",
         'info': 'info',
-        'depature/:name': 'depature'
+        'depature/:name': 'depature',
+        'about': 'about'
     },
 
     departureView: null,
@@ -13913,6 +13915,7 @@ module.exports = Backbone.Router.extend({
     resultView: null,
     infoView: null,
     cityView: null,
+    aboutView: null,
 
     home: function() {
         var html5 = this.supports_html5_storage();
@@ -13984,7 +13987,6 @@ module.exports = Backbone.Router.extend({
     },
 
     info: function() {
-        console.log("goes to info");
         var el = $("#app");
         if (this.infoView == null) {
             this.infoView = new InfoView({
@@ -13992,6 +13994,16 @@ module.exports = Backbone.Router.extend({
             })
         }
         this.infoView.showView();
+    },
+
+    about: function() {
+        var el = $("#app");
+        if(this.aboutView === null){
+            this.aboutView = new AboutView({
+                el:el
+            });
+        }
+        this.aboutView.showPage();
     },
 
     supports_html5_storage: function() {
@@ -14002,7 +14014,28 @@ module.exports = Backbone.Router.extend({
       }
     }
 });
-},{"./views/change-city-view":16,"./views/departure-view":17,"./views/destination-view":18,"./views/info-view":19,"./views/result-view":20,"backbone":2,"jquery-browserify":4}],15:[function(require,module,exports){
+},{"./views/about-view":15,"./views/change-city-view":17,"./views/departure-view":18,"./views/destination-view":19,"./views/info-view":20,"./views/result-view":21,"backbone":2,"jquery-browserify":4}],15:[function(require,module,exports){
+var $ = require('jquery-browserify'),
+    BaseView = require('./base-view'),
+    Backbone = require('backbone'),
+    _ = require('underscore');
+
+Backbone.$ = $;
+
+module.exports = BaseView.extend({
+    templateName: "about-template",
+
+    initialize: function(options) {
+        this.el = options.el;
+    },
+
+    showPage: function() {
+        console.log("undefineed?");
+        this.render();
+    },
+});
+
+},{"./base-view":16,"backbone":2,"jquery-browserify":4,"underscore":6}],16:[function(require,module,exports){
 var $ = require('jquery-browserify'),
     Mustache = require('mustache'),
     _ = require('underscore'),
@@ -14055,10 +14088,9 @@ module.exports = Backbone.View.extend({
 
     onInfoButtonPress: function(event) {
         event.preventDefault();
-        console.log("info button pressed");
     }
 });
-},{"backbone":2,"jquery-browserify":4,"mustache":5,"underscore":6}],16:[function(require,module,exports){
+},{"backbone":2,"jquery-browserify":4,"mustache":5,"underscore":6}],17:[function(require,module,exports){
 var $ = require('jquery-browserify'),
     BaseView = require('./base-view'),
     Backbone = require('backbone'),
@@ -14107,7 +14139,7 @@ module.exports = BaseView.extend({
     }
 });
 
-},{"../models/city-collection":10,"./base-view":15,"backbone":2,"jquery-browserify":4,"underscore":6}],17:[function(require,module,exports){
+},{"../models/city-collection":10,"./base-view":16,"backbone":2,"jquery-browserify":4,"underscore":6}],18:[function(require,module,exports){
 var $ = require('jquery-browserify'),
     BaseView = require('./base-view'),
     Backbone = require('backbone'),
@@ -14161,7 +14193,7 @@ module.exports = BaseView.extend({
     }
 });
 
-},{"../models/buss-stop-collection":8,"./base-view":15,"backbone":2,"jquery-browserify":4,"underscore":6}],18:[function(require,module,exports){
+},{"../models/buss-stop-collection":8,"./base-view":16,"backbone":2,"jquery-browserify":4,"underscore":6}],19:[function(require,module,exports){
 var $ = require('jquery-browserify'),
     BaseView = require('./base-view'),
     Backbone = require('backbone'),
@@ -14230,7 +14262,7 @@ module.exports  = BaseView.extend({
     }
 });
 
-},{"./base-view":15,"backbone":2,"jquery-browserify":4,"underscore":6}],19:[function(require,module,exports){
+},{"./base-view":16,"backbone":2,"jquery-browserify":4,"underscore":6}],20:[function(require,module,exports){
 var $ = require('jquery-browserify'),
     BaseView = require('./base-view'),
        _ = require('underscore'),
@@ -14247,7 +14279,7 @@ module.exports  = BaseView.extend({
         console.log("ready to render");
     }
 });
-},{"./base-view":15,"backbone":2,"jquery-browserify":4,"underscore":6}],20:[function(require,module,exports){
+},{"./base-view":16,"backbone":2,"jquery-browserify":4,"underscore":6}],21:[function(require,module,exports){
 var $ = require('jquery-browserify'),
     BaseView = require('./base-view'),
     _ = require('underscore'),
@@ -14462,4 +14494,4 @@ module.exports = BaseView.extend({
     }
 });
 
-},{"../models/travel-info-collection":12,"./base-view":15,"backbone":2,"jquery-browserify":4,"underscore":6}]},{},[7]);
+},{"../models/travel-info-collection":12,"./base-view":16,"backbone":2,"jquery-browserify":4,"underscore":6}]},{},[7]);

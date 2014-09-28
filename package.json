@@ -9,19 +9,23 @@
   "dependencies": {
     "async": "*",
     "backbone": "^1.1.2",
+    "browserify" : "*",
     "cheerio": "*",
     "cookie-jar": "*",
     "express": "3.0.0",
-    "fastclick" : "*",
-    "grunt" : "*",
+    "fastclick": "*",
+    "gulp": "*",
+    "gulp-util": "*",
+    "grunt": "*",
     "grunt-browserify": "3.0.0",
     "jquery": "^1.9.1",
-    "jquery-browserify" : "*",
+    "jquery-browserify": "*",
     "mongoose": "*",
     "mustache": "*",
     "request": "*",
     "superagent": "*",
     "underscore": "1.7.0",
+    "watchify" : "*",
     "winston": "*",
     "xml2js": "*"
   },
@@ -29,6 +33,7 @@
     "grunt": "~0.4.5",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-nodeunit": "~0.4.1",
-    "grunt-contrib-uglify": "~0.5.0"
+    "grunt-contrib-uglify": "~0.5.0",
+    "gulp": "^3.8.8"
   }
 }
