@@ -23,14 +23,14 @@ app.get('/cities', cities.getCities);
 
 function parseTromso(){
         var exec = require('child_process').exec;
-        console.log("Reparsing");
+        console.log("Reparsing Tromso");
         var cmd = 'python ' + __dirname + '/parsing/RUNTROMSO.py';
         exec(cmd);
 }
 
 function parseOslo(){
         var exec = require('child_process').exec;
-        console.log("Reparsing");
+        console.log("Reparsing Oslo");
         var cmd = 'python ' + __dirname + '/parsing/RUNOSLO.py';
         exec(cmd);
 }

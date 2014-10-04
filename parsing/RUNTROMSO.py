@@ -1,21 +1,14 @@
 import subprocess
 import datetime
+import os
 
 todays_date = datetime.datetime.now().date()
 future_date = (datetime.datetime.now() + datetime.timedelta(days=3)).date()
 
+path = os.path.dirname(os.path.realpath(__file__))
 
 # For local testing
-subprocess.call(["node", "parsing/cleanUp.js"])
-subprocess.call(["node", "parsing/setUp.js", "Tromso"])
-subprocess.call(["node", "parsing/insertCities.js"])
-subprocess.call(["node", "parsing/parseTromso.js", str(todays_date), str(future_date)])
-
-
-# subprocess.call(["node", "/root/new/rutevogn/parsing/cleanUp.js"])
-# subprocess.call(["node", "/root/new/rutevogn/parsing/setUp.js", "Tromso"])
-# subprocess.call(["node", "/root/new/rutevogn/parsing/setUp.js", "Oslo"])
-# subprocess.call(["node", "/root/new/rutevogn/parsing/insertCities.js"])
-# subprocess.call(["node", "/root/new/rutevogn/parsing/parseOslo.js", str(todays_date), str(future_date)])
-# subprocess.call(["node", "/root/new/rutevogn/parsing/parseTromso.js", str(todays_date), str(future_date)])
-
+subprocess.call(["node", path + "/cleanUp.js"])
+subprocess.call(["node", path + "/setUp.js", "Tromso"])
+subprocess.call(["node", path + "/insertCities.js"])
+subprocess.call(["node", path + "/parseTromso.js", str(todays_date), str(future_date)])

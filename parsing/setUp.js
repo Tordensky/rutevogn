@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+	var mongoose = require('mongoose');
 mongoose.connect(require('./configcommon').mongodbUrl);
 var _ = require('underscore');
 var Stop = require('../model/stop-model.js');
@@ -77,7 +77,7 @@ function insertDestinations(){
 					console.log(err);
 					process.exit(1);
 				}
-				console.log("Found ", stop);
+				// console.log("Found ", stop);
 
 				saveSubDocument(stop, dest);
 			});
@@ -86,9 +86,9 @@ function insertDestinations(){
 };
 
 function saveSubDocument(destStop, orignal){
-	console.log(destStop);
+	// console.log(destStop);
 	Stop.findOne({name: orignal}, function(err, stop){
-		console.log("FOUND: ", destStop);
+		// console.log("FOUND: ", destStop);
 		var subStop = new Stop({
 	      _id: destStop._id    // assign the _id from the stop
 	    });
@@ -97,7 +97,7 @@ function saveSubDocument(destStop, orignal){
 	    stop.destinations.push(subStop);
 	    stop.save(function(err){
 	    	if(iter == numSubDocuments){
-				console.log("Done save sub documents");
+				// console.log("Done save sub documents");
 				process.exit(0);
 	    	}
 	    });

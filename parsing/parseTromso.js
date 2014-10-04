@@ -174,7 +174,7 @@ function saveDepature(depatureTime, route, destination, depature, preHash, realn
 function createDateObject(string){
 	var bits = string.split(/\D/);
 	var date = new Date(bits[2], (bits[1] - 1), bits[0], bits[3], bits[4], bits[5]);
-	console.log("Date: ", string, date.toUTCString());
+	// console.log("Date: ", string, date.toUTCString());
 	return date;
 }
 
