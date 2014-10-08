@@ -33,7 +33,7 @@ Backbone.history.start();
         activeNav = "sml-open";
     } );
 
-    $(document).mouseup(function (e){
+    $(document).touchstart(function (e){
         var container = $("menulist");
 
         if (!container.is(e.target) // if the target of the click isn't the container...
