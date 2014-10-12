@@ -147,8 +147,9 @@ module.exports = BaseView.extend({
         window.clearInterval(this.countDownTimer);
 
         // window._gaq.push(['_trackEvent', 'ButtonClick', 'New search button']);
+        window.RuteVogn.Router.navigate('depature/Tromsø', true);
 
-        window.RuteVogn.Router.navigate('', true);
+        // window.RuteVogn.Router.navigate('', true);
     },
 
     getTimeString: function(date) {
@@ -163,14 +164,12 @@ module.exports = BaseView.extend({
 
     createRemainingTimeString: function(ms, showSeconds) {
         var seconds = Math.floor(ms / 1000);
-
         var hours = Math.floor(seconds / 3600);
         seconds -= hours * 3600;
-
         var minutes = Math.floor(seconds / 60);
         seconds -= minutes * 60;
-
         var timeString = "";
+        
         if (seconds < 10 && hours == 0 &&minutes == 0){
             timeString = "Nå"
         } else {

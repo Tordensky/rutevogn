@@ -13765,59 +13765,49 @@ var Router = require('./router');
 var RuteVogn = {};
 
 Backbone.$ = $;
-
-var attachFastClick = require('fastclick');
-attachFastClick(document.body);
+require('fastclick')(document.body);
 
 var RuteVogn = {};
 RuteVogn.Router = new Router();
 window.RuteVogn = RuteVogn;
-console.log("inside application js");
-
 Backbone.history.start();
 
-    console.log("doucment ready");
-    var body = $("body"),
-        mask = document.createElement("div"),
-        toggleSlideLeft = document.querySelector( ".toggle-slide-left" ),
-        slideMenuLeft = document.querySelector( ".slide-menu-left" ),
+var body = $("body"),
+    mask = document.createElement("div"),
+    toggleSlideLeft = document.querySelector( ".toggle-slide-left" ),
+    slideMenuLeft = document.querySelector( ".slide-menu-left" ),
+    activeNav = "";
+
+mask.className = "mask";    // dimming
+
+/* slide menu left */
+toggleSlideLeft.addEventListener( "click", function(){
+    body.addClass("sml-open");
+    document.body.appendChild(mask);
+    activeNav = "sml-open";
+});
+
+document.querySelector("body").addEventListener('click', function (e){
+    if(activeNav !== "" && !$("#showMenuButton").is(e.target)){
+        body.removeClass(activeNav);
         activeNav = "";
+        document.body.removeChild(mask);
+    }
+});
 
-    mask.className = "mask";    // dimming
+var setFooter = function setFooter() {
+    var windowHeight = $(window).height();
+    var headerHeight = $("#header").outerHeight();
+    var footerHeight = $("#footer").outerHeight();
+    var appHeight = windowHeight - (headerHeight + footerHeight);
+    $("#app").css("min-height", appHeight);
+};
 
-    /* slide menu left */
-    toggleSlideLeft.addEventListener( "click", function(){
-        body.addClass("sml-open");
-        document.body.appendChild(mask);
-        activeNav = "sml-open";
-    } );
+setFooter();
 
-    $(document).mouseup(function (e){
-        var container = $("menulist");
-
-        if (!container.is(e.target) // if the target of the click isn't the container...
-            && container.has(e.target).length === 0) // ... nor a descendant of the container
-        {
-            if(activeNav.length > 0){
-                body.removeClass(activeNav);
-                activeNav = "";
-                document.body.removeChild(mask);
-            }
-        }
-    });
-
-    var setFooter = function setFooter() {
-        var windowHeight = $(window).height();
-        var headerHeight = $("#header").outerHeight();
-        var footerHeight = $("#footer").outerHeight();
-        var appHeight = windowHeight - (headerHeight + footerHeight);
-        $("#app").css("min-height", appHeight);
-    };
+window.onresize = function() {
     setFooter();
-
-    window.onresize = function() {
-        setFooter();
-    };
+};
 
 },{"./router":14,"backbone":2,"fastclick":3,"jquery-browserify":4}],8:[function(require,module,exports){
 var $ = require('jquery-browserify'),
@@ -13918,26 +13908,28 @@ module.exports = Backbone.Router.extend({
     aboutView: null,
 
     home: function() {
-        var html5 = this.supports_html5_storage();
+        window.RuteVogn.Router.navigate('depature/Tromsø', true);
 
-        if(html5 != false){
-            var city = window.localStorage.getItem("city");
-            console.log("City: ", city);
-            if(city){
-                window.RuteVogn.Router.navigate('depature/' + city, true);
-                return;
-            }
-        }
-        else {
-            console.log("does not support html5");
-        }
+        // var html5 = this.supports_html5_storage();
 
-        if (this.cityView == null) {
-            this.cityView = new ChangeCityView({
-                el: $("#app")
-            });
-        }
-        this.cityView.showPage();
+        // if(html5 != false){
+        //     var city = window.localStorage.getItem("city");
+        //     console.log("City: ", city);
+        //     if(city){
+        //         window.RuteVogn.Router.navigate('depature/' + city, true);
+        //         return;
+        //     }
+        // }
+        // else {
+        //     console.log("does not support html5");
+        // }
+
+        // if (this.cityView == null) {
+        //     this.cityView = new ChangeCityView({
+        //         el: $("#app")
+        //     });
+        // }
+        // this.cityView.showPage();
     },
 
     chooseCityView: function(){
@@ -14025,6 +14017,11 @@ Backbone.$ = $;
 module.exports = BaseView.extend({
     templateName: "about-template",
 
+    events: {
+         "click #back-button" : "goToStartPage",
+
+    }, 
+
     initialize: function(options) {
         this.el = options.el;
     },
@@ -14032,6 +14029,10 @@ module.exports = BaseView.extend({
     showPage: function() {
         console.log("undefineed?");
         this.render();
+    },
+    
+    goToStartPage: function(event) {
+        window.RuteVogn.Router.navigate('', true);
     },
 });
 
@@ -14429,8 +14430,9 @@ module.exports = BaseView.extend({
         window.clearInterval(this.countDownTimer);
 
         // window._gaq.push(['_trackEvent', 'ButtonClick', 'New search button']);
+        window.RuteVogn.Router.navigate('depature/Tromsø', true);
 
-        window.RuteVogn.Router.navigate('', true);
+        // window.RuteVogn.Router.navigate('', true);
     },
 
     getTimeString: function(date) {
@@ -14445,14 +14447,12 @@ module.exports = BaseView.extend({
 
     createRemainingTimeString: function(ms, showSeconds) {
         var seconds = Math.floor(ms / 1000);
-
         var hours = Math.floor(seconds / 3600);
         seconds -= hours * 3600;
-
         var minutes = Math.floor(seconds / 60);
         seconds -= minutes * 60;
-
         var timeString = "";
+        
         if (seconds < 10 && hours == 0 &&minutes == 0){
             timeString = "Nå"
         } else {

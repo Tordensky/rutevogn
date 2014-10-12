@@ -31,26 +31,28 @@ module.exports = Backbone.Router.extend({
     aboutView: null,
 
     home: function() {
-        var html5 = this.supports_html5_storage();
+        window.RuteVogn.Router.navigate('depature/Tromsø', true);
 
-        if(html5 != false){
-            var city = window.localStorage.getItem("city");
-            console.log("City: ", city);
-            if(city){
-                window.RuteVogn.Router.navigate('depature/' + city, true);
-                return;
-            }
-        }
-        else {
-            console.log("does not support html5");
-        }
+        // var html5 = this.supports_html5_storage();
 
-        if (this.cityView == null) {
-            this.cityView = new ChangeCityView({
-                el: $("#app")
-            });
-        }
-        this.cityView.showPage();
+        // if(html5 != false){
+        //     var city = window.localStorage.getItem("city");
+        //     console.log("City: ", city);
+        //     if(city){
+        //         window.RuteVogn.Router.navigate('depature/' + city, true);
+        //         return;
+        //     }
+        // }
+        // else {
+        //     console.log("does not support html5");
+        // }
+
+        // if (this.cityView == null) {
+        //     this.cityView = new ChangeCityView({
+        //         el: $("#app")
+        //     });
+        // }
+        // this.cityView.showPage();
     },
 
     chooseCityView: function(){
