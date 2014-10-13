@@ -413,10 +413,7 @@ Travel info table
     /*}*/
 /*}*/
 
-@media 
-only screen and (max-width: 376px) and
-only screen and (min-width: 319px),
-only screen and (max-width: 980px) {
+@media only screen and (max-width: 980px) {
     /* 2 button wide*/
     .buss-stop-button {
         width: 49%;
@@ -463,5 +460,20 @@ only screen and (max-width: 980px) {
             padding: 5px 12px;
                     font-size: 12px;
 
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    /* 2 button wide*/
+    .buss-stop-button {
+        width: 49%;
+        height: 200px;
+    }
+
+    body {
+        font-size: 22px;
+    }
+    .custom-button-header {
+        font-size: 22px;
     }
 }
