@@ -457,9 +457,8 @@ Travel info table
     }
 
     .custom-button-header {
-            padding: 5px 12px;
-                    font-size: 12px;
-
+        padding: 5px 12px;
+        font-size: 12px;
     }
 }
 
@@ -467,7 +466,7 @@ Travel info table
     /* 2 button wide*/
     .buss-stop-button {
         width: 49%;
-        height: 100;
+        height: 120;
     }
 
     body {
@@ -475,6 +474,6 @@ Travel info table
     }
     .custom-button-header {
             padding: 5px 12px;
-                    font-size: 12px;
+         font-size: 12px;
     }
 }
