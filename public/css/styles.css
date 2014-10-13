@@ -467,13 +467,14 @@ Travel info table
     /* 2 button wide*/
     .buss-stop-button {
         width: 49%;
-        height: 200px;
+        height: 100;
     }
 
     body {
-        font-size: 22px;
+        font-size: 10px;
     }
     .custom-button-header {
-        font-size: 22px;
+            padding: 5px 12px;
+                    font-size: 12px;
     }
 }
