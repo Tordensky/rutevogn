@@ -14180,13 +14180,14 @@ module.exports = BaseView.extend({
         var stops = {stops: this.busStopsCollection.toJSON()};
         var screenInfo = {title:"Jeg reiser fra", favoriteButtonTitle:"Mine favoriter"};
         this.render(stops, screenInfo);
-        
+    },
+    
+    onRenderComplete: function() {
         if (/mobile/i.test(navigator.userAgent)) {
             $(".buss-stop-button").hover(function(){
                 $(this).css("background-color", "#38b1ff");
             });
         }
-
     },
 
     onBusStopClick: function(event) {
