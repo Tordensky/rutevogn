@@ -266,10 +266,6 @@ h1 {
     background-color: #79c8ff;
 }
 
-/*.buss-stop-button:active {*/
-    /*background-color: #bdeeff;*/
-/*}*/
-
 .page-title {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -458,6 +454,8 @@ Travel info table
     }*/
 }
 
+
+
 @media only screen and (max-width: 376px) {
     /* 2 button wide*/
     .buss-stop-button {
@@ -471,6 +469,18 @@ Travel info table
     .travel-info-table tr:first-child td {
         padding-top: 10px;
         padding-bottom: 10px;
+    }
+
+    .page-button {
+        height: 100px;
+    }
+
+    .buss-stop-button:hover {
+        background-color: none;
+    }
+    
+    .buss-stop-button:active {
+        background-color: #79c8ff;
     }
 /*    .custom-button-header {
         padding: 5px 12px;
