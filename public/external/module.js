@@ -13793,6 +13793,12 @@ Backbone.history.start();
 //     }
 // });
 
+if (/mobile/i.test(navigator.userAgent)) {
+    alert("heia");
+}
+
+
+
 var setFooter = function setFooter() {
     var windowHeight = $(window).height();
     var headerHeight = $("#header").outerHeight();
@@ -14297,7 +14303,6 @@ module.exports = BaseView.extend({
     },
 
     initialize: function(options) {
-        // TODO add slider to search for avganger in the next 24h
         this.el = options.el;
         this.travelInfoCollection = new TravelInfoCollection()
 
@@ -14450,7 +14455,7 @@ module.exports = BaseView.extend({
         var minutes = Math.floor(seconds / 60);
         seconds -= minutes * 60;
         var timeString = "";
-        
+
         if (seconds < 10 && hours == 0 &&minutes == 0){
             timeString = "Nå"
         } else {
