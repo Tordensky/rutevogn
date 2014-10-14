@@ -265,6 +265,10 @@ h1 {
     background-color: #79c8ff;
 }
 
+.buss-stop-button:active {
+    background-color: #79c8ff;
+}
+
 .page-title {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
