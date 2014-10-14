@@ -35,7 +35,8 @@ Backbone.history.start();
 // });
 
 if (/mobile/i.test(navigator.userAgent)) {
-    alert("heia");
+    $(".buss-stop-button:hover").css("background-color", "#38b1ff");
+    $(".buss-stop-button:active").css("background-color", "#79c8ff");
 }
 
 

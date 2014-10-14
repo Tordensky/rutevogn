@@ -473,14 +473,6 @@ Travel info table
     .page-button {
         height: 100px;
     }
-
-    .buss-stop-button:hover {
-        background-color: #38b1ff;
-    }
-
-    .buss-stop-button:active {
-        background-color: #79c8ff;
-    }
 /*    .custom-button-header {
         padding: 5px 12px;
         font-size: 12px;
