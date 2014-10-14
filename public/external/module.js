@@ -13757,8 +13757,6 @@ return jQuery;
 }.call(this));
 
 },{}],7:[function(require,module,exports){
-'use strict';
-
 var Backbone = require('backbone');
 var $ = require('jquery-browserify');
 var Router = require('./router');
@@ -13772,28 +13770,28 @@ RuteVogn.Router = new Router();
 window.RuteVogn = RuteVogn;
 Backbone.history.start();
 
-var body = $("body"),
-    mask = document.createElement("div"),
-    toggleSlideLeft = document.querySelector( ".toggle-slide-left" ),
-    slideMenuLeft = document.querySelector( ".slide-menu-left" ),
-    activeNav = "";
+// var body = $("body"),
+//     mask = document.createElement("div"),
+//     toggleSlideLeft = document.querySelector( ".toggle-slide-left" ),
+//     slideMenuLeft = document.querySelector( ".slide-menu-left" ),
+//     activeNav = "";
 
-mask.className = "mask";    // dimming
+// mask.className = "mask";    // dimming
 
-/* slide menu left */
-toggleSlideLeft.addEventListener( "click", function(){
-    body.addClass("sml-open");
-    document.body.appendChild(mask);
-    activeNav = "sml-open";
-});
+// /* slide menu left */
+// toggleSlideLeft.addEventListener( "click", function(){
+//     body.addClass("sml-open");
+//     document.body.appendChild(mask);
+//     activeNav = "sml-open";
+// });
 
-document.querySelector("body").addEventListener('click', function (e){
-    if(activeNav !== "" && !$("#showMenuButton").is(e.target)){
-        body.removeClass(activeNav);
-        activeNav = "";
-        document.body.removeChild(mask);
-    }
-});
+// document.querySelector("body").addEventListener('click', function (e){
+//     if(activeNav !== "" && !$("#showMenuButton").is(e.target)){
+//         body.removeClass(activeNav);
+//         activeNav = "";
+//         document.body.removeChild(mask);
+//     }
+// });
 
 var setFooter = function setFooter() {
     var windowHeight = $(window).height();
