@@ -265,10 +265,6 @@ h1 {
     background-color: #79c8ff;
 }
 
-.buss-stop-button:active {
-    background-color: #79c8ff;
-}
-
 .page-title {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -476,6 +472,16 @@ Travel info table
 
     .page-button {
         height: 100px;
+    }
+
+
+    /* iPhone specific hack */
+    .buss-stop-button:hover {
+        background-color: #38b1ff;
+    }
+
+    .buss-stop-button:active {
+        background-color: #79c8ff;
     }
 /*    .custom-button-header {
         padding: 5px 12px;
