@@ -13793,14 +13793,6 @@ Backbone.history.start();
 //     }
 // });
 
-if (/mobile/i.test(navigator.userAgent)) {
-    $(".buss-stop-button").hover(function(){
-        $(this).css("background-color", "#38b1ff");
-    });
-}
-
-
-
 var setFooter = function setFooter() {
     var windowHeight = $(window).height();
     var headerHeight = $("#header").outerHeight();
@@ -14188,6 +14180,13 @@ module.exports = BaseView.extend({
         var stops = {stops: this.busStopsCollection.toJSON()};
         var screenInfo = {title:"Jeg reiser fra", favoriteButtonTitle:"Mine favoriter"};
         this.render(stops, screenInfo);
+        
+        if (/mobile/i.test(navigator.userAgent)) {
+            $(".buss-stop-button").hover(function(){
+                $(this).css("background-color", "#38b1ff");
+            });
+        }
+
     },
 
     onBusStopClick: function(event) {
@@ -14246,6 +14245,12 @@ module.exports  = BaseView.extend({
             return stop.name;
         });
         this.render(pageInfo, {stops: stops});
+
+        if (/mobile/i.test(navigator.userAgent)) {
+            $(".buss-stop-button").hover(function(){
+                $(this).css("background-color", "#38b1ff");
+            });
+        }
     },
 
     onBusStopClick: function(event) {

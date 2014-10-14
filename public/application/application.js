@@ -34,14 +34,6 @@ Backbone.history.start();
 //     }
 // });
 
-if (/mobile/i.test(navigator.userAgent)) {
-    $(".buss-stop-button").hover(function(){
-        $(this).css("background-color", "#38b1ff");
-    });
-}
-
-
-
 var setFooter = function setFooter() {
     var windowHeight = $(window).height();
     var headerHeight = $("#header").outerHeight();
