@@ -34,6 +34,12 @@ Backbone.history.start();
 //     }
 // });
 
+if (/mobile/i.test(navigator.userAgent)) {
+    alert("heia");
+}
+
+
+
 var setFooter = function setFooter() {
     var windowHeight = $(window).height();
     var headerHeight = $("#header").outerHeight();

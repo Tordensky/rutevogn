@@ -210,7 +210,6 @@ h1 {
 .app-footer-container {
     width: 100%;
     padding-top: 20px;
-    padding-bottom: 10px;
     font-size: 15px;
     font-weight: bold;
 
@@ -237,12 +236,12 @@ h1 {
     /*margin-bottom: 180px;*/
 }
 
-.facebook-like-container {
+/*.facebook-like-container {
     display: inline-block;
     margin-left: 10px;
     overflow: hidden;
 }
-
+*/
 .clear {
     clear: both;
 }
@@ -476,9 +475,9 @@ Travel info table
     }
 
     .buss-stop-button:hover {
-        background-color: none;
+        background-color: #38b1ff;
     }
-    
+
     .buss-stop-button:active {
         background-color: #79c8ff;
     }
