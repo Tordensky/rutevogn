@@ -454,6 +454,22 @@ Travel info table
 }
 
 
+@media only screen and (max-width: : 415px){
+    .buss-stop-button {
+        width: 24%;
+        height: 100px;
+
+        /*padding: 1%;*/
+
+        font-size: 2em;
+        font-weight: bold;
+        float: left;
+        background-color: #38b1ff;
+        color:#ffffff;
+        border: 0;
+        margin: 0.5%;
+    }
+}
 
 @media only screen and (max-width: 376px) {
     /* 2 button wide*/
