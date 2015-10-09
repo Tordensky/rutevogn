@@ -42,12 +42,13 @@ function parseBoth(){
         exec(cmd);
 }
 
-setInterval(parseOslo, 3600000);
+//setInterval(parseOslo, 3600000);
 setInterval(parseTromso, 3600000 * 24);
 
-parseBoth();
-
-app.listen(8080);
+//parseBoth();
+parseTromso();
+app.listen(80);
 
 console.log("Server up and running on port 8080");
+
 

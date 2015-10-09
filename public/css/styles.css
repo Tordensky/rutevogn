@@ -455,12 +455,12 @@ Travel info table
 
 
 @media only screen
-and (max-width: : 415px)
-and (orientation : portrait)
-and (-webkit-min-device-pixel-ratio: 2) {
+and (max-width: 415px)
+and (-webkit-min-device-pixel-ratio: 3) {
     .buss-stop-button {
         width: 24%;
-        height: 100px;
+        height: 90px;
+	font-size: 14px;
     }
 }
 
