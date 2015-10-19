@@ -47,8 +47,6 @@ setInterval(parseTromso, 3600000 * 24);
 
 //parseBoth();
 parseTromso();
-app.listen(80);
+app.listen(8080);
 
 console.log("Server up and running on port 8080");
-
-
